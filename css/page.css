@@ -1,0 +1,102 @@
+/* gobal */
+body { /*background:url(../img/bg_body.png);*/ font:13px/1.5 'arial'; }
+#g_dome { width:90%; margin:10px auto; min-height:100%; }
+#g_dome pre { background:#fff; padding:20px; margin:20px 0; }
+#g_dome h4 { font-size:16px; line-height:40px; }
+#g_dome p { word-wrap:break-word; }
+
+/* col_ul*/ 
+/*.col_ul_4 { padding:20px 0; }
+.col_ul_4 li { display:inline-block; float:left; cursor:pointer; width:21%; margin:0.5% 2%; padding: 5px 0; font-size:1.2em;}
+.fa { font-size:1.4em; }
+.col_ul_4 li:hover { background:#38a7dc; color:#fff; border-radius:5px; }
+*/
+
+/* width */
+.w_min { width:100px; }
+.w_normal { width:200px; }
+.w_max { width:300px; }
+.wp_20 { width:20%; }
+.wp_80 { width:80%; }
+
+.h_min { height:100px; }
+.h_normal { height:200px; }
+.h_max { height:300px; }
+
+
+
+/* button */
+button { border:0; padding:3px 10px; cursor:pointer; border-radius:5px; }
+button[type="button"] {
+    border:1px solid #ddd;
+    background-color:#fff;
+    background-image:-moz-linear-gradient(top, #fff, #eee);
+    background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#eee));
+    background-image:-webkit-linear-gradient(top, #fff, #eee);
+    background-image:-o-linear-gradient(top, #fff, #eee);
+    background-image:linear-gradient(to bottom, #fff, #eee);
+    background-repeat:repeat-x;
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffeeeeee', GradientType=0);}
+button[type="submit"], button[type="reset"] {
+    border:1px solid #34a0d3; color:#fff;
+    background-color:#38a7dc;
+    background-image:-moz-linear-gradient(top, #48c2fc, #38a7dc);
+    background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#48c2fc), to(#38a7dc));
+    background-image:-webkit-linear-gradient(top, #48c2fc, #38a7dc);
+    background-image:-o-linear-gradient(top, #48c2fc, #38a7dc);
+    background-image:linear-gradient(to bottom, #48c2fc, #38a7dc);
+    background-repeat:repeat-x;
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff48c2fc', endColorstr='#ff38a7dc', GradientType=0);}
+
+
+
+
+
+
+/* input */
+/*input[type="text"], input[type="password"] { padding:5px; border:1px solid #ddd; box-shadow:0 0 2px 0 #fff; background:#fff; color:#555; }
+*/
+
+
+
+/* 控制速度 */
+.w_close {
+    transition:all 0.2s ease-out; 
+    -ms-transition:all 0.2s ease-out; /* Internet Explorer */
+    -moz-transition:all 0.2s ease-out; /* Firefox */
+    -webkit-transition:all 0.2s ease-out; /* Safari 和 Chrome */
+    -o-transition:all 0.2s ease-out; /* Opera */
+}
+
+/* 控制右旋转 */
+.w_close:hover {
+    transform:rotate(135deg);
+    -ms-transform:rotate(135deg); /* Internet Explorer */
+    -moz-transform:rotate(135deg); /* Firefox */
+    -webkit-transform:rotate(135deg); /* Safari 和 Chrome */
+    -o-transform:rotate(135deg); /* Opera */
+}
+
+
+
+
+/* sliderA */
+.m_sliderA { }
+.m_sliderACon { overflow:hidden; }
+.m_sliderACon li { float:left; }
+
+
+
+
+/* emailVer */
+.m_emailVer_list { position:absolute; background:#fff; }
+.m_emailVer_list ul { border:1px solid #ccc; }
+.m_emailVer_list li { cursor:pointer; list-style:none; padding:5px; }
+.m_emailVer_list li:hover { background:#ccc; }
+
+
+
+
+
+
+

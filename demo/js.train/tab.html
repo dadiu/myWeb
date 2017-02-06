@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="icons"/>
+    <meta name="keywords" content="icons"/>
+    <meta name="robots" content="whj"/>
+    <link rel="stylesheet" href="css/js_common.css">
+    <style>
+    .m_tab_title { padding:0; margin:0 0 -1px 0; list-style-type:none; overflow:hidden; }
+    .m_tab_title li { cursor:pointer; float:left; padding:5px 15px; margin-right:10px; border:1px solid #ccc; background:#fff; }
+    .m_tab_title li.crt { border-bottom-color:#fff; }
+    .m_tab_main { width:450px; height:200px; padding:10px; border:1px solid #ccc; background:#fff; }
+    .m_tab_item { display:none; height:100%; }
+    .m_tab_item.crt { display:block; }
+    </style>
+</head>
+<body>
+	<div id="main">
+		<h2>选项卡切换效果</h2>
+
+		<p>实例演示：</p>
+		<div class="m_tab">
+			<ul class="m_tab_title">
+				<li data-name="item1" class="crt">tab1</li>
+				<li data-name="item2">tab2</li>
+				<li data-name="item3">tab3</li>
+			</ul>
+			<div class="m_tab_main">
+				<div data-name="item1" class="m_tab_item crt">tab1 main</div>
+				<div data-name="item2" class="m_tab_item">tab2 main</div>
+				<div data-name="item3" class="m_tab_item">tab3 main</div>
+			</div>
+		</div>
+
+		<p>实例代码：</p>
+		<pre>
+css
+
+.m_tab_title { padding:0; margin:0 0 -1px 0; list-style-type:none; overflow:hidden; }
+.m_tab_title li { cursor:pointer; float:left; padding:5px 15px; margin-right:10px; border:1px solid #ccc; background:#fff; }
+.m_tab_title li.crt { border-bottom-color:#fff; }
+.m_tab_main { width:450px; height:200px; padding:10px; border:1px solid #ccc; background:#fff; }
+.m_tab_item { display:none; height:100%; }
+.m_tab_item.crt { display:block; }
+
+js
+$('.m_tab_title').on('click', 'li', function(){
+	$(this).addClass('crt').siblings().removeClass('crt');
+	var name = $(this).attr('data-name');
+	$('div[data-name=' + name + ']').show().siblings().hide();
+})
+
+		</pre>
+	</div>
+
+<script type="text/javascript" src="../../js/jquery-1.8.3.js"></script>
+<script>
+	(function(){
+		$('.m_tab_title').on('click', 'li', function(){
+			$(this).addClass('crt').siblings().removeClass('crt');
+			var name = $(this).attr('data-name');
+			$('div[data-name=' + name + ']').show().siblings().hide();
+		})
+	}())
+</script>
+<body>

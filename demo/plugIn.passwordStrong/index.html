@@ -1,0 +1,75 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	    <meta name="description" content="home"/>
+	    <meta name="keywords" content="home"/>
+	    <meta name="robots" content="whj"/>
+	    <title>密码强度插件</title>
+	    <link rel="stylesheet" href="../../css/page.css">
+	    <style type="text/css">
+
+		.m_lvValBar { width:203px; margin:0 5px 10px 0; padding:5px; border:1px solid #ddd; background:#fff; overflow:hidden; }
+		.m_eyesBar { position:relative; width:173px; padding-right:30px; /*ie6*/ _width:210px }
+	    .fn_lvVal, .fn_lvValHide { width:100%; height:16px; line-height:16px; border:0; padding:0; /*ie6*/ _zoom:1 }
+	    .fn_lvBar { position:relative; width:210px; height:15px; margin:0 0 5px 0; background:#eee; }
+	    .fn_lvLine { height:15px; background:#ff6600; width:0; }
+	    .fn_lvBar ul { position:absolute; list-style:none; overflow:hidden; padding:0; margin:0; }
+	    .fn_lvBar li { float:left; width:69px; height:15px; padding:0; margin:0; line-height:15px; text-align:center; color:#fff; border-left:1px solid #fff; }
+
+	    .fn_lvValHide { display:none; }
+	    .fn_eyes { position:absolute; width:20px; height:20px; right:3px; top:4px; cursor:pointer; background:#000; }
+	    .fn_eyesHover { background:#ccc; }
+	
+	    </style>
+
+
+	</head>
+	<body>
+		<div id="g_dome">
+			<h4>一：实例</h4>
+			<div id="m_passwordStrong1"></div>
+			<h4>二：简单规则</h4>
+			<ol>
+				<li>长度6-20</li>
+				<li>只允许输入数字+字母，不允许出现中文或者符号</li>
+				<li>LV0 ： 所有不符合条件的</li>
+				<li>LV1 ： 纯字母、纯数字</li>
+				<li>LV2 ： 字母+数字 </li>
+			</ol>
+			<mark>具体计分规则见内网wss</mark>
+			<h4>三：插件参数介绍</h4>
+			<p>
+				<b>弱密码集合:</b><br/>
+				weak : ["asdfgh","qwerty","zxcvbn","Password","Passwd","Woaini","Iloveyou","Woaiwojia","521521","5201314","7758521","1314520","1314521","520520","201314","211314","7758258","147258369","159357","123456","1234567","12345678","123456789","654321","123123","123321","123abc"]
+			</p>
+			<p>
+				<b>提示语:</b>(对象排列:{"0":"友情提示","1":"长度错误时提示语","2":"密码为弱密码时提示语","success":"密码可用时候的提示语"})：
+				tips : {"1":"长度不对","2":"弱密码，请修改","success":"可用"}
+			</p>
+			<p>
+				<b>判断是否可用</b><br/>
+				根据密码输入dom里的"data-type"判断，0为不可用，1为可用
+			</p>
+			<pre>
+
+使用方法：
+$('#m_passwordStrong1').passwordStrong({
+	"inpId" : null,		//输入框的id，可不填
+	"type" : true,		//类型，是否出现 点击可出现密码，默认true，不要则填false
+	"eyesClass" : null,	//眼睛class 点击查看密码
+	"color" :{"tips":["#ccc","red"]},	//颜色{"提示文字" : ['默认颜色','强度颜色']},PS:后期可继续扩展控制其他颜色
+	"weak" : []			//弱密码
+	tips : {"0":"友情提示","1":"长度错误时提示语","2":"密码为弱密码时提示语","success":"密码可用时候的提示语"}//提示语 
+});
+			</pre>
+		</div>
+
+		<script type="text/javascript" src="http://whj.fayfox.com/js/jquery-1.8.3.js"></script>
+		<script type="text/javascript" src="js/jquery.passwordStrong.min.js"></script>
+		<script type="text/javascript">
+		$('#m_passwordStrong1').passwordStrong({
+			"type" : true
+		});
+		</script>
+	</body>
+</html>

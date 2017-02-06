@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="home"/>
+    <meta name="keywords" content="home"/>
+    <meta name="robots" content="whj"/>
+    <title>7个神经病-手艺人</title>
+</head>
+<body>
+    <canvas id="canvas" style="border:1px solid #ccc; display:block; margin:0 auto;">
+        当前浏览器不支持canvas,请更换浏览器试试
+    </canvas>
+        
+    <script>
+        window.onload = function(){
+
+            var canvas = document.getElementById("canvas");
+
+                canvas.width = 800;
+                canvas.height = 800;
+
+            if(canvas.getContext("2d")){
+                var content = canvas.getContext("2d");
+
+                /* 位置汇总 */
+                var tangram = [
+                    {"p":[{x:0,y:0},{x:800,y:0},{x:400,y:400}],"c":"#caf161"},
+                    {"p":[{x:0,y:0},{x:400,y:400},{x:0,y:800}],"c":"#5db6cf"},
+                    {"p":[{x:800,y:0},{x:600,y:200},{x:600,y:600},{x:800,y:400}],"c":"#ff5061"},
+                    {"p":[{x:600,y:200},{x:400,y:400},{x:600,y:600}],"c":"#fcea11"},
+                    {"p":[{x:400,y:400},{x:200,y:600},{x:400,y:800},{x:600,y:600}],"c":"#a699c3"},
+                    {"p":[{x:200,y:600},{x:0,y:800},{x:400,y:800}],"c":"#fe9ccd"},
+                    {"p":[{x:800,y:400},{x:400,y:800},{x:800,y:800}],"c":"#fec420"}
+
+                ];
+
+
+                function draw (st){
+                    var pLen = st.length, cLen=0, i = 0, j = 1;
+                    for(; i<pLen ; i++){
+                        cLen = st[i]["p"].length;
+                        j = 1;
+
+                        content.beginPath();
+                        content.moveTo(st[i]["p"][0]["x"],st[i]["p"][0]["y"]);
+
+                        for(; j<cLen ; j++){
+                            content.lineTo(st[i]["p"][j]["x"],st[i]["p"][j]["y"]);
+                        }
+
+                        //content.lineTo(st[i]["p"][0]["x"],st[i]["p"][0]["y"]);
+                        content.fillStyle=st[i]["c"];
+                        content.fill();
+                        
+                        //边框颜色
+                        content.strokeStyle="#ccc";
+
+                        //绘制
+                        //content.stroke();
+                        //content.closePath();
+                    }
+
+                    
+                };
+
+                draw(tangram);
+                /* 线条样式*/
+                // content.lineWidth=5;    //线条宽度
+                // content.strokeStyle="orange"; //线条颜色
+
+                
+
+
+            } else {
+                //当前浏览器不支持canvas,请更换浏览器试试
+            }
+            
+        }
+    </script>
+</body>
+</html>

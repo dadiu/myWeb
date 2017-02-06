@@ -1,0 +1,69 @@
+
+/* 莲花花瓣的容器 */
+.box { position:relative; height:400px; } /* 设置相对定位，因为花瓣需要绝对定位 */
+.leaf {
+	position:absolute; /* 花瓣进行绝对定位 */
+	margin-top:500px; width:300px; height:300px; border-radius:300px 0; /* 制作花瓣角 */
+	background:-*-linear-gradient(-45deg, rgba(188,190,192,1) 8%, rgba(158,31,99,1) 30%, rgba(158,31,99,1) 100%); /* 制作花瓣颜色 */
+	opacity:0.5; filter:alpha(opacity=50);
+	transform:rotate(45deg);/*花瓣旋转45deg*/
+	transform-origin: top right;/* 重置花瓣旋转原点 */
+}
+
+
+/* 动画时间 */
+.leaf:nth-child(2) { animation:show-2 5s ease-in-out infinite; }
+.leaf:nth-child(3) { animation:show-3 5s ease-in-out infinite; }
+.leaf:nth-child(4) { animation:show-4 5s ease-in-out infinite; }
+.leaf:nth-child(5) { animation:show-5 5s ease-in-out infinite; }
+.leaf:nth-child(6) { animation:show-6 5s ease-in-out infinite; }
+.leaf:nth-child(7) { animation:show-7 5s ease-in-out infinite; }
+.leaf:nth-child(8) { animation:show-8 5s ease-in-out infinite; }
+
+
+/* 动画制作 */
+@keyframes show-2 {
+	0% { transform:rotate(45deg); }
+	100% { transform:rotate(75deg); }
+}
+@keyframes show-3 {
+	0% { transform:rotate(45deg); }
+	100% { transform:rotate(100deg); }
+}
+@keyframes show-4 {
+	0% { transform:rotate(45deg); }
+	100% { transform:rotate(125deg); }
+}
+@keyframes show-5 {
+	0% { transform:rotate(45deg); }
+	100% { transform:rotate(150deg); }
+}
+@keyframes show-6 {
+	0% { transform:roate(45deg); }
+	100% { transform:rotate(175deg); }
+}
+@keyframes show-7 {
+	0% { transform:rotate(45deg); }
+	100% { transform:rotate(200deg); }
+}
+@keyframes show-8 {
+	0% { transform:rotate(45deg); }
+	100% { transform:rotate(225deg); }
+}
+
+
+
+
+
+
+/***** other *****/
+*, *:before, *:after{ -*-box-sizing:border-box; }
+body { font-size:12px; background:url(http://whj.fayfox.com/img/bg_demo_tip.png); }
+
+.demo { width:50%; padding-left:10%; float:left; }
+
+.demo_tip { font-size:10pt; width:50%; float:left; padding:20px; height:100%; background:#fff; opacity:0.8; }
+.demo_tip dt { font-weight:bold; }
+.demo_tip dt,.demo_tip dd { margin-bottom:10px; }
+.fc_red { color:#ff0000; }
+

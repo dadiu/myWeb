@@ -1,0 +1,29 @@
+<html>
+	<head>
+		<meta charset="utf-8" />
+	    <meta name="description" content="home"/>
+	    <meta name="keywords" content="home"/>
+	    <meta name="robots" content="whj"/>
+	    <title>上传插件</title>
+		<style>
+		.m_fileImgBar { height:100px; line-height:100px; background:#eee; border:1px dotted #ccc; padding:20px; margin:20px; text-align:center; }
+		.m_fileBtnBar { position:relative; border:1px solid #ccc; height:35px; border-radius:5px; margin:0 20px; }
+		.m_fileBtnBar button { z-index:3; position:absolute; top:0; cursor:pointer; height:35px; line-height:35px; padding:0 20px; background:#ccc; border:0; }
+		.u_fileTxtVal { padding:0 10px; line-height:35px; }
+		.u_fileBtnUp { right:0; }
+		.m_fileInp { position:absolute; left:0; top:0; width:100%; height:100%; opacity:0; }
+		</style>
+	</head>
+	<body>
+
+		<div>
+			<input type="file" name="upfile" id="fn_test"/>
+		</div>
+
+		<script type="text/javascript" src="http://whj.fayfox.com/js/jquery-1.8.3.js"></script>
+		<script type="text/javascript" src="js/jquery.upload.min.js"></script>
+		<script type="text/javascript">
+			$("#fn_test").upload()
+		</script>
+	</body>
+</html>

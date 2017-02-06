@@ -1,0 +1,42 @@
+﻿/*
+CSS Reset
+理念：清除和重置是紧密不可分的
+特色：适应中文
+维护：whj(wuhaijing@hzdracom.com)
+*/
+
+/* 清除内外边距 */
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, /* structural elements 结构元素 */
+dl, dt, dd, ul, ol, li, /* list elements 列表元素 */
+pre, /* text formatting elements 文本格式元素 */
+fieldset,  button, input, textarea, /* form elements 表单元素 */
+th, td { /* table elements 表格元素 */
+    margin:0; padding: 0; }
+
+/* 重置列表元素 */
+ul, ol { list-style:none; }
+
+/* 重置元素 */
+img { border: none; } /* 让链接里的 img 无边框 */
+a { outline:none; }
+
+button, input, select, textarea { font-size:100%; /* 使得表单元素在 ie 下能继承字体大小 */}
+
+/* 重置表格元素 */
+table { border-collapse:collapse; border-spacing:0; }
+
+/* 重置 hr */
+hr { border:none; height:1px; }
+
+/* 让非ie浏览器默认也显示垂直滚动条，防止因滚动条引起的闪烁 */
+html, body { height:100%; }
+
+
+/* html5 */
+address, cite, dfn, var { font-style:normal; } /* 将斜体扶正 */
+code, kbd, pre, samp, tt { font-family:"Courier New", Courier, monospace; } /* 统一等宽字体 */
+small { font-size:12px; } /* 小于 12px 的中文很难阅读，让 small 正常化 */
+header, section, footer, aside, nav, article, figure, figcaption, hgroup{ display:block; margin:0; } /* 让所有的浏览器都显示为块级 */
+*, *:before, *:after {-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;} /* 让填充包含在宽度内 */
+
+

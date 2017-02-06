@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="icons"/>
+    <meta name="keywords" content="icons"/>
+    <meta name="robots" content="whj"/>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/page.css">
+
+    <style type="text/css">
+    /* checkbox */
+    .u_inr { position:relative; display:inline-block; }
+    .u_inr_a { display:inline-block; font-size:16px; }
+    .u_inr_b { position:absolute; z-index:2; left:0;top:0; margin:2px; opacity:0; }
+    </style>
+</head>
+<body>
+    
+	<div class="wrap g_main">
+		<h2>模拟单选框</h2>
+        <div class="g_code">
+
+            <label class="u_inr">
+                <span class="u_inr_a fa fa-dot-circle-o"></span>
+                <input type="radio" class="u_inr_b" name="sex"/>                
+            </label>
+            男
+            <label class="u_inr">
+                <span class="u_inr_a fa fa-circle-o"></span>
+                <input type="radio" class="u_inr_b" name="sex"/>                
+            </label>
+            女
+        </div>
+	</div>
+    <script type="text/javascript" src="../js/jquery-1.8.3.js"></script>
+    <script type="text/javascript" id="m_js">
+    var com = {
+        //checkbox判断
+        check : function(){
+            var $name = $(this).attr('name'),
+                $u_inr_a = $('input[name=' + $name + ']').prev('.u_inr_a');
+
+            $u_inr_a.removeClass('fa-dot-circle-o').addClass('fa-circle-o ');
+            $(this).prev('.u_inr_a').addClass('fa-dot-circle-o').removeClass('fa-circle-o ');
+
+        }
+    };
+    $('body')
+        //checkbox判断
+        .delegate('.u_inr_b', 'click', function(){
+            com.check.call(this);
+       
+        });
+
+    </script>
+
+</body>
+</html>

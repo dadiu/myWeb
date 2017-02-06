@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="home"/>
+    <meta name="keywords" content="home"/>
+    <meta name="robots" content="whj"/>
+    <title>7个吴海晶-手艺人</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/common.css">
+</head>
+<body>
+        <div class="wrap g_main">
+        <div class="snav">
+
+        </div>
+        <div class="s_right">
+            <ul class="m_menu">
+                <li><a href="#other_skill_1">文本超出部分以"..."表示</a></li>
+                <li><a href="#other_skill_2">透明度</a></li>
+                <li><a href="#other_skill_3">控制渐变/控制速度/控制右旋转</a></li>
+                <li><a href="#other_skill_4">ie浏览器改变scroll</a></li>
+                <li><a href="#other_skill_5">手机端在head的声明</a></li>
+                <li><a href="#other_skill_6">响应式css3定义</a></li>
+            </ul>
+            <h2 id="other_skill_1" name="other_skill_1">文本超出部分以"..."表示</h2>
+            <pre>
+text-overflow :ellipsis; //让截断的文字显示为点点。还有一个值是clip意思是截断不显示点点
+white-space : nowrap; //让文字不换行
+overflow : hidden; //超出要隐藏</pre>
+
+            <h2 id="other_skill_2" name="other_skill_2">透明度</h2>
+            <p>filter:alpha(opacity=50); opacity=0.5;</p>
+
+            <h2 id="other_skill_3" name="other_skill_3">控制渐变/控制速度/控制右旋转</h2>
+            <pre>
+控制渐变
+background-color:#333;
+background-image:linear-gradient(to bottom, #333, #444);
+background-image:-moz-linear-gradient(top, #333, #444); /* Firefox */
+background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#333), to(#444)); /* Safari 和 Chrome */
+background-image:-webkit-linear-gradient(top, #333, #444); /* Safari 和 Chrome */
+background-image:-o-linear-gradient(top, #333, #444); /* Opera */
+background-repeat:repeat-x;
+filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff333333', endColorstr='#ff444444', GradientType=0);/* ie7/8  */
+
+控制速度
+/* transition */
+transition:all 0.2s ease-out; 
+-ms-transition:all 0.2s ease-out; /* Internet Explorer */
+-moz-transition:all 0.2s ease-out; /* Firefox */
+-webkit-transition:all 0.2s ease-out; /* Safari 和 Chrome */
+-o-transition:all 0.2s ease-out; /* Opera */
+
+控制右旋转
+/* Rotate div */
+transform:rotate(90deg);
+-ms-transform:rotate(90deg); /* Internet Explorer */
+-moz-transform:rotate(90deg); /* Firefox */
+-webkit-transform:rotate(90deg); /* Safari 和 Chrome */
+-o-transform:rotate(90deg); /* Opera */</pre>
+
+            <h2 id="other_skill_4" name="other_skill_4">ie浏览器改变scroll</h2>
+            <pre>
+/* scrollbar */
+scrollbar-arrow-color: #fff;  /*三角箭头的颜色*/
+scrollbar-face-color: #231651;  /*立体滚动条的颜色*/
+scrollbar-3dlight-color: #231651;  /*立体滚动条亮边的颜色*/
+scrollbar-highlight-color: #231651;  /*滚动条空白部分的颜色*/
+scrollbar-shadow-color: #231651;  /*立体滚动条阴影的颜色*/
+scrollbar-darkshadow-color: #231651;  /*立体滚动条强阴影的颜色*/
+scrollbar-track-color: #fff;  /*立体滚动条背景颜色*/
+
+scrollbar-base-color:#fff;  /*滚动条的基本颜色*/ </pre>
+
+            <h2 id="other_skill_5" name="other_skill_5">手机端在head的声明</h2>
+            <pre>&lt;meta name="viewport" content="width=320px, initial-scale=1, maximum-scale=1,minimum-scale=1, user-scalable=no"&gt;</pre>
+
+            <h2 id="other_skill_6" name="other_skill_6">响应式css3定义</h2>
+            <pre>/**** max-width 1180 *****/
+@media screen and (max-width: 1180px){}</pre>
+        </div>  
+        </div>      
+    </div>
+    <script type="text/javascript" src="js/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript">
+    common.view.snav(skillSnavList);
+    </script>
+
+    <!-- $('nav').downMenu({
+        'nav' : navmore,
+        'target' : 'g_con',
+        'dd' : {
+            "css2.0" : {
+                "other more" : "con_skill/skill_other.html",
+                "特殊符号以代码表示" : "con_skill/skill_css.html#css_skill_1",
+                "字体以Unicode编码代替" : "con_skill/skill_css.html#css_skill_2",
+                "a的4种伪类的排列顺序" : "con_skill/skill_css.html#css_skill_3",
+                "css的优先规则" : "con_skill/skill_css.html#css_skill_5"
+            },
+            "css3.0" : {
+                "font-face的运用" : "con_skill/skill_css3.html#css_skill_1",
+                ":not()" : "con_skill/skill_css3.html#css_skill_2",
+                ":nth-child()" : "con_skill/skill_css3.html#css_skill_3"
+            },
+            "html" : {
+                "vhScreen" : "z_fallScreen.html"
+            }
+            ,
+            "js" : {
+                "插件们" : "con_skill/skill_js.html",
+                "幻灯片们" : "con_skill/skill_slideshow.html",
+                "倒计时" : "con_js/js_countDown.html",
+                "递归计算阶层" : "con_js/js_countFactorial.html",
+                "获取当前日期" : "con_js/js_today.html",
+                "排序" : "con_js/js_sort.html",
+                "慕课网的练习" :"con_js/js_muke.html"
+            }
+        }
+    }); -->
+
+</body>
+</html>

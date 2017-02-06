@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="icons"/>
+    <meta name="keywords" content="icons"/>
+    <meta name="robots" content="whj"/>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/page.css">
+</head>
+<body>
+	<div class="wrap g_main g_specification">
+		<h2 id="css_sp_1" name="css_sp_1">一．分类方法</h2>
+        <article>
+            <p class="fwb">css基础分为三个：</p>
+            <p>base.css (基础css，只有一个，放在最上面，不可更改。)</p>
+            <p>common.css (公用css,多个页面公用，一般来说只有一个，在项目页面很多的时候允许有多个。放在base.css的后面，可增加，删除的话需要跟负责人商量。)</p>
+            <p>page.css (私有css,不属于公用的css都放在这里，允许有多个，放在最下面。可自行增加或者新建。)</p>
+
+            <figcaption>Ps:若遇到引用的插件需要css，可直接引用至common.css的下一个，page.css的上一个，切不可直接将该插件的css复制到page.css里。这样会影响到它原本的完成性。若遇到原本的css样式与设计师给的设计图不符，可在page.css重写覆盖即可。</figcaption>
+
+        </article>
+
+		<h2 id="css_sp_2" name="css_sp_2">二．命名规范</h2>
+        <article>
+            <p class="fwb">1．所有命名必须小写，两个单词连接用“_”，不要用“-”</p>
+            <p class="fwb">2．布局的命名（.g_开头），具体如下：</p>
+            <table class="tb_normal">
+                <tbody>
+                    <tr>
+                        <td>.header（头部）</td>
+                        <td>.g_head</td>
+                        <td>.g_hd</td>
+                    </tr>
+                    <tr>
+                        <td>.container（主体大容器）</td>
+                        <td>.g_contain</td>
+                        <td>.g_con</td>
+                    </tr>
+                    <tr>
+                        <td>.footer（底部）</td>
+                        <td>.g_foot</td>
+                        <td>.g_ft</td>
+                    </tr>
+                    <tr>
+                        <td>.main（主体小容器）</td>
+                        <td>.g_main</td>
+                        <td>.g_mn</td>
+                    </tr>
+                    <tr>
+                        <td>.main_contain（主体小容器的子容器）</td>
+                        <td>.g_mainc</td>
+                        <td>.g_mnc</td>
+                    </tr>
+                    <tr>
+                        <td>.side（主体侧边栏） </td>
+                        <td>.g_side</td>
+                        <td>.g_sd</td>
+                    </tr>
+                    <tr>
+                        <td>.side_contain（主体侧边栏子容器）</td>
+                        <td>.g_sidec</td>
+                        <td>.g_sdc</td>
+                    </tr>
+                    <tr>
+                        <td>.wrap（盒容器）</td>
+                        <td>.wrap</td>
+                        <td>.wrap</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="tb_normal">
+                <tbody>
+                <tr>
+                    <td>width:10px;</td>
+                    <td>w10</td>
+                    <td>width:10%;</td>
+                    <td>wp10</td>
+                </tr>
+                <tr>
+                    <td>table(表格)</td>
+                    <td>.tb_xxxx</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+            <p class="fwb">3．模块（以语意化为主，其他的以.m_开头，弹窗的多以.w_开头）：</p>
+            <table class="tb_normal">
+                <tbody>
+                    <tr>
+                        <td>主导航</td>
+                        <td>.nav</td>
+                        <td>侧导航</td>
+                        <td>.snav</td>
+                    </tr>
+                    <tr>
+                        <td>菜单</td>
+                        <td>.menu</td>
+                        <td>收缩侧导航</td>
+                        <td>.snav_toggle</td>
+                    </tr>
+                    <tr>
+                        <td>幻灯片</td>
+                        <td>.slidershow</td>
+                        <td>页码</td>
+                        <td>.pagination</td>
+                    </tr>
+                    <tr>
+                        <td>登录</td>
+                        <td>.m_login</td>
+                        <td>注册</td>
+                        <td>.m_reg</td>
+                    </tr>
+                    <tr>
+                        <td>搜索</td>
+                        <td>.m_search</td>
+                        <td>评论</td>
+                        <td>.m_comment</td>
+                    </tr>
+                    <tr>
+                        <td>面包屑</td>
+                        <td>.m_bread</td>
+                        <td>切换</td>
+                        <td>.m_tab</td>
+                    </tr>
+                    <tr>
+                        <td>提示</td>
+                        <td>.m_tip</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p class="fwb">弹窗的命名：</p>
+            <table class="tb_normal">
+                <tbody>
+                    <tr>
+                        <td>总的table</td>
+                        <td>.dialog</td>
+                        <td>弹窗</td>
+                        <td>.win</td>
+                    </tr>
+                    <tr>
+                        <td>头部</td>
+                        <td>.w_top</td>
+                        <td>内容</td>
+                        <td>.w_con</td>
+                    </tr>
+                    <tr>
+                        <td>底部</td>
+                        <td>.w_bot</td>
+                        <td>关闭图标</td>
+                        <td>.i _close</td>
+                    </tr>
+                    <tr>
+                        <td>确定/提交/保存按钮</td>
+                        <td>.w_sure</td>
+                        <td>取消/关闭按钮</td>
+                        <td>.w_circle</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p class="fwb">4．元件</p>
+            <table class="tb_normal">
+                <tbody>
+                <tr>
+                    <th>按钮</th>
+                    <td>
+                        <p>button[type=button]：取消、关闭、删除、编辑、增加、选择</p>
+                        <p>button[type=submit]：确定、发送、提交、登陆、注册、保存、返回、前进、打印、查询</p>
+                        <p>button[type=reset]：重置、刷新</p>
+                        <p class="fwb pt20">命名以.btn_x（如果用到图片则统一将合成好的背景图片定义在button上，之后的class上定义backgroung-position</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>下拉菜单</th>
+                    <td>
+                        <p>1.使用了原生的下拉菜单，可直接定义在select标签上。如select {  }</p>
+                        <p>2.自己重新写了个模拟select的命名：</p>
+                        <textarea class="h_normal">
+                            <div class=”u_sel”>
+                                <div class=”u_sel_a”>选中的</div>
+                                <ul class=”u_sel_b”>
+                                    <li>选择1</li>
+                                </ul>
+                            </div>
+                        </textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <th>输入框</th>
+                    <td>
+                        <p>input[type=text]   输入框（.u_int_x）</p>
+                        <p>input[type=password]   密码输入框（.u_inp_x）</p>
+                        <p>input[type=radio] 单选（. u_inr/ .u_inr_a/.u_inr_b）</p>
+                        <p>input[type=checkbox] 多选（. u_inc/.u_inc_a/.u_inc_b）</p>
+                        <p>input[type=file] 上传文件、浏览（. u_inf/.u_inf_a/.u_inf_b）</p>
+                        <p class="fwb pt20">重新写了模拟样式的情况下，参考下拉菜单的命名。分别以后缀_a为原生，_b为自定义覆盖</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>编辑文档</th>
+                    <td>textarea   ( .u_txt )</td>
+                </tr>
+                <tr>
+                    <th>载入条</th>
+                    <td>.u_pro/.u_pro_a/.u_pro_b（类似下拉菜单的命名结构）</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <p class="fwb">5．功能的命名（简写即可），具体如下(Ps：x是数值)：</p>
+            <table class="tb_normal">
+                <tbody>
+                <tr>
+                    <td>.clearboth（清除浮动）</td>
+                    <td>.cb</td>
+                </tr>
+                <tr>
+                    <td>.floatleft（左浮动）/.floatright(右浮动)</td>
+                    <td>.fl/.fr</td>
+                </tr>
+                <tr>
+                    <td>.inlineblock（行内块级）</td>
+                    <td>.ib</td>
+                </tr>
+                <tr>
+                    <td>.textalign（水平居左/居中/居右）</td>
+                    <td>.tal/.tac/.tar</td>
+                </tr>
+                <tr>
+                    <td>.verticalalign (垂直居上/居中/居下)</td>
+                    <td>.vat/.vam/.vab</td>
+                </tr>
+                <tr>
+                    <td>.overflowhidden(溢出隐藏)</td>
+                    <td>.oh</td>
+                </tr>
+                <tr>
+                    <td>.displaynone（隐藏）</td>
+                    <td>.dn</td>
+                </tr>
+                <tr>
+                    <td>.fontsize（字体大小）</td>
+                    <td>.fsx/.fs_min/.fs_normal/.fs_max</td>
+                </tr>
+                <tr>
+                    <td>.fontweight（字体粗细）</td>
+                    <td>.fwn/.fwb/.fwx</td>
+                </tr>
+                <tr>
+                    <td>.border（边框）</td>
+                    <td>.bx/.btx/.brx/.bbx/.blx</td>
+                </tr>
+                <tr>
+                    <td>.padding（填充）</td>
+                    <td>.px/ptx/.prx/.pbx/.plx</td>
+                </tr>
+                <tr>
+                    <td>.margin（边距）</td>
+                    <td>.mx/.mtx/.mrx/.mbx/.mlx</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <p class="fwb">6．状态的命名（简写即可），具体如下(Ps：x是数值)：</p>
+            <table class="tb_normal">
+                <tbody>
+                <tr>
+                    <td>.selected（选中）</td>
+                    <td>.sel</td>
+                </tr>
+                <tr>
+                    <td>.current（当前）</td>
+                    <td>.crt</td>
+                </tr>
+                <tr>
+                    <td>.show（显示）</td>
+                    <td>.show</td>
+                </tr>
+                <tr>
+                    <td>.hide（隐藏）</td>
+                    <td>.hide</td>
+                </tr>
+                <tr>
+                    <td>.open（打开）</td>
+                    <td>.open</td>
+                </tr>
+                <tr>
+                    <td>.close（关闭）</td>
+                    <td>.close</td>
+                </tr>
+                <tr>
+                    <td>.error（出错）</td>
+                    <td>.err</td>
+                </tr>
+                <tr>
+                    <td>.disabled（不可用）</td>
+                    <td>.dis</td>
+                </tr>
+                <tr>
+                    <td>.z-index（空间高度）</td>
+                    <td>.z_x</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <p class="fwb">7．皮肤的命名（有换肤功能的时候用，平时不用），具体如下(Ps：x是数值)：</p>
+            <table class="tb_normal">
+                <tbody>
+                <tr>
+                    <td>.fontcolor（字体颜色）</td>
+                    <td>.fc</td>
+                    <td>.background（背景）</td>
+                    <td>.bg</td>
+                </tr>
+                <tr>
+                    <td>.backgroundcolor（背景色）</td>
+                    <td>.bgc</td>
+                    <td>.backgroundimage（背景图片）</td>
+                    <td>.bgi</td>
+                </tr>
+                <tr>
+                    <td>.backgroundpostion（背景图片定位）</td>
+                    <td>.bgp</td>
+                    <td>.bordercolor（边框颜色）</td>
+                    <td>.bc</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <p class="fwb">8．给js用的class均以fn开头+"_"，如fn_dn { display:none; } , fn_menu { width:200px; height:300px; }</p>
+
+        </article>
+
+        <h2 id="css_sp_3" name="css_sp_3">三．代码格式</h2>
+        <article>
+            <p>1．所有选择器、标签、属性、值，全部为小写。</p>
+            <p>2．单行写完一个选择器的定义（有css3各浏览器兼容多行书写，比如动画、渐变等）</p>
+            <p>3．属性，中括号，属性名之间，加空格，属性和值之间不需要，如：</p>
+            <figure>
+                .class { width:100px; height:100px; }
+                两个合并的属性名，逗号后面空一格，如：
+                .a, .b { width:100px; height:100px; }</figure>
+            <p>4．最后一个值必须为";"结尾。</p>
+            <p>5．省略值为0时的单位，如：0px, 0em, 0%等全部写成0即可。如：</p>
+            <figure>
+                .class { margin:0 10px; }
+            </figure>
+            <p>6．除非是用rgba表示透明度，否则一律使用16进制表示颜色，并尽量缩写。</p>
+            <p>7．url之类需要引号的，统一使用双引号。</p>
+            <p>8．根据属性的重要性，按顺序书写。</p>
+            <ul>
+                <li>(1).位置属性(position, top, right, z-index, display, float等)</li>
+                <li>(2).大小(width, height, padding, margin)</li>
+                <li>(3).文字系列(font, line-height, letter-spacing, color- text-align等)</li>
+                <li>(4).背景(background, border等)5.其他(animation, transition等)</li>
+                <li>(5).其他(animation, transition等)</li>
+            </ul>
+            <p>9．标准在前，私有在后（先写w3c标准的引用，再写带有浏览器私有标志的）。如：</p>
+            <textarea class="mb20 h_normal">
+                .bg_blue{
+                background-color:#4bb1cf;
+                background-image:-moz-linear-gradient(top, #5bc0de, #339bb9);
+                background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#5bc0de), to(#339bb9));
+                background-image:-webkit-linear-gradient(top, #5bc0de, #339bb9);
+                background-image:-o-linear-gradient(top, #5bc0de, #339bb9);
+                background-image:linear-gradient(to bottom, #5bc0de, #339bb9);
+                background-repeat:repeat-x;
+                filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5bc0de',endColorstr='#ff339bb9', GradientType=0);
+                }
+            </textarea>
+            <p>10．原则上不允许使用hack（不兼容的问题，一开始要先根据经验改变结构和思路的方法来解决，如还是不行必须要使用hack的时候，则ie7统一用“*”，ie6统一用“_”,且使用的顺序必须版本高的到版本低的，因为后面的权重高于前面的）。如：</p>
+            <figure>
+                /* ie7为#888，ie6为#999，其他统一为#000 */<br/>
+                { color:#000; /*ie7*/*color:#888; /*ie6*/_color:#999; }
+            </figure>
+            <p>11．注释格式</p>
+            <figure>
+                <p>  对选择器的注释统一写在被注释的对象的上一行；</p>
+                <p>对属性及值的注释，卸载上一个”；“空一格的后面。如：<br/>
+                    /* ie7为#888，ie6为#999，其他统一为#000 */<br/>
+                    { color:#000; /*ie7*/*color:#888; /*ie6*/_color:#999; }</p>
+                <p>对整个属性的备注写在属性的最后，如：<br/>
+                    img { border: none; } /* 让链接里的 img 无边框 */</p>
+                </p>
+            </figure>
+            <p>12．选择器的书写顺序</p>
+            <figure>
+               <p> a. 范围从大到小
+                .a p{  }
+                .a p.list {  }</p>
+
+                <p>b.等级从高到低
+                .a a {  }
+                .a a:hover {  }</p>
+
+                <p>c.结构从先到后
+                .g_hd {  }
+                .g_com {  }
+                .g_ft {  }</p>
+
+            </figure>
+        </article>
+
+        <h2 id="css_sp_4" name="css_sp_4">四．优化方案</h2>
+        <article>
+            <p>1．尽量不要使用”!important“，除非你真的觉得有必要。</p>
+            <p>2．尽量不要使用滤镜filter，渲染会加慢运行速度，以渐进增强为目标的情况下，让ie6/7/8弱化设计效果吧。</p>
+            <p>3．值缩写，比如padding，margin,background,border之类可以多个属性合并成一个的，就缩写，如</p>
+            <figure>
+                { padding-top:0; padding-right:10px; padding-left:20px;}<br/>
+                可以根据上右下左的顺序书写为：<br/>
+                {padding:0 10px 0 20px;}
+            </figure>
+             <p>4．选择器的合并，如果多个选择器使用的有大部分相同的属性，则将其合并，如</p>
+            <figure>
+                .left { position:absolute ; width:10px; height:20px; top:50%; left:10px; }<br/>
+                .right { position:absolute ; width:10px; height:20px; top:50%; right:10px; }<br/>
+                合并后为：<br/>
+                .left, .right { position:absolute ; width:10px; height:20px; top:50%; }<br/>
+                .left { left:10px; }<br/>
+                .right { right:10px; }
+            </figure>
+            <p>5．小图标的优化，所有小图标按大小分类，同大小里的俺功能分类，在ps中进行合图，合图的时候要拉标尺，且必须保存psd源文件，便于下次修改。</p>
+            <p>6．css能做到的，就不要使用js，减轻js的开发量。若是视觉样式上的变化则可定义个class供js使用即可；若是项目放弃了ie9一下浏览器的兼容，那么动画效果也可以交给css。</p>
+            <p>7．项目结束确定上线了，记得把css文件进行压缩。但是要保留源文件，方便下次修改。</p>
+        </article>
+	</div>
+</body>
+</html>

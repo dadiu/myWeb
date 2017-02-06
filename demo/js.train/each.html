@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="icons"/>
+    <meta name="keywords" content="icons"/>
+    <meta name="robots" content="whj"/>
+    <link rel="stylesheet" href="css/js_common.css">
+</head>
+<body>
+	<div id="main">
+		<h2>$.each 编程练习</h2>
+		<p>定义一个json对象，用于保存学生的相关资料</p>
+		<pre>
+		对于遍历一个数组，用$.each()来处理，简直爽到了极点。例如：
+		var JSONP = [
+		            {'name':'num1','string':'str','age':'1'},
+		            {'name':'num2','string':'num','age':'2'},
+		            {'name':'num3','string':'obj','age':'3'},
+		            {'name':'num4','string':'arr','age':'4'},
+		            {'name':'num5','string':'ble','age':'5'}
+		        ];
+		$.each(JSONP,function(i,n)
+		{
+		console.log('索引:'+i,'对应值为：'+n.name + ',' + n.string + ',' + n.age);
+		});
+
+		参数i为遍历索引值，n为当前的遍历对象.
+		n = JSONP[i];
+		n.name = JSONP[i].name;
+		</pre>
+
+		<br/>
+		<p>实例代码：</p>
+		<pre>
+		(function(){
+			var JSONP = [
+	            {'name':'num1','string':'str','age':'1'},
+	            {'name':'num2','string':'num','age':'2'},
+	            {'name':'num3','string':'obj','age':'3'},
+	            {'name':'num4','string':'arr','age':'4'},
+	            {'name':'num5','string':'ble','age':'5'}
+	        ];
+
+	        $.each(JSONP,function(i,n){
+
+	        	$('table').append(
+	        		'<tr><td>' + n.name + 
+	        		'</td><td>' + n.string + 
+	        		'</td><td>' + n.age + 
+	        		'</td></tr>')
+	        })
+		}())
+		</pre>
+
+		<p>实例输出：</p>
+		<table>
+			
+		</table>
+	</div>
+<script type="text/javascript" src="../../js/jquery-1.8.3.js"></script>
+<script type="text/javascript">
+	(function(){
+		var JSONP = [
+            {'name':'num1','string':'str','age':'1'},
+            {'name':'num2','string':'num','age':'2'},
+            {'name':'num3','string':'obj','age':'3'},
+            {'name':'num4','string':'arr','age':'4'},
+            {'name':'num5','string':'ble','age':'5'}
+        ];
+
+        $.each(JSONP,function(i,n){
+
+        	$('table').append(
+        		'<tr><td>' + n.name + 
+        		'</td><td>' + n.string + 
+        		'</td><td>' + n.age + 
+        		'</td></tr>')
+        })
+	}())
+</script>
+</body>
+</html>

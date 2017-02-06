@@ -1,0 +1,5 @@
+body { font:12px/1.8em 'arial'; }
+#main { width:960px; margin:0 auto; background:#eee; padding:20px; }
+
+table { background:#fff; border:1px solid #ddd; border-bottom:0; }
+td { padding:5px 20px; border-bottom:1px solid #ddd; }

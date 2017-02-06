@@ -1,0 +1,108 @@
+<html>
+<head>
+	<meta charset="utf-8" />
+    <meta name="description" content="home"/>
+    <meta name="keywords" content="home"/>
+    <meta name="robots" content="whj"/>
+    <title>前端资料库-HTML5-制作酷炫音频播放器插件</title>
+    <link rel="stylesheet" href="css/audio.css"/>
+</head>
+
+<body>
+ <div id="myAudio">
+            <audio>
+                <source title="久石让 - いつも何度でも.mp3" src="music/test1.mp3" />
+                <source title="海角七号 - 野玫瑰.mp3" src="music/test2.mp3" />
+                <source title="林一峰 - 春花祭.mp3" src="music/test3.mp3" />
+                <source title="手嶌葵 - 明日への手纸.mp3" src="music/test4.mp3" />
+            </audio><!-- /audio -->
+
+        <div class="music_info cb">
+            <div class="cd_hoder">
+                <span class="stick"></span>
+                <div class="cd"></div>
+            </div>
+            <div class="meta_data">
+                <span class="title">久石让 - いつも何度でも.mp3</span>
+                <div class="rating">
+                    <div class="starbar">
+                        <ul class="current-rating" data-score="85">
+                            <li class="star5"></li>
+                            <li class="star4"></li>
+                            <li class="star3"></li>
+                            <li class="star2"></li>
+                            <li class="star1"></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="volume_control">
+                    <a href="javascript:;" class="decrease">a</a>
+                    <div class="base_bar">
+                        <span class="progress_bar"></span>
+                        <a href="javascript:;" class="slider"></a>
+                    </div>
+                    <a href="javascript:;" class="increase">b</a>
+                </div>
+            </div>
+        </div><!-- /music_info -->
+
+        <ul class="music_list">
+            <li class="active">久石让 - いつも何度でも</li>
+            <li>海角七号 - 野玫瑰.mp3</li>
+            <li>林一峰 - 春花祭.mp3</li>
+            <li>手嶌葵 - 明日への手纸.mp3</li>
+        </ul><!-- /music_list -->
+
+        <div class="controls cb">
+            <div class="play_controls">
+                <a href="javascript:;" class="btn_previous">e</a>
+                <a href="javascript:;" class="btn_play">c</a>
+                <a href="javascript:;" class="btn_next">d</a>
+            </div>
+            <div class="time_line">
+                <span class="passed_time">0:00</span>
+                <span class="base_bar">
+                    <span class="progress_bar"></span>
+                </span>
+                <span class="total_time">0:00</span>
+            </div>
+        </div><!-- /controls -->
+    </div>
+
+<div class="demo_tip">
+    <p>原地址：<a href="http://www.w3cplus.com/demo/773.html" target="_blank">http://www.w3cplus.com/demo/773.html</a></p>
+    <h3>笔记</h3>
+    <dl>
+        <dt>porp</dt>
+        <dd>获取在匹配的元素集中的第一个元素的属性值。</dd>
+        <dt>triggerHandler</dt>
+        <dd>
+            <p>这个特别的方法将会触发指定的事件类型上所有绑定的处理函数。但不会执行浏览器默认动作，也不会产生事件冒泡</p>
+            <p>这个方法的行为表现与trigger类似，但有以下三个主要区别：</p>
+            <p>* 第一，他不会触发浏览器默认事件。</p>
+            <p>* 第二，只触发jQuery对象集合中第一个元素的事件处理函数。</p>
+            <p>* 第三，这个方法的返回的是事件处理函数的返回值，而不是据有可链性的jQuery对象。此外，如果最开始的jQuery对象集合为空，则这个方法返回 undefined 。</p>
+        </dd>
+        <dt>buffered 属性返回 TimeRanges 对象。</dt>
+        <dd>
+            <p>TimeRanges 对象表示音频的缓冲区间</p>
+            <p>缓冲范围指的是已缓冲音视频的时间范围。如果用户在音视频中跳跃播放，会得到多个缓冲范围。</p>
+        </dd>
+        <dt>TimeRanges 对象</dt>
+        <dd>
+            <p>表示音视频的已缓冲部分，TimeRanges 对象属性:</p>
+            <p>length - 获得音视频中已缓冲范围的数量</p>
+            <p>start(index) - 获得某个已缓冲范围的开始位置</p>
+            <p>end(index) - 获得某个已缓冲范围的结束位置</p>
+            <p>注意：首个缓冲范围的下标是 0。</p>
+        </dd>
+        <dt>trigger</dt>
+        <dd>在每一个匹配的元素上触发某类事件。</dd>
+    </dl>
+    <br/>
+    <p class="fc_red">待完善 - 音量调节、播放进度跟踪</p>
+</div>
+<script type="text/javascript" src="../../js/jquery-1.8.3.js"></script>
+<script type="text/javascript" src="js/audio.js"></script>
+</body>
+</html>

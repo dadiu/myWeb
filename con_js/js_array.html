@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="icons"/>
+    <meta name="keywords" content="icons"/>
+    <meta name="robots" content="whj"/>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/page.css">
+</head>
+<body>
+    
+	<div class="wrap g_main">
+        <div class="snav">
+            <ul>
+                <li><a href="#array_1">去重复</a></li>
+                <li><a href="#array_2">数组删除空元素</a></li>
+            </ul>
+        </div>
+        <div class="s_right">
+		<h2 id="array_1">去重复</h2>
+            <pre>
+=2014-0424-面试版-只遍历一次-推荐
+
+function noRepeat(arr){
+    var res = [], obj = {}, len = arr.length;
+    for(var i = 0; i &lt; len; i++){
+        if(!obj[arr[i]]){
+            obj[arr[i]] = true;
+            res.push(arr[i]);
+        }
+    }
+    return res;
+}
+
+var test = [2,2,5,5,66,7,22,4,22];
+console.log(noRepeat(test));
+            </pre>
+            <pre>
+2014-0423-狮虎版-遍历次数比较多-推荐
+
+var noRepeat = {
+    inArry : function(obj , str){
+        for(var key in str){
+            if(str[key] === obj ){
+                return true;
+            };
+        };
+        return false;    
+    },
+
+    unique : function(str){
+        var res = [];
+        for(var key in str){
+            if(!noRepeat.inArry(str[key], res)){
+                res.push(str[key]);
+            };
+        };
+        return res;
+    }
+
+},
+
+test = [01,02,03,04,04,03,02,01,05,07,05];
+
+console.log(noRepeat.unique(test));
+
+            </pre>
+            <h2 id="array_2">数组删除空元素</h2>
+            <pre>
+                
+function arrEmpty(arr){
+    for(var i = 0, len = arr.length; i &lt; len; i++ ){
+      if(arr[i] == ''){
+        arr.splice(i,1);
+        i--;        //删除之后数i移出
+        len--;      //删除之后长度变短
+      }
+    }
+    return arr;
+}
+var arr = ['a','','b','c','d','',''];
+console.log(arrEmpty(arr));
+
+            </pre>
+        </div>
+    </div>
+</body>
+</html>

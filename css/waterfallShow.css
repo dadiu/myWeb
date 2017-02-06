@@ -1,0 +1,17 @@
+.fn_waterItem { position: absolute; float:left; width:20%; font-size:12px;  }
+.fn_waterItemBar { margin:0 8px; box-shadow:0 0 5px #ccc; margin-bottom:16px; }
+.fn_waterItem img { width:100%; vertical-align:top; }
+.fn_waterTxt { padding:5px 10px; border-bottom:1px solid #f2f2f2; background:#fff; color:#444; }
+.fn_waterTime { background:#fafafa; color:#9e7e6b; padding:5px 10px; }
+#g_paint { width:96%; margin:0 auto; position:relative; }
+
+@media screen and (max-width : 748px){
+    .fn_waterItem { width: 50%; }
+    .fn_waterTime { position: absolute; bottom:20px; right:4px; opacity: 0.6; }
+    .fn_waterTxt { display:none; }
+}
+
+@media screen and (max-width : 480px){
+    .fn_waterItem { position: relative;  float: none; width: 100%; left: 0 !important; top:0 !important;}
+    .fn_waterTime { bottom: 4px; }
+}

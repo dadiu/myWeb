@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="home"/>
+    <meta name="keywords" content="home"/>
+    <meta name="robots" content="whj"/>
+    <meta name="viewport" content="width=320px, initial-scale=1, maximum-scale=1,minimum-scale=1, user-scalable=no">
+    <title>7个吴海晶-手艺人</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/common.css">
+</head>
+<body> 
+    <div id="g_main">
+        <div class="snav"><!-- 
+            <ul>
+                <li><a href="#response_1">一.简述</a></li>
+                <li><a href="#response_2">二.响应式布局的案例</a></li>
+                <li><a href="#response_3">三.写法</a></li>
+                <li><a href="#response_4">四.举个简单的例子</a></li>
+                <li><a href="#response_5">五.来个略复杂的例子</a></li>
+                <li><a href="#response_6">六.插件们</a></li>
+                <li><a href="#response_7">七.参考数据们</a></li>
+                <li><a href="#response_8">八.参考地址</a></li>
+            </ul> -->
+        </div>
+        <div class="s_right">
+            <h2 id="response_1" name="response_1">一.简述</h2>
+            <dl class="mb20">
+                <dt>优点：</dt>
+                <dd>1.面对不同分辨率设备灵活性强</dd>
+                <dd class="mb20">2.能够快捷解决多设备显示适应问题</dd>
+                <dt>缺点：</dt>
+                <dd>1.兼容各种设备工作量大，效率低下</dd>
+                <dd>2.代码累赘，会出现隐藏无用的元素，加载时间加长</dd>
+                <dd>3.其实这是一种折衷性质的设计解决方案，多方面因素影响而达不到最佳效果</dd>
+                <dd class="mb20">4.一定程度上改变了网站原有的布局结构，会出现用户混淆的情况</dd>
+                <dt>常见问题：</dt>
+                <dd>1. 客户是否想支持互联网用户增长最迅猛的市场？如果想，那响应式方法就很适合。</dd>
+                <dd>2. 客户是否想要最简洁、快速，且易于维护的代码？如果想，那响应式方法就很适合。</dd>
+                <dd>3. 客户能否理解用户体验可以且本应该根据浏览器不同而不同？如果可以理解，那响应式方法就很适合。</dd>
+                <dd>4. 客户是否要求设计效果在所有浏览器中都保持一致，包括IE 8以及更低版本？如果是，响应式设计就不适合。</dd>
+                <dd>5. 该网站的当前或预期客户中，是否有百分之七十以上的人可能使用Internet Explorer 8或者更低版本？如果是，则响应式设计不适合。</dd>
+            </dl>
+            <p class="fc_pink">在预算允许的情况下，一个完全定制的“移动”版网站比响应式设计更适合。澄清一下，我将那些完全专注移动平台、为移动设备用户提供不同内容/体验的解决方案称之为“移动网站”。提倡响应式设计方法的人，不会都认为响应式设计在任何情况下都可以替代“移动网站”。</p>
+            <h2 id="response_2" name="response_2">二.响应式布局的案例</h2>
+            <dl>
+                <dt class="fwb">先来一个实例：</dt>
+                <dd class="mb20">微软：<a href="http://www.microsoft.com/zh-cn/default.aspx" target="_blank">http://www.microsoft.com/zh-cn/default.aspx</a></dd>
+                <dt class="fwb">再来一个经典的响应式框架</dt>
+                <dd class="mb20">thinkvitamin: <a href="http://thinkvitamin.com/" target="_blank">http://thinkvitamin.com/</a></dd>
+                <dt class="fwb">最后给美术同事来一发大招</dt>
+                <dd class="mb20">medial：<a href="http://mediaqueri.es/" target="_blank">http://mediaqueri.es/</a></dd>
+            </dl>
+            <h2 id="response_3" name="response_3">三.写法</h2>
+            <dl class="mb20">
+                <dt>两个关键点：</dt>
+                <dd>1. 是如何在不修改Dom结构的前提下调整布局。</dd>
+                <dd>2. 是如何判断屏幕分辨率并应用对应的CSS。</dd>
+                <dd>3. 并且以上两点都应该不依赖于JS（特殊情况涉及功能的除外）。</dd>
+            </dl>
+            <p class="fwb">首先，要在html的head加入</p>
+            <pre>&lt;meta name="viewport" content="width=320px, initial-scale=1, maximum-scale=1,minimum-scale=1, user-scalable=no"&gt;</pre>
+            <p class="fwb">然后，开始处理css</p>
+            <p>1. 直接在css里写</p>
+            <pre>
+    使用最小宽度(即大于768px)
+    @media screen and (min-width:768px){
+
+       //你的样式放在这里...
+       body {}
+
+    }
+
+    or:
+    使用最大宽度(即大于979px)
+    @media screen and （max-width:979px){
+
+       //你的样式放在这里...
+       body {}
+
+    }
+
+    or:
+    最小宽度和最大宽度混合使用(即大于768p小于979px)
+    @media (min-width:768px) and (max-width:979px){
+
+       //你的样式放在这里...
+       body {}
+
+    }</pre>
+            <p>2. 可以单独写个css，然后在html的头文件里做判断，不同的设备引用不同的样式</p>
+            <pre>
+    &lt;link rel="stylesheet" media="screen and (min-device-width : 320px) and (max-device-width: 480px)" href="iphone.css" />
+    &lt;link rel="stylesheet" media="screen and (min-device-width : 768px) and (max-device-width : 1024px)" href="ipad.css" /></pre>
+            <h2 id="response_4" name="response_4">四.举个简单的例子</h2>
+            <pre>
+/*宽度小于1024px*/
+@media screen and (min-width:1023px){
+    body { background:white; }
+}
+/*宽度小于980px*/
+@media screen and (min-width:979px){
+    body { background:pink; }
+}
+/*宽度小于800px*/
+@media screen and (min-width:799px){
+    body { background:yellow; }
+}
+/*宽度小于768px*/
+@media screen and (min-width:767px){
+    body { background:orange; }
+}
+/*宽度小于768px*/
+@media screen and (min-width:767px){
+    body { background:black; }
+}
+/*宽度小于768px*/
+@media screen and (min-width:767px){
+    body { background:orange; }
+}
+            </pre>
+
+            <h2 id="response_5" name="response_5">五.来个略复杂的例子</h2>
+            <p>看本框架的menu情况</p>
+            <pre>
+js部分
+
+$('.nav').on('click', '.fa-align-justify', function(){
+    if($(window).width() &lt; 480){
+        $('.nav ul').slideToggle();
+    } else {
+        $('.nav ul').show();
+    }
+    
+})
+
+$(window).on('resize', function(){
+    if($(window).width() &lt; 480){
+        $('.nav ul').hide();
+    } else {
+        $('.nav ul').show();
+    }
+})
+            </pre>
+            <h2 id="response_6" name="response_6">六.插件们</h2>
+            <table class="tb_normal">
+                <tbody>
+                    <tr>
+                        <th>Internet Explorer用户</th>
+                        <td>
+                            请下载安装Microsoft Internet Explorer Developer Toolbar
+                            <br/>
+                            http://www.microsoft.com/download/en/details.aspx?id=18359 
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Safari用户</th>
+                        <td>可安装ResizeMe（http://web.me.com/aaronholla/Safari_Extensions/ResizeMe.html）或 Resize（http://resizeSafari.com）</td>
+                    </tr>
+                    <tr>
+                        <th>Firefox用户</th>
+                        <td>Firesizer（https://addons.mozilla.org/en-US/firefox/addon/firesizer/）</td>
+                    </tr>
+                    <tr>
+                        <th>Chrome用户</th>
+                        <td>Windows Resizer（https://chrome.google.com/webstore/detail/kkelicaakdan-hinjdeammmilcgefonfh）</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 id="response_7" name="response_7">七.参考数据们</h2>
+
+
+            <h2 id="response_8" name="response_8">八.参考地址</h2>
+            <dl>
+                <dt>响应式布局这件小事</dt>
+                <dd><a href="http://www.jiawin.com/response-type-layout-design/" target="_blank">http://www.jiawin.com/response-type-layout-design/</a></dd>
+                <dt>css3 Media Queries模板</dt>
+                <dd><a href="http://www.w3cplus.com/css3/css3-media-queries-for-different-devices" target="_blank">http://www.w3cplus.com/css3/css3-media-queries-for-different-devices</a></dd>
+                <dt>复杂产品的响应式设计【流程篇】</dt>
+                <dd><a href="http://www.chinaz.com/design/2013/0522/303554.shtml" target="_blank">http://www.chinaz.com/design/2013/0522/303554.shtml</a></dd>
+                <dt>复杂产品的响应式设计【知识篇】</dt>
+                <dd><a href="http://chuansongme.com/n/164663" target="_blank">http://chuansongme.com/n/164663</a></dd>
+            </dl>
+        </div>       
+    </div>
+    <script type="text/javascript" src="js/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript">
+    common.view.snav(shareSnavList);
+    </script>
+</body>
+</html>

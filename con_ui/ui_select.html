@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="icons"/>
+    <meta name="keywords" content="icons"/>
+    <meta name="robots" content="whj"/>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/page.css">
+
+    <style type="text/css">
+    /* select */
+    .u_sel { position:relative; padding:8px; border:1px solid #ddd; background:#fff; }
+    .u_sel .iconfont { position:absolute; right:10px; top:50%; margin-top:-12px; }
+    .u_sel_a { cursor:pointer; }
+    .u_sel_b { display:none; position:absolute; top:37px; left:-1px; border:1px solid #ddd; border-top:0; background:#fff; }
+    .u_sel_b li { cursor:pointer; padding:8px; border-top:1px solid #ddd;}
+    .z99 { z-index:99 !important; }
+
+    .w_min .u_sel_b { width:120%; }
+    .w_normal .u_sel_b, .w_max .u_sel_b { width:101%; }
+
+    .m_ib .u_sel { display:inline-block; margin-right:10px; }
+    </style>
+</head>
+<body>
+    
+	<div class="wrap g_main">
+		<h2>模拟下拉框</h2>
+        <div class="g_code">
+
+            <!-- w_min -->
+            <div class="u_sel w_min">
+                <div class="u_sel_a">
+                    <span>全部</span>
+                    <i class="iconfont">&#xe606;</i>
+                </div>
+                <ul class="u_sel_b">
+                    <li>选择1</li>
+                    <li>选择2</li>
+                    <li>选择3</li>
+                </ul>
+            </div>
+
+            <!-- w_normal -->
+            <div class="u_sel w_normal">
+                <div class="u_sel_a">
+                    <span>全部</span>
+                    <i class="iconfont">&#xe606;</i>
+                </div>
+                <ul class="u_sel_b">
+                    <li>选择1</li>
+                    <li>选择2</li>
+                    <li>选择3</li>
+                </ul>
+            </div>
+
+            <!-- w_max -->
+            <div class="u_sel w_max">
+                <div class="u_sel_a">
+                    <span>全部</span>
+                    <i class="iconfont">&#xe606;</i>
+                </div>
+                <ul class="u_sel_b">
+                    <li>选择1</li>
+                    <li>选择2</li>
+                    <li>选择3</li>
+                </ul>
+            </div>
+
+            <!-- inline-block -->
+            <div class="m_ib">
+                <!-- w_min -->
+                <div class="u_sel w_min">
+                    <div class="u_sel_a">
+                        <span>全部</span>
+                        <i class="iconfont">&#xe606;</i>
+                    </div>
+                    <ul class="u_sel_b">
+                        <li>选择1</li>
+                        <li>选择2</li>
+                        <li>选择3</li>
+                    </ul>
+                </div>
+                <!-- w_normal -->
+                <div class="u_sel w_normal">
+                    <div class="u_sel_a">
+                        <span>全部</span>
+                        <i class="iconfont">&#xe606;</i>
+                    </div>
+                    <ul class="u_sel_b">
+                        <li>选择1</li>
+                        <li>选择2</li>
+                        <li>选择3</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+	</div>
+    <script type="text/javascript" src="../js/jquery-1.8.3.js"></script>
+    <script type="text/javascript" id="m_js">
+    $('.u_sel_a').click(function(){
+        $('.u_sel').removeClass('z99');
+        $('.u_sel_b').hide();
+        $(this).parent('.u_sel').addClass('z99');
+        $(this).next('.u_sel_b').slideDown();
+        return false;
+    })
+    $('.u_sel_b li').click(function(){
+        $(this).parent('.u_sel_b').prev('.u_sel_a').find('span').text($(this).text());
+        $('.u_sel_b').hide();
+        return false;
+    });
+
+    $('body:not(.u_sel)').live('click', function(){
+        $('.u_sel').removeClass('z99');
+        $('.u_sel_b').hide();
+    })
+
+    </script>
+
+</body>
+</html>

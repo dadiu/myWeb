@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="icons"/>
+    <meta name="keywords" content="icons"/>
+    <meta name="robots" content="whj"/>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/page.css">
+
+    <style type="text/css">
+    /* checkbox */
+    .u_inc { position:relative; display:inline-block; }
+    .u_inc_a { display:inline-block; width:35px; height:32px; background:url(../img/checkbox.png) no-repeat 0 0; }
+    .u_inc_b { position:absolute; z-index:2; left:0;top:0; margin:10px; opacity:0; }
+    .u_inc_no { background-position:0 -42px; }
+    </style>
+</head>
+<body>
+    
+	<div class="wrap g_main">
+        <div class="g_code">
+
+            <label class="u_inc">
+                <span class="u_inc_a"></span>
+                <input type="checkbox" class="u_inc_b" checked/>                
+            </label>
+        </div>
+	</div>
+
+    <!-- m_code -->
+    <div class="m_code">
+        <div class="m_code_btn">
+            <div class="m_code_title">
+                <h2>模拟多选框</h2>
+                <p>依赖于<a href="../css/base.css" target="_blank">base.css</a> | <a href="../js/common.js" target="_blank">common.js</a></p>
+            </div>
+            <ul>
+                <li class="btn_run"><i class="fa fa-play"></i>运行</li>
+                <li class="btn_reset"><i class="fa fa-undo"></i>重置</li>
+                <li><b class="fa fa-angle-down"></b></li>
+            </ul>               
+        </div>
+        <div class="cb m_code_main">
+            <textarea class="m_html"></textarea>
+            <textarea class="m_css"></textarea>
+            <textarea class="m_js"></textarea>
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="../js/jquery-1.8.3.js"></script>
+    <script type="text/javascript" id="m_js">
+    var com = {
+        //checkbox判断
+        check : function(){
+            var u_inc_a = $(this).prev('.u_inc_a');
+
+            if(!$(this).attr("checked") == true){
+                u_inc_a.addClass('u_inc_no');
+            } else {
+                u_inc_a.removeClass('u_inc_no');
+            }
+        }
+    };
+    $('body').delegate('.u_inc_b', 'click', function(){
+
+        com.check.call(this);
+
+    });
+
+    </script>
+
+    
+</body>
+</html>

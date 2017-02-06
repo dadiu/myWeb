@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="icons"/>
+    <meta name="keywords" content="icons"/>
+    <meta name="robots" content="whj"/>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/page.css">
+</head>
+<body>
+    
+	<div class="wrap g_main">
+		<h2>倒计时</h2>
+        <div class="g_code">
+            <h4>2014-0424-获取验证码倒计时</h4>
+            <pre>
+//site 目标 time 时间
+function countDown(site, time){ 
+    function t(o){
+        if(o > 0){
+            site.html(o);
+            o--;
+            setTimeout(function(){
+                t(o);
+            },1000);
+        };
+    };
+
+    return t(time);
+}
+
+            </pre>
+            
+        </div>
+	</div>
+</body>
+</html>

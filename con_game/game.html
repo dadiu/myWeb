@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="game">
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="home"/>
+    <meta name="keywords" content="home"/>
+    <meta name="robots" content="whj"/>
+    <meta name="viewport" content="width=320px, initial-scale=1, maximum-scale=1,minimum-scale=1, user-scalable=no">
+    <title>7个吴海晶-手艺人</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/common.css">
+</head>
+<body> 
+<style>
+    .expander {
+    border: 1px solid black;
+    width: 250px;
+}
+
+.expander>.title {
+    background-color: black;
+    color: white;
+    padding: .1em .3em;
+    cursor: pointer;
+}
+
+.expander>.body {
+    padding: .1em .3em;
+}
+</style>
+    <div class="wrap cb" style="padding-top:30px;">
+        <div class="m_col_2">
+            <ul class="snav">
+                <li><a ui-sref="starveTool">饥荒道具</a></li>
+                <li><a ui-sref="test1">test1</a></li>
+                <li><a ui-sref="test2">test2</a></li>
+            </ul>
+        </div>
+        <div class="m_col_10 s_right" ui-view>
+            加载中...
+        </div>
+    </div>
+    <script type="text/javascript" src="../js/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="../js/common.js"></script>
+    <script src="http://whj.fayfox.com/lib/angular1.4.8/angular.min.js"></script>
+    <script src="http://whj.fayfox.com/lib/angular1.4.8/angular-ui-router.min.js"></script>
+    <script type="text/javascript">
+    var gameModule = angular.module("game", ["ui.router"]);
+    
+
+    //配置路由，以便AMail服务能够找到它
+    gameModule.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+
+        //在URL、模板和控制器之间建立映射关系
+        $urlRouterProvider.otherwise('/');
+
+        $stateProvider
+            .state('starveTool', {
+                url:'/',
+                template : "<h2>饥荒道具</h2><table-panel></table-panel>",
+                controller: 'starveToolController'
+            })
+            .state('test1', {
+                url:'/test1',
+                templateUrl: 'view/test1.html',
+                controller: 'Test1Controller'
+            })
+            .state('test2', {
+                url:'/test2',
+                templateUrl: 'view/test2.html',
+                controller: 'Test2Controller'
+            })
+
+    }]);
+
+    //模型
+    gameModule.directive("tablePanel", function(){
+        return {
+            restrict : "EA",
+            replace : true,
+            transclude : true,
+            template : "<div ng-repeat='item in toolObj'>" +
+                            "<h3>{{item.name}}</h3>" +
+                            "<table class='tb_normal'>" +
+                                "<tr ng-repeat='list in item.list'>" +
+                                    "<td>{{list.cName}}</td>" +
+                                    "<td>{{list.eName}}</td>" +
+                                    "<td>{{list.type}}</td>" +
+                                    "<td>{{list.txt}}</td>" +
+                                "</tr>" +
+                            "</table>" +
+                        "</div>",
+            link : function($scope, element, attrs){
+                console.log("!")
+            }
+
+        }
+    });
+
+    //方法
+    gameModule.controller('starveToolController', ['$scope', function($scope){
+        var toolObj = [
+            {
+                name : "1",
+                list : [
+                    {
+                        "cName" : "c1-1",
+                        "eName" : "e1-1",
+                        "type" : 0,
+                        "txt" : "more txt"
+                    },{
+                        "cName" : "c1-2",
+                        "eName" : "e1-2",
+                        "type" : 1,
+                        "txt" : "more txt"
+                    }
+                ]
+            },
+            {
+                name : "2",
+                list : [
+                    {
+                        "cName" : "c2-1",
+                        "eName" : "e2-1",
+                        "type" : 1,
+                        "txt" : "more txt"
+                    },{
+                        "cName" : "c2-2",
+                        "eName" : "e2-2",
+                        "type" : 2,
+                        "txt" : "more txt"
+                    }
+                ]
+            }
+        ];
+
+        $scope.toolObj = toolObj;
+        console.log("饥荒小百科");
+    }]);
+
+    gameModule.controller('Test1Controller', ['$scope', function($scope){
+        console.log("test1");
+    }]);
+    gameModule.controller('Test2Controller', ['$scope', function($scope){
+        console.log("test2");
+    }]);
+    </script>
+</body>
+</html>

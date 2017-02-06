@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="icons"/>
+    <meta name="keywords" content="icons"/>
+    <meta name="robots" content="whj"/>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/page.css">
+</head>
+<body>
+	<div class="wrap g_main">
+        <div class="snav">
+        </div>
+        <div class="s_right">
+            <h2 id="js_skill_1" name="other_skill_1">倒计时</h2>
+            <pre>
+//倒计时
+function countDown (site,time){ //site=目标 $("") , time=总时间 60
+
+  function t(time) {
+    if(time > -1){
+      site.html(time);
+      time --;
+      setTimeout(function(){
+        t(time);
+      },1000);
+    }
+  }
+
+  t(time);
+},
+
+//倒计时时间换算成分+秒
+function arith (num){
+
+  var _minutes = Math.floor(num/60),
+    _seconds = num%60;
+
+  if (_minutes < 10){
+    _minutes = '0' + _minutes;
+  }
+  if (_seconds < 10){
+    _seconds = '0' + _seconds;
+  }
+
+  return (_minutes + '分' + _seconds + '秒');
+
+}
+            </pre>
+
+            <h2 id="js_skill_3" name="other_skill_3">获取当前日期</h2>
+            <pre>
+function today() {
+    var today = new Date(),
+      _year = today.getFullYear(),
+      _month = today.getMonth() + 1,
+      _day = today.getDate();
+
+    if (_month < 10) {
+        _month = '0' + _month;
+    }
+
+    if (_day < 10) {
+        _day = '0' + _day;
+    }
+
+    return (_year + '-' + _month + '-' + _day);
+
+}
+            </pre>
+
+            <h2 id="js_skill_4" name="other_skill_4">时间戳更换成时间</h2>
+            <pre>
+function recountTime(tm){
+    var date = new Date(parseInt(tm) * 1000),
+        month = date.getMonth() + 1,
+        day = date.getDate(),
+        hour = date.getHours(),
+        minute = date.getMinutes(),
+        second = date.getSeconds();
+
+    //if(month < 10) month = '0' + month;
+    if(day < 10) day = '0' + day;
+    if(hour < 10) hour = '0' + hour;
+    if(minute < 10) minute = '0' + minute;
+    if(second < 10) second = '0' + second;
+    return date.getFullYear() + '/' + month + '/' + day + ' ' + hour + ':' + minute + ':' + second;
+
+}
+            </pre>
+
+            
+            <h2 id="js_skill_2" name="other_skill_2">获取url值并且分解</h2>
+            <pre>
+var common = {
+
+  //储存url
+  urlObj: {},     
+
+  //分解url
+  url: function() {
+
+      var href = window.location.search;
+
+      if (href.indexOf('?') != -1) {
+
+          var hrefArr = href.substr(1).split('&');
+
+          for (var i = 0, len = hrefArr.length; i < len; i++) {
+              var index = hrefArr[i].indexOf('=');
+              common.urlObj[hrefArr[i].split('=')[0]] = hrefArr[i].substr(index + 1);
+          }
+
+      }
+
+      return false;
+
+  }
+}
+            </pre>
+        </div>       
+	</div>
+
+  <script type="text/javascript" src="../js/jquery-1.8.3.js"></script>
+  <script type="text/javascript" src="../js/common.js"></script>
+  <script type="text/javascript">
+  common.view.snav(skillSnavList);
+  </script>
+</body>
+</html>

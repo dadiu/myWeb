@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="icons"/>
+    <meta name="keywords" content="icons"/>
+    <meta name="robots" content="whj"/>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/page.css">
+</head>
+<body>
+	<div class="wrap g_main">
+        <div class="snav"></div>
+        <div class="s_right">
+            <div class="m_menu">
+                <ul class="m_menu">
+                    <li><a href="#css_skill_1">font-face的运用</a></li>
+                    <li><a href="#css_skill_2">:not()</a></li>
+                    <li><a href="#other_skill_3">:nth-child()</a></li>
+                </ul>
+            </div>
+            <!-- font-face的运用 -->
+            <h2 id="css_skill_1" name="css_skill_1">font-face的运用</h2>
+            <article>
+                <dl class="dl_normal">
+                    <dt>字体下载地址：</dt>
+                    <dd><a href="http://www.google.com/webfonts" target="_blank">Google Web Fonts</a>
+                        &nbsp;|&nbsp;
+                        <a href="http://www.dafont.com/" target="_blank">Dafont.com</a>
+                    </dd>
+                    <dt>获取字体格式：</dt>
+                    <dd><a href="http://www.fontsquirrel.com/fontface/generator" target="_blank">fontsquirrel</a></dd>
+                    <dt>资料详情出处：</dt>
+                    <dd><a href="http://www.w3cplus.com/content/css3-font-face" target="_blank">w3cplus</a></dd>
+                </dl>
+                <p class="fwb">实例：</p>
+                <pre>
+    @font-face {
+        font-family: 'YourWebFontName';
+        src: url('YourWebFontName.eot'); /* IE9 Compat Modes */
+        src: url('YourWebFontName.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+             url('YourWebFontName.woff') format('woff'), /* Modern Browsers */
+             url('YourWebFontName.ttf')  format('truetype'), /* Safari, Android, iOS */
+             url('YourWebFontName.svg#YourWebFontName') format('svg'); /* Legacy iOS */
+        font-weight: normal;
+        font-style: normal;
+    }
+
+                </pre>
+                <p class="fwb">语法规则：</p>
+                <pre>
+    @font-face {
+        font-family: &lt;YourWebFontName>;
+        src: &lt;source> [&lt;format>][,&lt;source> [&lt;format>]];
+        [font-weight: &lt;weight>];
+        [font-style: &lt;style>];
+    }
+                </pre>
+                <p class="fwb">取值说明：</p>
+                <p>
+                    1、YourWebFontName:此值指的就是你自定义的字体名称，最好是使用你下载的默认字体，他将被引用到你的Web元素中的font-family。如“font-family:"YourWebFontName";”<br/>
+                    2、source:此值指的是你自定义的字体的存放路径，可以是相对路径也可以是绝路径；<br/>
+                    3、format：此值指的是你自定义的字体的格式，主要用来帮助浏览器识别，其值主要有以下几种类型：truetype,opentype,truetype-aat,embedded-opentype,avg等；<br/>
+                    4、weight和style:这两个值大家一定很熟悉，weight定义字体是否为粗体，style主要定义字体样式，如斜体。
+                </p>
+                <p class="fwb">兼容浏览器：</p>
+                <p><img src="../img/fontface-hack.jpg"/></p>
+                <p class="fwb">格式支持：</p>
+                <p>一、TureTpe(.ttf)格式：<br/>
+                    .ttf字体是Windows和Mac的最常见的字体，是一种RAW格式，因此他不为网站优化,支持这种字体的浏览器有【IE9+,Firefox3.5+,Chrome4+,Safari3+,Opera10+,iOS Mobile Safari4.2+】；</p>
+                <p>二、OpenType(.otf)格式：<br/>
+                    .otf字体被认为是一种原始的字体格式，其内置在TureType的基础上，所以也提供了更多的功能,支持这种字体的浏览器有 【Firefox3.5+,Chrome4.0+,Safari3.1+,Opera10.0+,iOS Mobile Safari4.2+】；</p>
+                <p>三、Web Open Font Format(.woff)格式：<br/>
+                    .woff字体是Web字体中最佳格式，他是一个开放的TrueType/OpenType的压缩版本，同时也支持元数据包的分离,支持这种字体的浏览器有【IE9+,Firefox3.5+,Chrome6+,Safari3.6+,Opera11.1+】；</p>
+                <p>四、Embedded Open Type(.eot)格式：<br/>
+                    .eot字体是IE专用字体，可以从TrueType创建此格式字体,支持这种字体的浏览器有【IE4+】；</p>
+                <p>五、SVG(.svg)格式：<br/>
+                    .svg字体是基于SVG字体渲染的一种格式,支持这种字体的浏览器有【Chrome4+,Safari3.1+,Opera10.0+,iOS Mobile Safari3.2+】。</p>
+                <p>这就意味着在@font-face中我们至少需要.woff,.eot两种格式字体，甚至还需要.svg等字体达到更多种浏览版本的支持。</p>
+            </article>
+
+            <!-- 否定伪类:not -->
+            <h2 id="css_skill_2" name="css_skill_2">否定伪类:not</h2>
+            <article>
+                <p>带有参数的 :not() 其实就是普通的选择器——不是复合选择器。一组元素加上选择器 :not()，表示满足这个参数的元素会被排除出去。听起来有些复杂吧？但是实际上非常简单。</p>
+                <pre>
+    假设：要对项目列表的奇数行进行选择，但是最后一行除外。如果是以前，需要这样写：
+
+         li { color:#00F; } 
+         li:nth-child(odd) { color:#F00; } 
+         li:last-child { color: #00F; }
+
+    现在，通过设定:last-child作为否定伪类的参数，就可以把最后一个元素排除，这样少了一行代码，从而更加的简洁和易维护。
+
+         li { color:#00F; } 
+         li:nth-child(odd):not(:last-child) { color:#F00; }
+                </pre>
+                <p class="fwb">兼容浏览器：</p>
+                <p><img src="../img/not-hack.jpg"/></p>
+            </article>
+
+            <!-- :nth-child()伪类选择器 -->
+            <h2 id="css_skill_3" name="css_skill_3">:nth-child()伪类选择器</h2>
+            <article>
+                <dl class="dl_normal">
+                    <dt>参考网址：</dt>
+                    <dd>http://dangshopex.com/jishufenxiang/WEBkaifajishu/8653.html</dd>
+                </dl>
+                <p class="fwb">语法：</p>
+                <pre>:nth-child(an+b) [ a,b为常量, n的取值从0开始的整数 ]</pre>
+                <p class="fwb">浏览器兼容性：</p>
+                <p>第一种：简单数字序号写法<br/>
+                    <mark>:nth-child(number)</mark> 直接匹配第number个元素。参数number必须为大于0的整数。</p>
+                <pre>li:nth-child(3){background:orange;}/*把第3个LI的背景设为橙色*/</pre>
+                <p>第二种：倍数写法<br/>
+                    <mark>:nth-child(an)</mark>匹配所有倍数为a的元素。其中参数an中的字母n不可缺省，它是倍数写法的标志，如3n、5n。</p>
+                <pre>li:nth-child(3n){background:orange;}/*把第3、第6、第9、…、所有3的倍数的LI的背景设为橙色*/</pre>
+                <p>第三种：倍数分组匹配<br/>
+                    <mark>:nth-child(an+b) 与 :nth-child(an-b)</mark>先对元素进行分组，每组有a个，b为组内成员的序号，其中字母n和加号+不可缺省，位置不可调换，这是该写法的标志，其中a,b均为正整数或0。如3n+1、5n+1。但加号可以变为负号，此时匹配组内的第a-b个。（其实an前面也可以是负号，但留给下一部分讲。）</p>
+                <pre>
+    li:nth-child(3n+1){background:orange;}/*匹配第1、第4、第7、…、每3个为一组的第1个LI*/
+    li:nth-child(3n+5){background:orange;}/*匹配第5、第8、第11、…、从第5个开始每3个为一组的第1个LI*/
+    li:nth-child(5n-1){background:orange;}/*匹配第5-1=4、第10-1=9、…、第5的倍数减1个LI*/
+    li:nth-child(3n±0){background:orange;}/*相当于(3n)*/
+    li:nth-child(±0n+3){background:orange;}/*相当于(3)*/
+                </pre>
+                <p>第四种：反向倍数分组匹配<br/>
+                    <mark>:nth-child(-an+b)</mark>此处一负一正，均不可缺省，否则无意义。这时与:nth-child(an+1)相似，都是匹配第1个，但不同的是它是倒着算的，从第b个开始往回算，所以它所匹配的最多也不会超过b个。</p>
+                <pre>
+    li:nth-child(-3n+8){background:orange;}/*匹配第8、第5和第2个LI*/
+    li:nth-child(-1n+8){background:orange;}/*或(-n+8)，匹配前8个（包括第8个）LI，这个较为实用点，用来限定前面N个匹配常会用到*/
+                </pre>
+                <p>第五种：奇偶匹配<br/>
+                    <mark>:nth-child(odd) 与 :nth-child(even)</mark>分别匹配序号为奇数与偶数的元素。奇数(odd)与(2n+1)结果一样；偶数(even)与(2n+0)及(2n)结果一样。</p>
+                <pre>
+    作者观点：表格奇偶数行定义样式就可以写成
+    .table > tr:nth-child(even) > td {background-color: #ccc;}  （偶数行）
+    .table > tr:nth-child(odd) > td {background-color: #ccc;}  （奇数行）
+                </pre>
+            </article>
+        </div>
+	</div>
+    <script type="text/javascript" src="../js/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="../js/common.js"></script>
+    <script type="text/javascript">
+    common.view.snav(skillSnavList);
+    </script>
+</body>
+</html>

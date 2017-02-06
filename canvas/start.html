@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="home"/>
+    <meta name="keywords" content="home"/>
+    <meta name="robots" content="whj"/>
+    <title>7个神经病-手艺人</title>
+</head>
+<body>
+    <canvas id="fn_star" style="display:block; margin:0 auto;">
+        当前浏览器不支持canvas,请更换浏览器试试
+    </canvas>
+        
+    <script type="text/javascript">
+
+    (function(){
+
+        var canvas = document.getElementById("fn_star");
+
+        if(canvas.getContext("2d")){    
+
+            canvas.width = 1200;
+            canvas.height = 800;
+
+            var content = canvas.getContext("2d");
+
+            //线性渐变
+            // var sky = content.createLinearGradient(0,0,0,canvas.height);
+
+            // sky.addColorStop(0.0, "#000");
+            // sky.addColorStop(1.0, "#035");
+
+            //径向渐变
+            var sky = content.createRadialGradient(canvas.width/2, canvas.height, 0, canvas.width/2, canvas.height, canvas.height );
+            sky.addColorStop(0.0, "#035");
+            sky.addColorStop(1.0, "#000");
+
+            //绘制渐变
+            content.fillStyle = sky;
+            content.fillRect(0,0,canvas.width, canvas.height);
+
+            starSky(canvas,content);
+        }
+
+    }())
+
+    /**
+        绘制整个星空
+        @method starSky
+        @param {canvas=原画布;cxt=画布; }
+        @return {返回值类型} 返回值说明
+    **/
+
+    function starSky(canvas, cxt){
+
+        cxt.fillStyle="block";
+        cxt.fillRect(0,0,canvas.width,canvas.height);
+
+        var i = 0, X, Y, MAXR, ROT ;
+
+        for(; i < 200; i++){
+
+            X = Math.random()*canvas.width;
+            Y = Math.random()*canvas.height*0.65;
+            MAXR = Math.random()*5+5;
+            ROT = Math.random()*360;
+
+            starDraw(cxt,X,Y,MAXR,MAXR/2,ROT);
+        }
+    }
+
+    /**
+        绘制单个五角星
+        @method starDraw
+        @param {cxt=画布; X=X轴坐标; Y=Y轴坐标; MAXR=大圆半径; MINR=小圆半径; ROT=顺时针旋转角度}
+        @return {返回值类型} 返回值说明
+    **/
+    function starDraw(cxt,X,Y,MAXR,MINR,ROT){   
+
+
+        var i = 0;
+
+        cxt.beginPath();
+        for(; i<5; i++){
+            //大圆的点
+            cxt.lineTo(
+                Math.cos((18+i*72 - ROT)*Math.PI/180)*MAXR + X,
+                -Math.sin((18+i*72 - ROT)*Math.PI/180)*MAXR + Y
+                );
+            //小圆的点
+            cxt.lineTo(
+                Math.cos((54+i*72 - ROT)*Math.PI/180)*MINR + X,
+                -Math.sin((54+i*72 - ROT)*Math.PI/180)*MINR + Y
+                );
+        }
+        cxt.closePath();
+
+        cxt.strokeStyle="#ffc706";
+        cxt.lineWidth=1;
+        cxt.lineJoin="round";
+        cxt.fillStyle="orange";
+        cxt.fill();
+        cxt.stroke();
+    }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="icons"/>
+    <meta name="keywords" content="icons"/>
+    <meta name="robots" content="whj"/>
+    <meta name="viewport" content="width=320px, initial-scale=1, maximum-scale=1,minimum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/page.css">
+    <style>
+/* nav_h1 */
+.g_hd { position:relative; width:1080px; margin:0 auto; 
+    color:#fff; border-radius:5px; overflow:hidden;
+    background: -moz-linear-gradient(50% 80% 90deg, #333,#414141, #333 70%);
+    background: -webkit-gradient(linear,50% 89%, 50% 25%, from(#333333), to(#333333), color-stop(0.6,#414141));
+    background: -o-linear-gradient(50% 80% 90deg, #333,#414141, #333 70%);
+    background: linear-gradient(50% 80% 90deg, #333,#414141, #333 70%);
+    box-shadow:1px 1px 2px 0 #444;
+    /*
+    -moz-       firefox
+    -webkit-    chrome/safari
+    -o-         opera
+    */
+}
+
+.nav_h1, .hd_searchBar, input{
+    -moz-transition:all 0.3s ease-out;
+    -webkit-transition:all 0.3s ease-out;
+    -o-transition:all 0.3s ease-out;
+    -ms-transition:all 0.3s ease-out;
+    transition:all 0.3s ease-out;}
+
+.nav_h1 { display:table; table-layout:fixed; width:90%; }
+.nav_h1 li { display:table-cell; overflow:hidden; width:100%; text-align:center; }
+.nav_h1 a { display:block; line-height:36px; color:#fff; text-decoration:none; }
+.nav_h1 li:not(:first-child){ border-left:1px solid #444; }
+.nav_h1 li{ border-right:1px solid #222; }
+.nav_h1 a:hover { background:#333; text-decoration:none; } 
+.nav_h1 .crt, .nav_h1 .crt:hover a { background:#292929; }
+
+.hd_searchBar { position:absolute; top:0; right:0; padding:5px 15px; width:10%; }
+.hd_searchBar input { background:#555; padding:1px 5px 1px 20px; width:100%; border:1px solid #444; border-radius:50px; color:#eee;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box; }
+.hd_searchBar input:focus { background:#f7f7f7; border-color:#eee; color:#333; }
+.hd_searchBar .iconfont { position:absolute; top:9px; left:22px; z-index:2; cursor:pointer; font-size:0.9em; color:#ddd; }
+.hd_searchBar input:focus + .iconfont { color:#333; }
+.hd_menu_btn { display:none; cursor:pointer; position:absolute; right:0; top:0; background:#111; width:37px; height:37px; text-align:center; line-height:37px; font-size:1.5em; border-left:1px solid #000; box-shadow:-1px 0 0 0 #333; color:#f7f7f7; }
+.hd_menu_btn:hover { background:#000; }
+.hd_menu_btn i { font-size:16px; vertical-align:middle; }
+
+
+@media screen and (max-width:960px){
+    .g_hd { width:92%; margin:0 4%; }
+}
+
+@media screen and (max-width:768px){
+    .nav_h1 { width:80%; }
+    .hd_searchBar { width:20%; }
+}
+
+@media screen and (max-width:640px){
+    .nav_h1 { display:block; width:100%; }
+    .hd_searchBar { width:30%; right:30px; }
+    .nav_h1 li { display:block; overflow:hidden; width:100%; text-align:left; }
+    .nav_h1 li:first-child{ border-bottom:1px solid #111; box-shadow:0 1px 1px 0 #444; background:#222; }
+    .nav_h1 li:not(:first-child){ display:none; }
+    .nav_h1 li a { padding-left:20px; }
+    .hd_menu_btn { display:block; }
+}
+
+@media screen and (max-width:320px){
+    .hd_searchBar { width:40%; }
+}
+
+/* fn */
+.fn_wp_20 { width:20%; }
+.fn_wp_80 { width:80%; }
+.fn_wp_30 { width:30%; }
+.fn_wp_70 { width:70%; }
+.fn_wp_60 { width:60%; }
+    </style>
+</head>
+<body>
+
+    <div class="g_main">
+        <div class="g_code">
+            <header class="g_hd">
+                <ul class="nav_h1">
+                    <li class="nav_logo">
+                        <a href="javascript:;javascript:;">logo</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">menu1</a>
+                    </li>
+                    <li class="crt">
+                        <a href="javascript:;">menu2</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">menu3</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">menu4</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">menu5</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">menu6</a>
+                    </li>
+                </ul>
+                <div class="hd_searchBar">
+                    <input type="text" placeholder="search"/> <i class="iconfont">&#xe65c;</i>
+                </div>
+                <div class="hd_menu_btn"> <i class="iconfont">&#xe60f;</i>
+                </div>
+            </header>
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="../js/jquery-1.8.3.js"></script>
+    <script type="text/javascript" id="m_js">
+    (function(){
+    var $body = $('body');
+    var $hdSearchBar = $('.hd_searchBar');
+    var $navH1 = $('.nav_h1');
+    var $navNoLogo = $navH1.find('li:not(.nav_logo)');
+    $(window).on('resize',function(){
+        $(".hd_searchBar input").blur();
+        if($body.width()>640){
+            $navNoLogo.css({'display':'table-cell'});
+        }else {
+            $navNoLogo.css({'display':'none'});
+        }
+    })
+    $body
+        .delegate('.hd_menu_btn', 'click', function(event){  
+            if($body.width()<=640){
+                $navNoLogo.slideToggle();
+            }
+            event.stopPropagation();
+        })
+        .delegate('.hd_searchBar input', 'focus', function(event){  
+            if($body.width()>768){
+                $hdSearchBar.addClass('fn_wp_20');
+                $navH1.addClass('fn_wp_80');
+            }else if($body.width()>640){
+                $hdSearchBar.addClass('fn_wp_30');
+                $navH1.addClass('fn_wp_70');
+            }else{
+                $hdSearchBar.addClass('fn_wp_60');
+            }
+        })
+        .delegate('.hd_searchBar input', 'blur', function(event){  
+            if($body.width()>768){
+                $hdSearchBar.removeClass('fn_wp_20');
+                $navH1.removeClass('fn_wp_80');
+            }else if($body.width()>640){
+                $hdSearchBar.removeClass('fn_wp_30');
+                $navH1.removeClass('fn_wp_70');
+            }{
+                $hdSearchBar.removeClass('fn_wp_60');
+            }
+        })
+        .on('click',function(){
+            if($body.width()<=640){
+                if($navNoLogo.is(':visible')){
+                    $navNoLogo.hide();
+                }
+            }
+        })
+
+}())
+    </script>
+
+</body>
+</html>

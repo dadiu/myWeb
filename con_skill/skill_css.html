@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="icons"/>
+    <meta name="keywords" content="icons"/>
+    <meta name="robots" content="whj"/>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/page.css">
+</head>
+<body>
+	<div class="wrap g_main">
+        <div class="snav"></div>
+        <div class="s_right">
+            <div class="m_menu">
+                <ul>
+                    <li><a href="#css_skill_1">特殊符号以代码表示</a></li>
+                    <li><a href="#css_skill_2">字体以Unicode编码代替</a></li>
+                    <li><a href="#other_skill_3">a的4种伪类的排列顺序</a></li>
+                    <li><a href="#other_skill_5">css的优先规则</a></li>
+                </ul>
+            </div>
+    		<h2 id="css_skill_1" name="css_skill_1">特殊符号以代码表示</h2>
+            <article>
+                <p>为了防止特殊符号和原本的标签造混淆，让浏览器解析的时候更加清楚，在使用特殊符号的时候， 需在html代码中加入以<mark>&amp;</mark>开头的字母组合或以<mark>&amp;#</mark>开头的数字。</p>
+                <p class="fwb">常用的几个特殊字符：</p>
+                <table class="tb_normal">
+                    <thead>
+                        <tr>
+                            <th>html原代码</th>
+                            <th>显示结果</th>
+                            <th>描述</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>&amp;lt; </td>
+                            <td>&lt; </td>
+                            <td>小于号或显示标记</td>
+                        </tr>
+                        <tr>
+                            <td>&amp;gt; </td>
+                            <td>&gt; </td>
+                            <td>大于号或显示标记</td>
+                        </tr>
+                        <tr>
+                            <td>&amp;amp; </td>
+                            <td>&amp; </td>
+                            <td>可用于显示其它特殊字符</td>
+                        </tr>
+                        <tr>
+                            <td>&amp;quot;</td>
+                            <td>&quot;</td>
+                            <td>引号</td>
+                        </tr>
+                        <tr>
+                            <td>&amp;reg;</td>
+                            <td>&reg;</td>
+                            <td>已注册</td>
+                        </tr>
+                        <tr>
+                            <td>&amp;copy;</td>
+                            <td>&copy;</td>
+                            <td>版权</td>
+                        </tr>
+                        <tr>
+                            <td>&amp;trade;</td>
+                            <td>&trade;</td>
+                            <td>商标</td>
+                        </tr>
+                        <tr>
+                            <td>&amp;ensp;</td>
+                            <td></td>
+                            <td>半个空白位</td>
+                        </tr>
+                        <tr>
+                            <td>&amp;emsp;</td>
+                            <td></td>
+                            <td>一个空白位</td>
+                        </tr>
+                        <tr>
+                            <td>&amp;nbsp;</td>
+                            <td></td>
+                            <td>不断行的空白</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="fwb">特殊符号大全: </p>
+                <table class="tb_normal">
+                    <tbody>
+                        <tr>
+                            <td>&amp;acute;</td>
+                            <td>&acute;</td>
+                            <td>&amp;copy;</td>
+                            <td>&copy;</td>
+                            <td>&amp;gt;</td>
+                            <td>&gt;</td>
+                            <td>&amp;micro;</td>
+                            <td>&micro;</td>
+                            <td>&amp;reg;</td>
+                            <td>&reg;</td>
+                        </tr>
+                        <tr>
+                            <td>&amp;amp;</td>
+                            <td>&amp;</td>
+                            <td>&amp;deg;</td>
+                            <td>&deg;</td>
+                            <td>&amp;iexcl;</td>
+                            <td>&iexcl;</td>
+                            <td>&amp;nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&amp;raquo;</td>
+                            <td>&raquo;</td>
+                        </tr>
+                        <tr>
+                            <td>&amp;brvbar;</td>
+                            <td>&brvbar;</td>
+                            <td>&amp;divide;</td>
+                            <td>&divide;</td>
+                            <td>&amp;iquest;</td>
+                            <td>&iquest;</td>
+                            <td>&amp;not;</td>
+                            <td>&not;</td>
+                            <td>&amp;sect;</td>
+                            <td>&sect;</td>
+                        </tr>
+                        <tr>
+                            <td>&amp;bull;</td>
+                            <td>&bull;</td>
+                            <td>&amp;frac12;</td>
+                            <td>&frac12;</td>
+                            <td>&amp;laquo;</td>
+                            <td>&laquo;</td>
+                            <td>&amp;para;</td>
+                            <td>&para;</td>
+                            <td>&amp;uml;</td>
+                            <td>&uml;</td>
+                        </tr>
+                        <tr>
+                            <td>&amp;cedil;</td>
+                            <td>&cedil;</td>
+                            <td>&amp;frac14;</td>
+                            <td>&frac14;</td>
+                            <td>&amp;lt;</td>
+                            <td>&lt;</td>
+                            <td>&amp;plusmn;</td>
+                            <td>&plusmn;</td>
+                            <td>&amp;times;</td>
+                            <td>&times;</td>
+                        </tr>
+                        <tr>
+                            <td>&amp;cent;</td>
+                            <td>&cent;</td>
+                            <td>&amp;frac34;</td>
+                            <td>&frac34;</td>
+                            <td>&amp;macr;</td>
+                            <td>&macr;</td>
+                            <td>&amp;quot;</td>
+                            <td>&quot;</td>
+                            <td>&amp;trade;</td>
+                            <td>&trade;</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>&amp;euro;</td>
+                            <td>&euro;</td>
+                            <td>&amp;pound;</td>
+                            <td>&pound;</td>
+                            <td>&amp;yen;</td>
+                            <td>&yen;</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>&amp;bdquo;</td>
+                            <td>&bdquo;</td>
+                            <td>&amp;hellip;</td>
+                            <td>&hellip;</td>
+                            <td>&amp;middot;</td>
+                            <td>&middot;</td>
+                            <td>&amp;rsaquo;</td>
+                            <td>&rsaquo;</td>
+                            <td>&amp;ordf;</td>
+                            <td>&ordf;</td>
+                        </tr>
+                        <tr>
+                            <td>&amp;circ;</td>
+                            <td>&circ;</td>
+                            <td>&amp;ldquo;</td>
+                            <td>&ldquo;</td>
+                            <td>&amp;mdash;</td>
+                            <td>&mdash;</td>
+                            <td>&amp;rsquo;</td>
+                            <td>&rsquo;</td>
+                            <td>&amp;ordm;</td>
+                            <td>&ordm;</td>
+                        </tr>
+                        <tr>
+                            <td>&amp;dagger;</td>
+                            <td>&dagger;</td>
+                            <td>&amp;lsaquo;</td>
+                            <td>&lsaquo;</td>
+                            <td>&amp;ndash;</td>
+                            <td>&ndash;</td>
+                            <td>&amp;sbquo;</td>
+                            <td>&sbquo;</td>
+                            <td>&amp;rdquo;</td>
+                            <td>&rdquo;</td>
+                        </tr>
+                        <tr>
+                            <td>&amp;Dagger;</td>
+                            <td>&Dagger;</td>
+                            <td>&amp;lsquo;</td>
+                            <td>&lsquo;</td>
+                            <td>&amp;permil;</td>
+                            <td>&permil;</td>
+                            <td>&amp;shy;</td>
+                            <td>&shy;</td>
+                            <td>&amp;tilde;</td>
+                            <td>&tilde;</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>&amp;asymp;</td>
+                            <td>&asymp;</td>
+                            <td>&amp;frasl;</td>
+                            <td>&frasl;</td>
+                            <td>&amp;larr;</td>
+                            <td>&larr;</td>
+                            <td>&amp;part;</td>
+                            <td>&part;</td>
+                            <td>&amp;spades;</td>
+                            <td>&spades;</td>
+                        </tr>
+                        <tr>
+                            <td>&amp;cap;</td>
+                            <td>&cap;</td>
+                            <td>&amp;ge;</td>
+                            <td>&ge;</td>
+                            <td>&amp;le;</td>
+                            <td>&le;</td>
+                            <td>&amp;Prime;</td>
+                            <td>&Prime;</td>
+                            <td>&amp;sum;</td>
+                            <td>&sum;</td>
+                        </tr>
+                        <tr>
+                            <td>&amp;clubs;</td>
+                            <td>&clubs;</td>
+                            <td>&amp;harr;</td>
+                            <td>&harr;</td>
+                            <td>&amp;loz;</td>
+                            <td>&loz;</td>
+                            <td>&amp;prime;</td>
+                            <td>&prime;</td>
+                            <td>&amp;uarr;</td>
+                            <td>&uarr;</td>
+                        </tr>
+                        <tr>
+                            <td>&amp;darr;</td>
+                            <td>&darr;</td>
+                            <td>&amp;hearts;</td>
+                            <td>&hearts;</td>
+                            <td>&amp;minus;</td>
+                            <td>&minus;</td>
+                            <td>&amp;prod;</td>
+                            <td>&prod;</td>
+                            <td>&amp;zwj;</td>
+                            <td>&zwj;</td>
+                        </tr>
+                        <tr>
+                            <td>&amp;diams;</td>
+                            <td>&diams;</td>
+                            <td>&amp;infin;</td>
+                            <td>&infin;</td>
+                            <td>&amp;ne;</td>
+                            <td>&ne;</td>
+                            <td>&amp;radic;</td>
+                            <td>&radic;</td>
+                            <td>&amp;zwnj;</td>
+                            <td>&zwnj;</td>
+                        </tr>
+                        <tr>
+                            <td>&amp;equiv;</td>
+                            <td>&equiv;</td>
+                            <td>&amp;int;</td>
+                            <td>&int;</td>
+                            <td>&amp;oline;</td>
+                            <td>&oline;</td>
+                            <td>&amp;rarr;</td>
+                            <td>&rarr;</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>&amp;alpha;</td>
+                            <td>&alpha;</td>
+                            <td>&amp;eta;</td>
+                            <td>&eta;</td>
+                            <td>&amp;mu;</td>
+                            <td>&mu;</td>
+                            <td>&amp;pi;</td>
+                            <td>&pi;</td>
+                            <td>&amp;theta;</td>
+                            <td>&theta;</td>
+                        </tr>
+                        <tr>
+                            <td>&amp;beta;</td>
+                            <td>&beta;</td>
+                            <td>&amp;gamma;</td>
+                            <td>&gamma;</td>
+                            <td>&amp;nu;</td>
+                            <td>&nu;</td>
+                            <td>&amp;psi;</td>
+                            <td>&psi;</td>
+                            <td>&amp;upsilon;</td>
+                            <td>&upsilon;</td>
+                        </tr>
+                        <tr>
+                            <td>&amp;chi;</td>
+                            <td>&chi;</td>
+                            <td>&amp;iota;</td>
+                            <td>&iota;</td>
+                            <td>&amp;omega;</td>
+                            <td>&omega;</td>
+                            <td>&amp;rho;</td>
+                            <td>&rho;</td>
+                            <td>&amp;xi;</td>
+                            <td>&xi;</td>
+                        </tr>
+                        <tr>
+                            <td>&amp;delta;</td>
+                            <td>&delta;</td>
+                            <td>&amp;kappa;</td>
+                            <td>&kappa;</td>
+                            <td>&amp;omicron;</td>
+                            <td>&omicron;</td>
+                            <td>&amp;sigma;</td>
+                            <td>&sigma;</td>
+                            <td>&amp;zeta;</td>
+                            <td>&zeta;</td>
+                        </tr>
+                        <tr>
+                            <td>&amp;epsilon;</td>
+                            <td>&epsilon;</td>
+                            <td>&amp;lambda;</td>
+                            <td>&lambda;</td>
+                            <td>&amp;phi;</td>
+                            <td>&phi;</td>
+                            <td>&amp;tau;</td>
+                            <td>&tau;</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>&amp;Alpha;</td>
+                            <td>&Alpha;</td>
+                            <td>&amp;Eta;</td>
+                            <td>&Eta;</td>
+                            <td>&amp;Mu;</td>
+                            <td>&Mu;</td>
+                            <td>&amp;Pi;</td>
+                            <td>&Pi;</td>
+                            <td>&amp;Theta;</td>
+                            <td>&Theta;</td>
+                        </tr>
+                        <tr>
+                            <td>&amp;Beta;</td>
+                            <td>&Beta;</td>
+                            <td>&amp;Gamma;</td>
+                            <td>&Gamma;</td>
+                            <td>&amp;Nu;</td>
+                            <td>&Nu;</td>
+                            <td>&amp;Psi;</td>
+                            <td>&Psi;</td>
+                            <td>&amp;Upsilon;</td>
+                            <td>&Upsilon;</td>
+                        </tr>
+                        <tr>
+                            <td>&amp;Chi;</td>
+                            <td>&Chi;</td>
+                            <td>&amp;Iota;</td>
+                            <td>&Iota;</td>
+                            <td>&amp;Omega;</td>
+                            <td>&Omega;</td>
+                            <td>&amp;Rho;</td>
+                            <td>&Rho;</td>
+                            <td>&amp;Xi;</td>
+                            <td>&Xi;</td>
+                        </tr>
+                        <tr>
+                            <td>&amp;Delta;</td>
+                            <td>&Delta;</td>
+                            <td>&amp;Kappa;</td>
+                            <td>&Kappa;</td>
+                            <td>&amp;Omicron;</td>
+                            <td>&Omicron;</td>
+                            <td>&amp;Sigma;</td>
+                            <td>&Sigma;</td>
+                            <td>&amp;Zeta;</td>
+                            <td>&Zeta;</td>
+                        </tr>
+                        <tr>
+                            <td>&amp;Epsilon;</td>
+                            <td>&Epsilon;</td>
+                            <td>&amp;Lambda;</td>
+                            <td>&Lambda;</td>
+                            <td>&amp;Phi;</td>
+                            <td>&Phi;</td>
+                            <td>&amp;Tau;</td>
+                            <td>&Tau;</td>
+                            <td>&amp;sigmaf;</td>
+                            <td>&sigmaf;</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
+
+            <!-- 字体以Unicode编码代替 -->
+    		<h2 id="css_skill_2" name="css_skill_2">字体以Unicode编码代替</h2>
+            <article>
+                <p>在CSS中使用中文字体通常直接设置字体名称，比如设置字体为宋体：font-family:’宋体’。但因此产生的一个问题是，如果CSS编码有误，会导致页面加载后CSS中的中文字体乱码</p>
+                <p>直接使用中文字体，有时候在ie6下会出现样式丢失问题。</p>
+                <p>而使用英文代替中文如：“font-family:SimSun”也不推荐，Firefox的部分版本与Opera在处理SimSun时会有问题。</p>
+                <p>所以推荐使用中文字体的Unicode编码。 那怎么解决这个乱码问题呢，由于CSS文件基本都是UTF-8的编码模式，所以我们可以把中文字体的名称用相应的Unicode编码来代替，这样就可以有效的避免浏览器解释CSS代码时候出现乱码的问题。</p>
+                <p>比如中文字体“宋体”经过Unicode编码后为“\5b8b\4f53″，在CSS中就可以这样写：font-family:’ \5b8b\4f53’; 如果在你“DIV+CSS”的过程中，还需要用到一些表中没有的字体的话，可以借助Firefox的插件Firebug来查询所需中文字体对应的 Unicode编码，方法很简单，就是打开Firefox，然后打开Firebug，在“控制台”里底部“>>>”的后面像这样输入</p>
+                <p>escape('微软雅黑');，然后会显示一个信息，%u5FAE%u8F6F%u96C5%u9ED1这个就是中文字体“微软雅黑”对应的Unicode编码“\5FAE\8F6F\96C5\9ED1”，注意把%u改成\，否则可能会出错。 </p>
+                <p>例如： <mark>body{font-family:\5FAE\8F6F\96C5\9ED1;/*即把body的字体设置为雅黑*/}</mark></p>
+                <p class="fwb">下面的数据做参考：</p>
+                <table class="tb_normal">
+                    <tbody>
+                        <tr>
+                            <td>宋体 </td>
+                            <td>SimSun </td>
+                            <td>\5B8B\4F53 </td>
+                        </tr>
+                        <tr>
+                            <td>黑体 </td>
+                            <td>SimHei </td>
+                            <td>\9ED1\4F53 </td>
+                        </tr>
+                        <tr>
+                            <td>微软雅黑 </td>
+                            <td>Microsoft YaHei </td>
+                            <td>\5FAE\8F6F\96C5\9ED1 </td>
+                        </tr>
+                        <tr>
+                            <td>微软正黑体</td>
+                            <td>Microsoft JhengHei </td>
+                            <td>\5FAE\x8F6F\6B63\9ED1\4F53 </td>
+                        </tr>
+                        <tr>
+                            <td>新宋体</td>
+                            <td>NSimSun </td>
+                            <td>\65B0\5B8B\4F53 </td>
+                        </tr>
+                        <tr>
+                            <td>新细明体 </td>
+                            <td>PMingLiU </td>
+                            <td>\65B0\7EC6\660E\4F53 </td>
+                        </tr>
+                        <tr>
+                            <td>细明体</td>
+                            <td>MingLiU </td>
+                            <td>\7EC6\660E\4F53 </td>
+                        </tr>
+                        <tr>
+                            <td>标楷体</td>
+                            <td>DFKai-SB </td>
+                            <td>\6807\6977\4F53 </td>
+                        </tr>
+                        <tr>
+                            <td>仿宋 </td>
+                            <td>FangSong </td>
+                            <td>\4EFF\5B8B </td>
+                        </tr>
+                        <tr>
+                            <td>楷体 </td>
+                            <td>KaiTi </td>
+                            <td>\6977\4F53 </td>
+                        </tr>
+                        <tr>
+                            <td>仿宋_GB2312 </td>
+                            <td>FangSong_GB2312 </td>
+                            <td>\4EFF\5B8B_GB2312</td>
+                        </tr>
+                        <tr>
+                            <td>楷体_GB2312 </td>
+                            <td>KaiTi_GB2312 </td>
+                            <td>\6977\4F53_GB2312 </td>
+                        </tr>
+                        <tr>
+                            <td>华文细黑 </td>
+                            <td>STHeiti Light [STXihei] </td>
+                            <td>\534E\6587\7EC6\9ED1 </td>
+                        </tr>
+                        <tr>
+                            <td>华文黑体 </td>
+                            <td>STHeiti </td>
+                            <td>\534E\6587\9ED1\4F53 </td>
+                        </tr>
+                        <tr>
+                            <td>华文楷体 </td>
+                            <td>STKaiti </td>
+                            <td>\534E\6587\6977\4F53 </td>
+                        </tr>
+                        <tr>
+                            <td>华文宋体 </td>
+                            <td>STSong </td>
+                            <td>\534E\6587\5B8B\4F53 </td>
+                        </tr>
+                        <tr>
+                            <td>华文仿宋 </td>
+                            <td>STFangsong </td>
+                            <td>\534E\6587\4EFF\5B8B </td>
+                        </tr>
+                        <tr>
+                            <td>丽黑 Pro </td>
+                            <td>LiHei Pro Medium </td>
+                            <td>\4E3D\9ED1 Pro </td>
+                        </tr>
+                        <tr>
+                            <td>丽宋 Pro </td>
+                            <td>LiSong Pro Light </td>
+                            <td>\4E3D\5B8B Pro </td>
+                        </tr>
+                        <tr>
+                            <td>标楷体</td>
+                            <td>BiauKai </td>
+                            <td>\6807\6977\4F53 </td>
+                        </tr>
+                        <tr>
+                            <td>苹果丽中黑</td>
+                            <td>Apple LiGothic Medium </td>
+                            <td>\82F9\679C\4E3D\4E2D\9ED1 </td>
+                        </tr>
+                        <tr>
+                            <td>苹果丽细宋</td>
+                            <td>Apple LiSung Light </td>
+                            <td>\82F9\679C\4E3D\7EC6\5B8B </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
+
+            <!-- a的4种伪类的排列顺序 -->
+            <h2 id="css_skill_3" name="css_skill_3">a的4种伪类的排列顺序</h2>
+            <article>
+                <dl class="dl_normal">
+                    <dt>:link</dt>
+                    <dd>有链接属性时</dd>
+                    <dt>:visited </dt>
+                    <dd>链接地址已被访问过</dd>
+                    <dt>:active</dt>
+                    <dd>被用户激活(在鼠标点击与释放之间发生的事件)</dd>
+                    <dt>:hover</dt>
+                    <dd>其鼠标悬停</dd>
+                </dl>
+                <p class="fwb">从用户体验的角度</p>
+                <p>在用户使用超链接的时候，为了最佳的用户体验，要做到下面几点：</p>
+                <p>第一：不管是否是被访问过的超链接，只要我鼠标移上的时候(<mark>:hover</mark>)都要有写变化，比如变色、加下划线等等，告诉用户选中的是可以点击的超链接。</p>
+                <p>第二:不管是否访问过，在<mark>a标签被激活时（:active），都应该有相同的样式变化</mark>。也就是说，同一个a标签，未访问过时在被用户激活和被访问时再被用户激活时要有相同的样式。这个也很好理解，用户点下同一个超链接时的效果不应该有差别。</p>
+                <p>第三:访问过的a标签可能要跟没有访问过的a相区分。</p>
+
+                <p class="fwb">从CSS优先级角度</p>
+                <p>第一：不管什么情况下鼠标悬停都应该有一个样式变化（<mark>:hover</mark>）,我们就把hover放在最后，防止具备其他状态时，被其他状态的设置覆盖掉。</p>
+                <p>第二：当a被激活时(:active)，我们要求不管是否访问过，都应该有相同的样式，也就是这个状态的效果应该能够覆盖未被访问时(:link)与 已访问过(:visited)两种状态。应该放在 :link :hover的后面。</p>
+            </article>
+
+            <!-- css的优先规则 -->
+            <h2 id="css_skill_5" name="css_skill_5">css的优先规则</h2>
+            <article>
+                <ul>
+                    <li>  一级：“!important”;</li>
+                    <li>  二级：直接在div中加style，如&lt;div style=""&gt; &lt;/div&gt;；</li>
+                    <li>  三级：标签加id,如 p#id {  };</li>
+                    <li>  四级：id;</li>
+                    <li>  五级：标签加属性的定义  或者是 标签加class，如input[type=text] {  } or input.class {  };</li>
+                    <li>  六级：class;</li>
+                    <li>  七级：任意选择器如： * , + , > , ~ ,</li>
+                    <li>  八级：直接定义在标签上，如 p {  };</li>
+                </ul>
+                <p><mark>  Ps：同等级的情况下，后写的css会覆盖前写的css.</mark></p>
+            </article>
+        </div>
+	</div>
+    <script type="text/javascript" src="../js/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="../js/common.js"></script>
+    <script type="text/javascript">
+    common.view.snav(skillSnavList);
+    </script>
+</body>
+</html>

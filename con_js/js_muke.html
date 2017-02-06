@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="icons"/>
+    <meta name="keywords" content="icons"/>
+    <meta name="robots" content="whj"/>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/page.css">
+</head>
+<body>
+    
+	<div class="wrap g_main">
+        <div class="g_code">
+            <h2>JavaScript进阶篇</h2>
+            <!-- 数组编程练习 -->
+            <p class="fwb">0605-数组编程练习</p>
+            <p>使用Javascript语言，用数组的方法在页面显示如下图所示的图案：<br/>
+                *<br/>
+                **<br/>
+                ***<br/>
+                **** 
+            </p>
+            <pre>
+ //创建数组
+
+function arr(num, txt){
+    var arr = [], str='';
+    for ( var i = 0; i &lt num; i++){
+        str += txt;
+        arr.push(str);
+    }
+    return arr;
+}
+
+//将数组内容输出，完成达到的效果。
+console.log(arr(4,'*').jion('&ltbr/&gt'))
+
+            </pre>
+
+            <!-- 循环编程学习 -->
+            <p class="fwb">0606-循环编程学习</p>
+            <p>在一个大学的编程选修课班里，我们得到了一组参加该班级的学生数据，分别是姓名、性别、年龄和年级，接下来呢，我们要利用JavaScript的知识挑出其中所有是大一的女生的的名字哦。</p>
+            <p>
+                学生信息如下：<br/>
+                    ('小A','女',21,'大一'),  ('小B','男',23,'大三'),
+
+    ('小C','男',24,'大四'),  ('小D','女',21,'大一'),
+
+    ('小E','女',22,'大四'),  ('小F','男',21,'大一'),
+
+    ('小G','女',22,'大二'),  ('小H','女',20,'大三'),
+
+    ('小I','女',20,'大一'),  ('小J','男',20,'大三')
+            </p>
+            <pre>
+function cycle(){   
+   var infog = [
+           ['小A','女',21,'大一'],
+           ['小B','男',23,'大三'],
+           ['小C','男',24,'大四'],
+           ['小D','女',21,'大一'],
+           ['小E','女',22,'大四'],
+           ['小F','男',21,'大一'],
+           ['小G','女',22,'大二'],
+           ['小H','女',20,'大三'],
+           ['小I','女',20,'大一'],
+           ['小J','男',20,'大三']
+       ];
+
+for(var i = 0, len = infog.length; i &lt len; i++){
+    if (infog[i][3] == '大一' && infog[i][1] == '女'){
+        console.log(infog[i][0] + '&ltbr/&gt');  
+    }
+}
+} 
+console.log(cycle());
+            </pre>
+
+            <!-- 函数编程学习 -->
+            <p class="fwb">0606-函数编程学习</p>
+            <p>使用javascript代码写出一个函数：实现传入两个整数后弹出较大的整数。</p>
+            <pre>
+//定义函数
+function max ( a, b ){
+         return a > b ? a : b;
+    }
+
+//调用函数，实现下面两组数中，返回就大值。
+
+var max1= max(5,4),max2=max(6,3);
+console.log(" 5 和 4 的较大值是:"+max1 );
+console.log(" 6 和 3 的较大值是:"+max2 ); 
+            </pre>
+
+            <!-- 事件编程学习 -->
+            <p class="fwb">0607-事件编程学习</p>
+            <p>使用JS完成一个简单的计算器功能。实现2个输入框中输入整数后，点击第三个输入框能给出2个整数的加减乘除。</p>
+            <p>
+                <input type="text" id="num1" />
+                <select name="" id="alg">
+                    <option value="+">+</option>
+                    <option value="-">-</option>
+                    <option value="*">*</option>
+                    <option value="/">/</option>
+                </select>
+                <input type="text" id="num2">
+                <button type="button" onclick="count()">=</button>
+                <input type="text" id="result" />
+                <script type="text/javascript">
+                function count(){
+                    var num1 = parseInt(document.getElementById('num1').value,10),
+                        num2 = parseInt(document.getElementById('num2').value,10),
+                        alg = document.getElementById('alg').value,
+                        result;
+
+                    switch(alg){
+                        case '+' : result = num1 + num2; break;
+                        case '-' : result = num1 - num2; break;
+                        case '*' : result = num1 * num2; break;
+                        case '/' : result = num1 / num2; break;
+                    };
+                    
+                    document.getElementById('result').value = result;
+
+                }
+                </script>
+            </p>
+            <pre>
+html:
+
+&ltinput type="text" id="num1" /&gt
+&ltselect name="" id="alg"&gt
+    &ltoption value="+"&gt+&lt/option&gt
+    &ltoption value="-"&gt-&lt/option&gt
+    &ltoption value="*"&gt*&lt/option&gt
+    &ltoption value="/"&gt/&lt/option&gt
+&lt/select>
+&ltinput type="text" id="num2"&gt
+&ltbutton onclick="count()"&gt=&lt/button&gt
+&ltinput type="text" id="result" /&gt
+
+
+js：
+
+function count(){
+    var num1 = parseInt(document.getElementById('num1').value,10),
+        num2 = parseInt(document.getElementById('num2').value,10),
+        alg = document.getElementById('alg').value,
+        result;
+
+    switch(alg){
+        case '+' : result = num1 + num2; break;
+        case '-' : result = num1 - num2; break;
+        case '*' : result = num1 * num2; break;
+        case '/' : result = num1 / num2; break;
+    };
+    
+    document.getElementById('result').value = result;
+
+}
+            </pre>
+
+            <!--  JavaScript内置对象 -->
+            <p class="fwb">0608-JavaScript内置对象</p>
+            <p>某班的成绩出来了，现在老师要把班级的成绩打印出来。<br/>
+                <b>效果如：</b><br/>
+                2014年6月8日星期日--班级总分为815--班级平均分为82 <br/>
+                <b>格式要求：</b><br/>
+                1、显示打印的日期。 格式为类似“2014年03月21日 星期三” 的当前的时间。<br/>
+                2、计算出该班级的平均分（保留整数）。<br/>
+                <b>同学成绩数据如下：</b><br/>
+                "小明:87; 小花:81; 小红:97; 小天:76;小张:74;小小:94;小西:90;小伍:76;小迪:64;小曼:76"
+            </p>
+            <pre>
+                
+//日期
+var myDate = new Date(),
+year = myDate.getFullYear(),
+month = myDate.getMonth()+1,
+date = myDate.getDate(),
+day = myDate.getDay(),
+week = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'],
+endDate = year + '年' + month + '月' + date + '日' + week[day],
+
+//成绩
+sorceStr = "小明:87; 小花:81; 小红:97; 小天:76;小张:74;小小:94;小西:90;小伍:76;小迪:64;小曼:76",
+score = sorceStr.split(';'),
+score_total = 0,
+len = score.length,
+result;
+
+for( var i = 0; i &lt len; i++){
+    score_total += parseInt(score[i].split(':')[1], 10);
+};
+
+//从数组中将成绩撮出来，然后求和取整，并输出。
+
+result = endDate + '--班级总分为' +  score_total + '--班级平均分为' + Math.round(score_total / len) ;
+document.write(result);
+            </pre>
+
+            <!--  浏览器对象 -->
+            <p class="fwb">0609-浏览器对象</p>
+            <p>制作一个跳转提示页面：<br/>
+                <b>要求：</b><br/>
+                1. 如果打开该页面后，如果不做任何操作则5秒后自动跳转到一个新的地址，如慕课网主页。<br/>
+                2. 如果点击“返回”按钮则返回前一个页面。
+            </p>
+            <pre>
+html:
+
+&lth2&gt 操作成功 &lt/h2&gt
+&ltb id="time"&gt5&lt/b&gt秒后回到主页
+&lta href="history.back();" &gt返回&lt/a&gt
+
+js:
+
+var num = document.getElementById('time').innerHTML;
+function count(){
+    setTimeout('count()',1000);
+    document.getElementById('time').innerHTML= num;
+    num--;
+
+    if(num == 0){
+        location.href="whj.fayfox.com";
+    }
+}
+var time = setTimeout('count()',1000);
+            </pre>
+        </div>
+	</div>
+</body>
+</html>

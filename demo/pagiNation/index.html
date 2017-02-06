@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>pagination</title>
+		<link rel="stylesheet" href="http://whj.fayfox.com/css/base.css">
+		<link rel="stylesheet" href="http://whj.fayfox.com/css/common.css">
+	</head>
+	<body>
+
+	<div class="wrap g_main">
+		<h4>demo</h4>
+		<h4>html</h4>
+
+		<h4>js</h4>
+		<pre>
+	//len : 总条数， max ：每页条数， className : 需要分页的dom, pageName : 分页所处的dom
+
+	function(len, max, className, pageName) {
+
+	        if (len &lt; max) {
+	            $(pageName).html(' ');
+	            return false;
+	        }
+
+	        var pageHtml = '',
+				pageIndex = Math.ceil(len / max);
+
+
+	        $(pageName).html('&lt;ul>&lt;/ul>');
+
+	        for (var i = 1; i &lt; pageIndex + 1; i++) {
+	            pageHtml += '&lt;li>&lt;a href="javascript:;">' + i + '&lt;/a>&lt;/li>';
+	        };
+
+	        $(pageName + ' ul').html(pageHtml + '&lt;li>&lt;a href="javascript:;">下一页&lt;/a>&lt;/li>');
+
+	        //alert(className);
+	        $(pageName + ' li:eq(0)').addClass('crt');
+	        $(className + ':gt(' + (max - 1) + ')').hide();
+
+	        $('body').delegate(pageName + ' a', 'click', function() {
+	            var txtIndex = $(this).text(),
+					crtIndex = parseInt($(pageName + ' .crt a').text(), 10);
+					
+	            $(pageName + ' li').removeClass('crt');
+
+	            if (txtIndex == 1) {
+
+	                $(className + ':lt(' + max + ')').show();
+	                $(className + ':gt(' + (max - 1) + ')').hide();
+	                $(this).parent('li').addClass('crt');
+
+	            } else if (txtIndex == '下一页') {
+
+	                $(className).show();
+	                
+	                
+	                if (crtIndex &lt; pageIndex) {
+
+	                    $(pageName + ' li:eq(' + crtIndex + ')').addClass('crt');
+	                    $(className + ':gt(' + (max * (crtIndex + 1) - 1) + ')').hide();
+	                    $(className + ':lt(' + max * (crtIndex) + ')').hide();
+
+	                } else {
+
+	                    $(this).parent('li').prev('li').addClass('crt');
+	                    $(className + ':lt(' + max * (crtIndex - 1) + ')').hide();
+
+	                }
+
+	            } else {
+
+	                $(className).show();
+	                $(className + ':gt(' + (max * txtIndex - 1) + ')').hide();
+	                $(className + ':lt(' + max * (txtIndex - 1) + ')').hide();
+	                $(this).parent('li').addClass('crt');
+
+	            }
+
+	        })
+
+    	}
+		</pre>
+	</div>
+
+
+	<script src="http://whj.fayfox.com/js/jquery-1.8.3.js"></script>
+	<script src="http://whj.fayfox.com/js/common.js"></script>
+	</body>
+</html>

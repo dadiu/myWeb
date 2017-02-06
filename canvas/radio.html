@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="home"/>
+    <meta name="keywords" content="home"/>
+    <meta name="robots" content="whj"/>
+    <title>7个神经病-手艺人</title>
+</head>
+<body>
+    <canvas id="canvas" style="border:1px solid #ccc; display:block; margin:0 auto;">
+        当前浏览器不支持canvas,请更换浏览器试试
+    </canvas>
+        
+    <script>
+        window.onload = function(){
+
+            var canvas = document.getElementById("canvas");
+
+                canvas.width = 1024;
+                canvas.height = 800;
+
+            if(canvas.getContext("2d")){
+                var content = canvas.getContext("2d");
+
+                //圆的样式
+                content.lineWidth=2;
+                content.strokeStyle="orange";
+
+                
+                function draw (i, y, arcBoo, func){
+                    for(; i<10; i++){
+                        content.beginPath();
+                        content.arc(50+i*100, y,30,0,2*((i+1)/10)*Math.PI, arcBoo);
+                        if(func){
+                            func();
+                        };
+                        content.stroke();
+                    };
+                }
+
+                draw(0, 50, false, function(){
+                    content.closePath();
+                });
+                draw(0, 150, false);
+                draw(0, 250, true, function(){
+                    content.closePath();
+                });
+                draw(0, 350, true);
+
+                draw(0, 450, false, function(){
+                    content.fillStyle="orange";
+                    content.fill();
+                });
+
+                draw(0, 550, true, function(){
+                    content.fillStyle="orange";
+                    content.fill();
+                });
+                //content.closePath();
+
+            } else {
+                //当前浏览器不支持canvas,请更换浏览器试试
+            }
+            
+        }
+    </script>
+</body>
+</html>

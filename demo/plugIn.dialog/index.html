@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+<html>
+	<head>
+		<meta charset="utf-8" />
+	    <meta name="description" content="home"/>
+	    <meta name="keywords" content="home"/>
+	    <meta name="robots" content="whj"/>
+	    <title>弹窗插件</title>
+	    <link rel="stylesheet" href="http://whj.fayfox.com/css/base.css">
+	    <link rel="stylesheet" href="css/dialog.css">
+	</head>
+	<body>
+
+		<p class="demoBar">
+			<a href="javascript:;" class="btn btn_alert">alert</a>
+			<a href="javascript:;" class="btn btn_alertStop">stop alert</a>
+			<a href="javascript:;" class="btn btn_confirm">confirm</a>
+			<a href="javascript:;" class="btn btn_prompt">prompt</a>
+			<a href="javascript:;" class="btn btn_loading">loading</a>
+			<a href="javascript:;" class="btn btn_moment">moment</a>
+		</p>
+
+		<p class="demoBar">
+			<strong>V1.0.2 优化 后台接口调用成功后，可调用closeFun来关闭loading弹窗 dome 见 fn_demo1</strong>
+			<br/><br/><br/>
+			点击出现 - confirm /
+			点击确定 - loading /
+			等待一分钟后执行关闭 - closeFun
+			<br/><br/><br/>
+			<a href="javascript:;" class="btn" id="fn_demo1">fn_demo1</a>
+		</p>
+
+		<a href="javascript:;" class="btn btn_alertCode">alert code</a>
+		<div class="wrap"></div>
+		<script type="text/javascript" src="http://whj.fayfox.com/js/jquery-1.8.3.js"></script>
+		<script type="text/javascript" src="js/jquery.dialog.js"></script>
+		<script type="text/javascript">
+
+			//alert
+			$('.btn_alert').click(function(){
+
+				$.dialog({
+					types : 'alert',
+					title : 'alert',
+					contents : '点击确定关闭弹窗'
+				});
+
+			});
+			$('.btn_alertCode').click(function(){
+
+				$.dialog({
+					types : 'alert',
+					title : 'alert',
+					width : 700,
+					height:400,
+					parentDom : $(".wrap"),
+					contents : '<iframe width="100%" height="300" src="http://touchvali.dianhun.cn/Vali.aspx?action=getcode&appid=10006&isclose=1"></iframe>'
+				});
+
+			});
+
+			//stop alert
+			$('.btn_alertStop').click(function(){
+
+				$.dialog({
+					types : 'alert',
+					title : 'alert',
+					contents : '点击确定执行事件',
+					p : [22,33,44],
+					callback : fun.alert
+				});
+
+			});
+
+			//confirm
+			$('.btn_confirm').click(function(){
+
+				$.dialog({
+					types : 'confirm',
+					title : 'comfirm',
+					contents :'<h3>title</h3><p>this is p text</p>',
+					width : 300,
+					height : 180,
+					p : 'test',
+					callback : fun.confirm
+				});
+
+			});
+
+			//prompt
+			$('.btn_prompt').click(function(){
+
+				$.dialog({
+					types : 'prompt',
+					title : 'prompt',
+					contents : '<p>请在下面的输入框输入文字:</p>',
+					width : 300,
+					height : 180,
+					p : 'test',
+					callback : fun.prompt
+
+				});
+			});
+
+			//loading
+			$('.btn_loading').click(function(){
+				
+				$.dialog({
+					types : 'loading',
+					contents : 'loading',
+					width : 100,
+					height : 50
+				})
+			});
+
+			//moment
+			$('.btn_moment').click(function(){
+				
+				$.dialog({
+					types : 'moment',
+					contents : '提示语,5秒后消失',
+					times : 5000,
+					width : 200,
+					height : 50
+				})
+			});
+
+
+
+			var fun = {
+				alert : function(p){
+					$.dialog({
+						types : 'alert',
+						title : 'alert',
+						contents:'输出参数' + p
+					});
+				},
+
+				confirm: function(p){
+					$.dialog({
+						types : 'alert',
+						contents : '输出参数名' + p
+					})
+				},
+
+				prompt : function(resp, p){
+					if(resp){
+						$.dialog({
+							types : 'alert',
+							contents : '您输入的文字为 ' + resp + p
+						})
+					} else {
+						$.dialog({
+							types : 'alert',
+							contents : '请先输入文字'
+						})
+					}
+				}
+			}
+		</script>
+
+		<script>
+
+		$("#fn_demo1").click(function(){
+			$.dialog({
+				types : 'confirm',
+				title : 'comfirm',
+				contents :'<h3>title</h3><p>this is p text</p>',
+				width : 350,
+				height :210,
+				callback :function(){
+					$.dialog({
+						types:"loading",
+						contents :"loading",
+						width:100,
+						height:50
+					});
+
+					setTimeout(function(){
+						$.dialog({types:"closeFun"});
+					},6000)
+				}
+			})
+		})
+		//$.dialog({type:"closeFun"});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="icons"/>
+    <meta name="keywords" content="icons"/>
+    <meta name="robots" content="whj"/>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/page.css">
+</head>
+<body>
+    
+	<div class="wrap g_main">
+		<h2>获取当前日期</h2>
+        <div class="g_code">
+            <h4>2014-0526-获取当前日期</h4>
+            <pre>
+//获取当前日期
+function today (){
+
+    var today = new Date(),
+        year = today.getFullYear(),
+        month = today.getMonth() + 1,
+        day = today.getDate();
+
+    if ( month < 10 ) {
+        month = '0' + month;
+    }
+
+    if ( day < 10 ) {
+        month = '0' + day;
+    }
+
+    return (year + '-' + month + '-' + day);
+}
+            </pre>
+            
+        </div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<html>
+	<head>
+		<meta charset="utf-8" />
+	    <meta name="description" content="home"/>
+	    <meta name="keywords" content="home"/>
+	    <meta name="robots" content="whj"/>
+	    <title>游戏大区插件</title>
+	    <link rel="stylesheet" href="http://whj.fayfox.com/css/base.css">
+	    <link rel="stylesheet" href="http://whj.fayfox.com/css/page.css">
+	    <style type="text/css">
+	    .u_selArea { position:relative; }
+		.u_selArea_a { padding-left:5px; width:150px; height:24px; line-height:24px; background:#fff; border:1px solid #ccc; }
+	    .u_selArea_b { display:none; position:absolute; left:0; top:25px; width:300px; border:1px solid #ccc; background:#fff; }
+	    .u_selArea_bTab {position:relative; background:#ddd; }
+	    .u_selArea_bTab ul { display:inline-block; vertical-align:top; border-right:1px dotted #fff; }
+	    .u_selArea_bTab li { cursor:pointer; float:left; height:30px; line-height:30px; padding:0 10px; border-left:1px dotted #fff; border-right:1px dotted #bbb;}
+	    .u_selArea_bTab .crt { color:#f08300; background:#fff; border-right-color:#fff; }
+	    .u_selArea_bSearch { position:absolute; right:3px; top:6px; width:85px; height:18px; padding-left:2px; background:#fff; border-radius:3px; }
+	    .u_selArea_bSearch img { width:15px; height:15px; margin-top:1px; }
+	    .u_selArea_bSearch input { vertical-align:top; width:57px; height:16px; line-height:16px; margin-right:3px; background:#fff; border:0; padding:1px 0 1px 3px; }
+		.u_selArea_bList { overflow:hidden; }
+		.u_selArea_bList li { display:none; cursor:pointer; float:left; padding:5px; width:88px; border-left:2px solid #fff; height:25px; line-height:25px; border-bottom:1px dashed #ccc; }
+		.u_selArea_bList li:hover { border-left-color:#f08300; background:#eee; }
+
+	    </style>
+	</head>
+	<body>
+		<div id="g_dome">
+
+			<p>实例</p>
+			<div id="test"></div>
+			<br/><br/>
+
+			<p>依赖于：</p>
+			<pre>
+http://static.m3guo.com/passport/v1/js/jquery.1.72.js
+http://sandbox.pay.17m3.com/Wbsrv/getServerDataHandler.aspx
+			</pre>
+
+			<p>调用方法：</p>
+			<pre>
+引入:
+js/jquery.gameArea.min.js
+
+$("id").tabs({
+	"type" : "1",		//1端游，2手游，3页游
+	"role" : "false",	//是否是多角色游戏
+	"txt" : "提示文字",	//提示文字
+	"list" : "",		//数据表，默认空
+	"maxNum" : 10, 		//每间隔最大，默认10
+	"searchWrong" : "你搜索的大区不存在",
+	"searchImg" : "http://whj.fayfox.com/img/ic_search.png" //搜索图片
+})
+			</pre>				
+			
+			
+		</div>
+
+		<script type="text/javascript" src="http://static.m3guo.com/passport/v1/js/jquery.1.72.js"></script>
+		<script type="text/javascript" src="http://sandbox.pay.17m3.com/Wbsrv/getServerDataHandler.aspx"></script>
+		<script type="text/javascript" src="js/jquery.gameArea.min.js"></script>
+		<script type="text/javascript">
+		$("#test").tabs({
+			"type" : "1",
+			"txt" : "请选择大区",
+			"list" : gameDataType[1297305671]["area"],
+			"maxNum" :15
+		})
+		</script>
+	</body>
+</html>

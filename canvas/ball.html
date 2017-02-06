@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="home"/>
+    <meta name="keywords" content="home"/>
+    <meta name="robots" content="whj"/>
+    <title>7个神经病-手艺人</title>
+</head>
+<body>
+    <canvas id="canvas" style="border:1px solid #ccc; display:block; margin:0 auto;">
+        当前浏览器不支持canvas,请更换浏览器试试
+    </canvas>
+        
+    <script>
+        window.onload = function(){
+
+            var canvas = document.getElementById("canvas");
+
+                canvas.width = 800;
+                canvas.height = 500;
+
+            if(canvas.getContext("2d")){
+                var content = canvas.getContext("2d");
+
+
+                setInterval(function(){
+
+                    render(content);
+                    upDate();
+
+                },50);
+
+            } else {
+                //当前浏览器不支持canvas,请更换浏览器试试
+            }
+            
+        };
+
+
+        var ball = { x:512, y:100, r:5, g:5, vx:-4, vy:0, c:"pink"};
+                    //X轴圆心,Y轴圆心,r=半径,g=重力,vx=X轴加速度,vy=Y轴加速度,color=小球颜色
+
+        //绘制图像
+        function render (cxt){
+
+            cxt.clearRect(0,0,cxt.canvas.width,cxt.canvas.height);
+
+            cxt.beginPath();
+            cxt.fillStyle=ball["c"];
+            cxt.arc(ball["x"],ball["y"],ball["r"],0,2*Math.PI);
+            cxt.fill();
+
+        };
+
+        //重置小球位置
+        function upDate (){
+
+            ball["x"] += ball["vx"];
+            ball["y"] += ball["vy"];
+            ball["vy"] += ball["g"];
+
+            if(ball["y"] >= 500 - ball["r"]){
+                ball["y"] = 500 - ball["r"];
+                ball["vy"] = -ball["vy"]*0.75;
+            }
+
+        };
+
+        //获取时间
+        // function getTime (){
+
+        //     var _t = this,
+        //         nowDate = new Date(),
+        //         myh = nowDate.getHours(),
+        //         mym = nowDate.getMinutes(),
+        //         mys = nowDate.getSeconds();
+
+        //     if(myh<10){
+        //         myh = "0"+myh;
+        //     };
+        //     if(mym<10){
+        //         mym = "0"+myh;
+        //     };
+        //     if(mym<10){
+        //         mym = "0"+myh;
+        //     };
+
+        //     return [myh,mym,mys];
+        // };
+
+    </script>
+</body>
+</html>

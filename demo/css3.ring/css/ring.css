@@ -1,0 +1,54 @@
+body { height:100%; overflow:hidden; font:18px/1.8em 'arial'; color:#fff; background:#000; }
+
+.wrap { position:relative; width:90%; height:100%; margin:0 auto; }
+
+
+
+
+/* snav */
+.snav { position:absolute; width:235px; left:0; top:30%; }
+
+
+@-webkit-keyframes spin{
+    0% { -webkit-transform:rotateZ(0);}
+    100% { -webkit-transform:rotateZ(360deg);}
+}
+@-moz-keyframes spin{
+    0% { -moz-transform:rotateZ(0);}
+    100% { -moz-transform:rotateZ(360deg);}
+}
+@-ms-keyframes spin{
+    0% { -ms-transform:rotateZ(0);}
+    100% { -ms-transform:rotateZ(360deg);}
+}
+@-o-keyframes spin{
+    0% { -o-transform:rotateZ(0);}
+    100% { -o-transform:rotateZ(360deg);}
+}
+@keyframes spin{
+    0% { transform:rotateZ(0);}
+    100% { transform:rotateZ(360deg);}
+}
+
+.m_ring { position:absolute; left:50%; top:50%; margin:-235px 0 0 0; width:470px; height:470px; }
+.ring { position:absolute; left:0; top:0; width:470px; height:470px;
+    -webkit-animation:spin 30s linear infinite;
+    -moz-animation:spin 30s linear infinite;
+    -ms-animation:spin 30s linear infinite;
+    -o-animation:spin 30s linear infinite;
+    animation:spin 30s linear infinite;
+}
+#ring_0 { background:url(../img/0.png) no-repeat;
+    -webkit-animation-direction:reverse;
+    -moz-animatiion-direction:reverse;
+    animation-direction:reverse;
+}
+#ring_1 { background:url(../img/1.png) no-repeat; }
+#ring_2 { background:url(../img/2.png) no-repeat;
+    -webkit-animation-direction:reverse;
+    -moz-animatiion-direction:reverse;
+    animation-direction:reverse;
+}
+#ring_3 { background:url(../img/3 .png) no-repeat; }
+
+

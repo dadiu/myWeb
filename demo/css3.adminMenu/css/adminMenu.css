@@ -1,0 +1,73 @@
+body { font:12px/1.5em 'arial'; background:#f1f1f1; }
+
+/* clear float */
+.cb:after { display:block; clear:both; content:""; visibility:hidden; height:0; }
+.cb { zoom: 1 } /* ie6 */
+
+#menu_list { list-style:none; padding:0; margin:0; background-image:-*-linear-gradient(top, #3d3d3d 50%, #373737 51% ); }
+/* menu 双背景线 这是从上到下的双色块，第一个色是多0到50%之间，第二个色块是51%到100%之间 */
+#menu_list a { color:#fff; text-decoration:none; text-transform:capitalize; }
+#menu_list li { position:relative; float:left; height:40px; }
+#menu_list a { display:block; padding:0 20px 0 40px; line-height:40px; }
+
+/* 设置除最后一个列表项下所有的span样式 */
+#menu_list li:not(:last-child) span { display:inline-block; padding:0 3px; height:14px; line-height:14px; font-size:0.9em; color:#fff; border-radius:2px; box-shadow:0 -1px 0 #6ce6b6, 0 1px 0 #24548e; background-image:-*-linear-gradient(top, #2b95e0, #2175d7); }
+/* 设置除最后一个列表项下所有的a样式 */
+#menu_list li:not(:last-child) a { line-height:20px; border-top:10px solid transparent; border-bottom:10px solid transparent; border-left:1px solid #222a30;
+transition:all 0.3s ease-out; transform-style:preserve-3d; }
+#menu_list li:not(:last-child) a:hover { color:#555; border-left:1px solid transparent; background-color:#fff; }
+/* 设置最后一个列表项 */
+#menu_list li:last-child { float:right; }
+/* 设置最后一个列表项图片 */
+#menu_list li:last-child img { width:30px; height:30px; margin-left:2px; vertical-align:middle; border-radius:2px; box-shadow:0 -1px 0 rgba(0,0,0,0.2); }
+/* 设置最后一个列表项的span样式 */
+#menu_list li:last-child span { color:#a3c8ea; }
+
+/* 设置第一个列表项 */
+#menu_list li:first-child a { padding-left:25px; font-size:0; }
+
+/* 设置icon */
+#menu_list a:before, #menu_list .btn_search:before { position:absolute; left:15px; vertical-align:middle; font-size:18px; font-family:'icomoon'; font-style:normal; font-weight:normal; speak:none; font-smoothing:antialiased; }
+
+#menu_list li:nth-child(1) a:before { content:"\21"; /* 代表首页的icon */ }
+#menu_list li:nth-child(2) a:before, #menu_list .btn_search:before { content:"\7d"; /* 放大镜 */ }
+#menu_list li:nth-child(3) a:before { content:"\63"; /* 评论信息 */ }
+#menu_list li:nth-child(4) a:before { content:"\e022"; /* google plus */ }
+#menu_list li:nth-child(5) a:before { content:"\38"; /* 文件夹 */ }
+
+/* 设置下接搜索表单样式 */
+.menu_down { position:absolute; top:40px; left:0; width:300px; padding:20px; margin-left:-1px; background-color:#fff; transition:all 0.3s ease-in; transform:rotateX(-90deg); }
+/* 设置搜索列表项悬浮时下拉搜索表单样式 */
+#menu_list li:hover .menu_down { transform:rotateX(0deg); }
+/* 设置文本框样式 */
+.menu_down input[type="text"] { width:100%; height:30px; padding-left:5px; border:1px solid #ddd; border-radius:2px; box-shadow:0 1px 2px rgba(0,0,0,0.2) inset; background-color:transparent; transition:all 0.3s ease-in; backface-visibility:hidden; }
+.menu_down input[type="text"]:focus { outline:0 none; border-color:rgba(82, 168, 236, 0.8); box-shadow:inset 0 1px 3px rgba(0,0,0,0.1), 0 0 8px rgba(82,168,236,0.6); } 
+/*设置搜索按钮样式*/
+.btn_search { position:absolute; top:22px; right:22px; width:24px; height:26px; border:none; background-color:transparent; }
+.btn_search:before { font-size:14px !important; top:6px; left:6px !important; color:#747474; }
+
+
+
+
+/* font-face */
+@font-face {
+    font-family:'icomoon';
+    src:url('../fonts/icomoon.eot');
+    src:url('../fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/icomoon.woff') format('woff'),
+        url('../fonts/icomoon.ttf') format('truetype'),
+        url('../fonts/icomoon.svg#icomoon') format('svg');
+    font-weight:normal;
+    font-style:normal;
+}
+
+
+
+
+
+/***** other *****/
+*, *:before, *:after{ -*-box-sizing:border-box; }
+.demo { padding:0 10%; margin-bottom:20px; }
+
+.demo_tip { padding:20px; height:100%; background:#eee; }
+.fc_red { color:#ff0000; }

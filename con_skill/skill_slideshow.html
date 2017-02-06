@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="icons"/>
+    <meta name="keywords" content="icons"/>
+    <meta name="robots" content="whj"/>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/page.css">
+</head>
+<body>
+	<div class="wrap g_main">
+        <div class="snav">
+        </div>
+        <div class="s_right">
+            <h2 id="js_skill_1" name="other_skill_1">responsiveslides(微型/兼容ie6)</h2>
+            <p><a href="http://responsiveslides.com/" target="_blank">参考地址</a></p>
+            <pre>
+1. Link files
+
+&lt;script src="js/jquery.min.js">&lt;/script>
+&lt;script src="js/responsiveslides.min.js">&lt;/script>
+
+2. Add Markup
+
+&lt;div class="slideshow">
+    &lt;ul class="rslides">
+      &lt;li>&lt;img src="1.jpg" alt="">&lt;/li>
+      &lt;li>&lt;img src="2.jpg" alt="">&lt;/li>
+      &lt;li>&lt;img src="3.jpg" alt="">&lt;/li>
+    &lt;/ul>
+&lt;/div>
+
+3. Add CSS
+
+.slideshow { position:absolute; top:206px; left:150px; width:720px; height:340px; color:#fff; }
+.rslides { position:relative; list-style:none; overflow:hidden; padding:0; margin: 0; }
+.rslides li { -webkit-backface-visibility:hidden; position:absolute; display:none; left:0; top:0; }
+.rslides li:first-child { position: relative; display: block; float: left; }
+.rslides img { display: block; height: auto; float: left; width: 100%; border: 0; }
+
+.rslides1_nav { position:absolute; top:100px; display:block; width:35px; height:111px; text-indent:-9999px; background-image:url(../images/slidershow-btn.jpg); background-repeat:no-repeat; }
+.slideshow .prev { left:-100px; background-position:0 -120px; }
+.slideshow .next { right:-100px; background-position:-45px -120px; }
+.slideshow .prev:hover { background-position:0 0; }
+.slideshow .next:hover { background-position:-45px 0; }
+
+.rslides_tabs { position:absolute; bottom:-40px; left:-21px; width:246px; height:63px; }
+.rslides_tabs li { float:left; }
+
+4. Hook up the slideshow
+
+&lt;script>
+  $(function() {
+    $(".rslides").responsiveSlides();
+  });
+&lt;/script>
+</pre>
+
+            <p>5. Options you can customize</p>
+            <pre>
+$(".rslides").responsiveSlides({
+  auto: true,             // Boolean: Animate automatically, true or false
+  speed: 500,            // Integer: Speed of the transition, in milliseconds
+  timeout: 4000,          // Integer: Time between slide transitions, in milliseconds
+  pager: false,           // Boolean: Show pager, true or false
+  nav: false,             // Boolean: Show navigation, true or false
+  random: false,          // Boolean: Randomize the order of the slides, true or false
+  pause: false,           // Boolean: Pause on hover, true or false
+  pauseControls: true,    // Boolean: Pause when hovering controls, true or false
+  prevText: "Previous",   // String: Text for the "previous" button
+  nextText: "Next",       // String: Text for the "next" button
+  maxwidth: "",           // Integer: Max-width of the slideshow, in pixels
+  navContainer: "",       // Selector: Where controls should be appended to, default is after the 'ul'
+  manualControls: "",     // Selector: Declare custom pager navigation
+  namespace: "rslides",   // String: Change the default namespace used
+  before: function(){},   // Function: Before callback
+  after: function(){}     // Function: After callback
+});
+            </pre>
+
+        </div>       
+	</div>
+
+  <script type="text/javascript" src="../js/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="../js/common.js"></script>
+    <script type="text/javascript">
+    common.view.snav(skillSnavList);
+    </script>
+</body>
+</html>

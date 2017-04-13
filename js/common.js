@@ -6,10 +6,15 @@ var navmore = [
     //     "china" : "生活技能",
     //     "href" : "http://whj.fayfox.com/skill.html"
     // },
+    // {
+    //     "name" : "painting",
+    //     "china" : "蜜汁日常",
+    //     "href" : "http://whj.fayfox.com/painting.html"
+    // },
     {
-        "name" : "painting",
-        "china" : "蜜汁日常",
-        "href" : "http://whj.fayfox.com/painting.html"
+        "name" : "github/work",
+        "china" : "工作模板",
+        "href" : "https://github.com/dadiu/work/"
     },
     {
         "name" : "work",
@@ -39,8 +44,8 @@ var navmore = [
     {
         "name" : "github",
         "china" : "github",
-        "href" : "https://github.com/dadiu"
-        //, "open" : "_blank"
+        "href" : "https://github.com/dadiu",
+        "open" : "_blank"
     },
     {
         "name" : "wiki",

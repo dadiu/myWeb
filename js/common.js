@@ -13,8 +13,8 @@ var navmore = [
     // },
     {
         "name" : "github/work",
-        "china" : "工作模板",
-        "href" : "https://github.com/dadiu/work/"
+        "china" : "日常们",
+        "href" : "https://dadiu.github.io/"
     },
     {
         "name" : "work",

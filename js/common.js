@@ -11,21 +11,21 @@ var navmore = [
     //     "china" : "蜜汁日常",
     //     "href" : "http://whj.fayfox.com/painting.html"
     // },
-    {
-        "name" : "github/work",
-        "china" : "日常们",
-        "href" : "https://dadiu.github.io/"
-    },
+    // {
+    //     "name" : "github/work",
+    //     "china" : "日常们",
+    //     "href" : "https://dadiu.github.io/"
+    // },
     {
         "name" : "work",
-        "china" : "项目们",
+        "china" : "日常们",
         "href" : "http://whj.fayfox.com/work.html"
     },
-    {
-        "name" : "ui",
-        "china" : "模板",
-        "href" : "http://whj.fayfox.com/ui.html"
-    },
+    // {
+    //     "name" : "ui",
+    //     "china" : "模板",
+    //     "href" : "http://whj.fayfox.com/ui.html"
+    // },
     // {
     //     "name" : "plug",
     //     "china" : "插件",

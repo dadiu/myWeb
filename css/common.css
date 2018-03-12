@@ -222,18 +222,18 @@ date : 20160503
 #g_homeBgRight.fn_animate { right:-50%; }
 
 
-#g_homeUserPic, #g_homeNav { position:absolute; top:50%; height:358px; width:358px; z-index:4; }
+#g_homeUserPic, #g_homeNav { position:absolute; top:50%; height:217px; width:217px; z-index:4; }
 #g_homeUserPic { 
-    right:50%; background:#fff; padding:30px; border:10px solid rgba(255, 255, 255, 0.1); 
+    right:50%; background:#fff; padding:24px; border:10px solid rgba(255, 255, 255, 0.1); 
     margin:-180px -11px 0 0;
     -moz-background-clip: padding; /* Firefox 3.6 */ 
     -webkit-background-clip: padding; /* Safari 4? Chrome 6? */ 
     background-clip: padding-box; /* Firefox 4, Safari 5, Opera 10, IE 9 */ 
 }
-#g_homeUserPicImg { height:278px; width:278px; cursor:pointer; }
+#g_homeUserPicImg { height:150px; width:150px; cursor:pointer; }
 
 
-#g_homeNav { left:50%; width:340px; margin-top:-172px; }
+#g_homeNav { left:50%; width:230px; margin-top:-172px; }
 #g_homeNav li { margin-bottom:10px; }
 #g_homeNav a {position:relative; display:block; padding-left:40px; height:60px; line-height:60px; background:#282828; color:#fff; font-size:1.4rem; }
 #g_homeNav a:before { position:absolute; left:11px; top:0; width:1px; height:60px; content:""; background:rgba(255,255,255,0.1) }
@@ -274,11 +274,14 @@ resize : 1200 980 768 480 320 ;
     .nav_cp { width: 160px; }
     .nav ul { padding-left: 160px; }
     /* index.html start */
-    #g_homeUserPic { width:260px; height:260px; margin-top:-130px; }
-    #g_homeUserPicImg { width:180px; height:180px; }
-    #g_homeNav a { height:40px; line-height:40px; }
+    #g_homeUserPic { width:210px; height:210px; margin-top:-130px; }
+    #g_homeUserPicImg { width:142px; height:142px; }
+    #g_homeNav a { height:54px; line-height:54px; }
 
-    #g_homeNav { margin-top:-120px; width:260px; }
+    #g_homeNav { margin-top:-121px; width:260px; }
+    #g_homeNav li{
+        margin-bottom: 15px;
+    }
     /* index.html end */
 
     .m_domeList { background:#efeff4; padding:0; }
@@ -304,7 +307,7 @@ resize : 1200 980 768 480 320 ;
 
 @media screen and (max-width:640px) {
     /* index.html start */
-    #g_homeNav a { padding-left:20px; height:40px; line-height:40px; font-size: 1.2rem; }
+    #g_homeNav a { padding-left:20px; font-size: 1.2rem; }
     #g_homeNav small { display:none; }
     /* index.html end */
 

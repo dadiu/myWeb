@@ -1,0 +1,164 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+ul,
+li,
+dl,
+dt,
+dd {
+    list-style: none;
+}
+
+body {
+    font-size: 12px;
+    color: #333;
+}
+
+.wrap {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.ff-song {
+    font-family: '宋体';
+}
+
+$fc-gray: #ccc;
+#g- {
+    &hd {
+        height: 60px;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #333;
+        color: #fff;
+        a {
+            color: #fff;
+        }
+    }
+    &nav {
+        display: flex;
+        a {
+            margin: 0 10px;
+        }
+    }
+}
+
+.user- {
+    &form {
+        padding: 50px;
+        width: 500px;
+        margin: 0 auto;
+        box-shadow: 0 0 2px 2px #eee;
+        border-radius: 5px;
+    }
+}
+
+.todo- {
+    &day {
+        padding-bottom: 20px;
+    }
+    &future {
+        padding-bottom: 50px;
+    }
+    &add {
+        @extend .ani-once;
+        height: 0;
+        overflow: hidden;
+        padding: 0 20px;
+        width: 100%;
+        &.fn-show {
+            height: 380px;
+            box-shadow: 0 0 1px 0 #ddd;
+            margin-bottom: 20px;
+            padding: 30px 50px;
+        }
+    }
+    &hd {
+        &-tips {
+            margin-bottom: 20px;
+            padding-left: 5px;
+        }
+    }
+    &bar {
+        column-count: 3;
+        column-gap: 1em;
+    }
+    &item {
+        break-inside: avoid;
+        padding: 5px 5px 10px;
+        &-bar {
+            box-shadow: 0 0 1px 1px #eee;
+            border-radius: 5px;
+            padding: 20px;
+        }
+    }
+    &day {
+        &- {
+            &list {
+                border-left: 1px solid #ddd;
+                margin-left: 10px;
+            }
+            &item {
+                padding-left: 20px;
+                position: relative;
+                margin-bottom: 20px;
+                cursor: pointer;
+                &.fn-ok {
+                    color: $fc-gray;
+                    .todo-day-status {
+                        border-color: $fc-gray;
+                    }
+                    .el-tag {
+                        color: $fc-gray;
+                    }
+                }
+            }
+            &status {
+                position: absolute;
+                left: -10px;
+                top: 0;
+                width: 20px;
+                height: 20px;
+                border: 1px solid #aaa;
+                background-color: #fff;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            &info {
+                font-size: 14px;
+                margin-bottom: 6px;
+            }
+            &type {}
+        }
+    }
+}
+
+.m- {
+    &title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #eee;
+        margin-bottom: 20px;
+    }
+}
+
+.el-tag {
+    margin-right: 5px;
+}
+
+//////////////////////////////////////////////
+// animate
+.ani-once {
+    transition: all .2s ease-out;
+    -moz-transition: all .2s ease-out;
+    -webkit-transition: all .2s ease-out;
+}

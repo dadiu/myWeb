@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
-    <meta name="description" content="home"/>
-    <meta name="keywords" content="home"/>
-    <meta name="robots" content="whj"/>
+    <meta name="description" content="home" />
+    <meta name="keywords" content="home" />
+    <meta name="robots" content="whj" />
     <meta name="viewport" content="width=320px, initial-scale=1, maximum-scale=1,minimum-scale=1, user-scalable=no">
     <title>7个吴海晶-手艺人</title>
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/common.css">
 </head>
+
 <body id="g_home">
     <!-- m_homeNew -->
     <section id="g_homeBg" class="fn_open">
@@ -22,21 +24,25 @@
                 <!-- <li><a href="https://github.com/dadiu" target="_blank">github <small> -  前端的小笔记</small></a></li> -->
                 <li><a href="http://whj.fayfox.com/wiki/" target="_blank">wiki <small> - 随笔 / 收藏夹</small></a></li>
                 <li><a href="https://github.com/dadiu" target="_blank">github <small> - 笔记</small></a></li>
-            </ul>  
+            </ul>
         </nav>
-        <div id="g_homeUserPic"><img src="img/home_userPic.png" alt="吴海晶" id="g_homeUserPicImg"/></div>
+        <div id="g_homeUserPic">
+            <p id="g_homeUserSummary">微信扫一扫 进入小程序</p>
+            <img src="img/mp.jpg" alt="吴海晶" id="g_homeUserPicImg" />
+        </div>
     </section>
 
     <script type="text/javascript" src="js/jquery-1.8.3.js"></script>
     <script type="text/javascript">
-    $("#g_homeUserPicImg").on("click", function(){
-        if($("#g_homeBgLeft").hasClass("fn_animate")){
-            $("#g_homeBgLeft, #g_homeBgRight").removeClass("fn_animate");
-            return false;
-        };
+        $("#g_homeUserPicImg").on("click", function() {
+            if ($("#g_homeBgLeft").hasClass("fn_animate")) {
+                $("#g_homeBgLeft, #g_homeBgRight").removeClass("fn_animate");
+                return false;
+            };
 
-        $("#g_homeBgLeft, #g_homeBgRight").addClass("fn_animate");
-    });
+            $("#g_homeBgLeft, #g_homeBgRight").addClass("fn_animate");
+        });
     </script>
- </body>   
+</body>
+
 </html>

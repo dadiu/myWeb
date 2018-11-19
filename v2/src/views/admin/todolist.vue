@@ -1,6 +1,7 @@
 <template>
   <div class="wrap">
-    <el-table :data="tableData" style="width: 100%" v-if="tableData">
+    控制台待做
+    <!-- <el-table :data="tableData" style="width: 100%" v-if="tableData">
       <el-table-column prop="date" label="日期">
       </el-table-column>
       <el-table-column prop="info" label="内容">
@@ -15,7 +16,7 @@
           <el-button size="small" type="danger" @click="removeFn(scope.row)">remove</el-button>
         </template>
       </el-table-column>
-    </el-table>
+    </el-table> -->
   </div>
 </template>
 
@@ -33,13 +34,13 @@ export default {
 
     let self = this;
     
-    getData.todoList({ istoday: "all" }, res => {
-      this.tableData = res.data.reverse();
-    });
+    // getData.todoList({ istoday: "all" }, res => {
+    //   this.tableData = res.data.reverse();
+    // });
 
-    getData.http.get('/user/list', {}, res=>{
-      self.userData = self.resetUserList(res.data)
-    });
+    // getData.http.get('/user/list', {}, res=>{
+    //   self.userData = self.resetUserList(res.data)
+    // });
   },
 
   methods: {

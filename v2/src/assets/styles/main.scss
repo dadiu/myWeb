@@ -17,6 +17,27 @@ body {
     color: #333;
 }
 
+@font-face {
+    font-family: 'iconfont';
+    /* project id 922008 */
+    src: url('//at.alicdn.com/t/font_922008_ek1ixs64xw4.eot');
+    src: url('//at.alicdn.com/t/font_922008_ek1ixs64xw4.eot?#iefix') format('embedded-opentype'), url('//at.alicdn.com/t/font_922008_ek1ixs64xw4.woff') format('woff'), url('//at.alicdn.com/t/font_922008_ek1ixs64xw4.ttf') format('truetype'), url('//at.alicdn.com/t/font_922008_ek1ixs64xw4.svg#iconfont') format('svg');
+}
+
+.iconfont {
+    font-family: "iconfont" !important;
+    font-size: 12px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+    margin-right: 5px;
+}
+
+#app {
+    padding-top: 80px;
+}
+
 .wrap {
     width: 1000px;
     margin: 0 auto;
@@ -27,55 +48,134 @@ body {
 }
 
 $fc-gray: #ccc;
+$fc-primary:#409EFF;
+.mb- {
+    &10 {
+        margin-bottom: 10px;
+    }
+    &20 {
+        margin-bottom: 20px;
+    }
+}
+
 #g- {
     &hd {
+        position: fixed;
+        z-index: 9;
+        width: 100%;
+        left: 0;
+        top: 0;
         height: 60px;
-        margin-bottom: 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        padding: 0 20px;
         background-color: #333;
         color: #fff;
         a {
             color: #fff;
         }
     }
+}
+
+.hd- {
+    &logo {
+        position: absolute;
+        left: 20px;
+        top: 0;
+    }
     &nav {
         display: flex;
-        a {
-            margin: 0 10px;
+        @extend .wrap;
+    }
+    &right {
+        position: absolute;
+        right: 20px;
+        top: 0;
+        height: 60px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+    &nick {
+        display: flex;
+        align-items: center;
+        margin-right: 10px;
+        border-right: 1px solid #222;
+        &::after {
+            content: "";
+            padding-right: 10px;
+            border-right: 1px solid #444;
+        }
+    }
+    &logout {
+        cursor: pointer;
+    }
+}
+
+.nav- {
+    &item {
+        height: 60px;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        padding: 0 30px;
+        border-right: 1px solid #222;
+        border-left: 1px solid #444;
+        @extend .ani-once;
+        &:hover,
+        &.router-link-active {
+            background-color: #111;
+        }
+        &:last-child::after {
+            content: "";
+            border-right: 1px solid #222;
         }
     }
 }
 
 .user- {
     &form {
-        padding: 50px;
         width: 500px;
         margin: 0 auto;
-        box-shadow: 0 0 2px 2px #eee;
-        border-radius: 5px;
+        padding-top: 50px;
+        .el-form {
+            box-shadow: 0 0 2px 2px #eee;
+            border-radius: 5px;
+            padding: 50px 50px 30px;
+            margin-bottom: 20px;
+        }
+        &- {
+            &ft {
+                display: flex;
+                justify-content: flex-end;
+            }
+            &link {
+                color: #999;
+                margin-left: 20px;
+                text-decoration: none;
+                &:hover {
+                    color: #333;
+                }
+            }
+        }
     }
 }
 
 .todo- {
-    &day {
-        padding-bottom: 20px;
-    }
     &future {
         padding-bottom: 50px;
     }
     &add {
         @extend .ani-once;
-        height: 0;
-        overflow: hidden;
-        padding: 0 20px;
-        width: 100%;
+        position: fixed;
+        z-index: 9;
+        left: 100%;
+        top: 160px;
+        width: 450px;
+        margin-left: 50px;
+        padding: 20px 30px;
+        background-color: #fff;
         &.fn-show {
-            height: 380px;
+            left: 50%;
             box-shadow: 0 0 1px 0 #ddd;
-            margin-bottom: 20px;
-            padding: 30px 50px;
         }
     }
     &hd {
@@ -89,6 +189,7 @@ $fc-gray: #ccc;
         column-gap: 1em;
     }
     &item {
+        position: relative;
         break-inside: avoid;
         padding: 5px 5px 10px;
         &-bar {
@@ -97,29 +198,78 @@ $fc-gray: #ccc;
             padding: 20px;
         }
     }
+    &between {
+        box-shadow: 0 0 1px $fc-gray;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    &gray,
+    &white {
+        padding: 30px 20px;
+        min-height: 700px;
+    }
+    &gray {
+        background-color: #ebeef5;
+    }
     &day {
+        padding-bottom: 10px;
         &- {
             &list {
+                position: relative;
                 border-left: 1px solid #ddd;
                 margin-left: 10px;
+                &:after {
+                    content: "";
+                    position: absolute;
+                    z-index: 1;
+                    left: -3px;
+                    bottom: 0;
+                    width: 6px;
+                    height: 6px;
+                    border-radius: 50%;
+                    background-color: $fc-gray;
+                }
             }
             &item {
                 padding-left: 20px;
                 position: relative;
                 margin-bottom: 20px;
-                cursor: pointer;
                 &.fn-ok {
-                    color: $fc-gray;
+                    .todo-day-info {
+                        color: #999;
+                        text-decoration: line-through;
+                    }
                     .todo-day-status {
                         border-color: $fc-gray;
                     }
-                    .el-tag {
-                        color: $fc-gray;
+                }
+                &.fn-lay {
+                    color: $fc-primary;
+                    .todo-day-info {
+                        color: $fc-primary;
+                        font-weight: bold;
+                    }
+                    .todo-day-status {
+                        border-color: $fc-primary;
+                    }
+                }
+                .el-icon-delete,
+                .el-icon-edit {
+                    cursor: pointer;
+                    margin-left: 5px;
+                    @extend .ani-once;
+                    opacity: 0;
+                }
+                &:hover {
+                    i {
+                        opacity: 1;
                     }
                 }
             }
             &status {
+                cursor: pointer;
                 position: absolute;
+                z-index: 2;
                 left: -10px;
                 top: 0;
                 width: 20px;
@@ -132,11 +282,26 @@ $fc-gray: #ccc;
                 align-items: center;
             }
             &info {
-                font-size: 14px;
+                cursor: pointer;
                 margin-bottom: 6px;
+                &- {
+                    &name {
+                        font-size: 14px;
+                    }
+                }
             }
-            &type {}
         }
+    }
+    &none {
+        padding-top: 150px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    &progress {
+        position: absolute !important;
+        right: 20px;
+        top: 20px;
     }
 }
 

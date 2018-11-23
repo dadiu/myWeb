@@ -710,8 +710,7 @@ date : 20160503
     position: relative;
     display: block;
     padding-left: 40px;
-    height: 60px;
-    line-height: 60px;
+    line-height: 42px;
     background: #282828;
     color: #fff;
     font-size: 1.4rem;
@@ -813,8 +812,7 @@ resize : 1200 980 768 480 320 ;
         height: 142px;
     }
     #g_homeNav a {
-        height: 54px;
-        line-height: 54px;
+        line-height: 37px;
     }
     #g_homeNav {
         margin-top: -121px;

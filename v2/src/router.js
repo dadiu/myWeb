@@ -4,7 +4,8 @@ import Layout from '@/views/layout'
 
 import User from '@/views/user/router'
 import Todolist from '@/views/todolist/router'
-import Admins from '@/views/admin/router'
+
+import Admins from '@/admin/router'
 
 
 Vue.use(Router)

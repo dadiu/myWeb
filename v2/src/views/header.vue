@@ -2,14 +2,14 @@
 
   <header id="g-hd">
     <router-link :to="{name:'home'}" class="hd-logo">
-      <img src="~@/assets/img/logo.jpg" alt="logo" width="65" height="60">
+      <img src="~@/assets/img/logo.jpg" alt="logo" height="60">
     </router-link>
     <nav class="hd-nav">
       <router-link :to="{name : 'todo.list'}" class="nav-item">
         <i class="iconfont">&#xe663;</i>
         每日一清
       </router-link>
-      <router-link :to="{name : 'admin.todolist'}" class="nav-item" v-if="isAdmin == 0">
+      <router-link :to="{name : 'admin'}" class="nav-item" v-if="isAdmin != 0">
         <i class="iconfont">&#xe696;</i>
         控制台
       </router-link>
@@ -30,7 +30,7 @@
       <router-link tag="button" class="el-button el-button--default el-button--small" :to="{name:'register'}">
         注册
       </router-link>
-      <router-link tag="button"  class="el-button el-button--primary el-button--small" :to="{name:'login'}">
+      <router-link tag="button"  class="el-button el-button--default el-button--small" :to="{name:'login'}">
         <i class="iconfont">&#xe63a;</i>登录
       </router-link>
     </p>
@@ -46,7 +46,7 @@ export default {
     return {
       isLogin: false,
       nick: "",
-      isAdmin:1
+      isAdmin:0
     };
   },
 
@@ -69,6 +69,7 @@ export default {
         self.isAdmin = res.data.power;
         self.isLogin = true;
       });
+
     },
 
     logoutFn() {

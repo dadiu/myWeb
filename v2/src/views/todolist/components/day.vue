@@ -144,9 +144,11 @@ export default {
 
     changeStatus(item) {
       let self = this;
-      let data = Object.assign({}, item, {
-        status: item.status == 0 ? 1 : 0
-      });
+      
+      let data = {
+        status: item.status == 0 ? 1 : 0,
+        id : item._id
+      };
 
       getData.todoChangeStatus(data, res => {
         self.$emit("resetList");

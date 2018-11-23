@@ -15,6 +15,7 @@ dd {
 body {
     font-size: 12px;
     color: #333;
+    background-color: #fefefe;
 }
 
 @font-face {
@@ -47,8 +48,9 @@ body {
     font-family: '宋体';
 }
 
-$fc-gray: #ccc;
-$fc-primary:#409EFF;
+$c-gray: #ccc;
+$c-primary:#409EFF;
+$c-primary-dark: #398ee5;
 .mb- {
     &10 {
         margin-bottom: 10px;
@@ -65,13 +67,10 @@ $fc-primary:#409EFF;
         width: 100%;
         left: 0;
         top: 0;
-        height: 60px;
         padding: 0 20px;
-        background-color: #333;
         color: #fff;
-        a {
-            color: #fff;
-        }
+        background-color: $c-primary;
+        border-bottom: 3px solid $c-primary-dark;
     }
 }
 
@@ -98,11 +97,10 @@ $fc-primary:#409EFF;
         display: flex;
         align-items: center;
         margin-right: 10px;
-        border-right: 1px solid #222;
+        border-right: 1px solid rgba($color: $c-gray, $alpha: 0.6);
         &::after {
             content: "";
             padding-right: 10px;
-            border-right: 1px solid #444;
         }
     }
     &logout {
@@ -116,13 +114,14 @@ $fc-primary:#409EFF;
         display: flex;
         align-items: center;
         text-decoration: none;
-        padding: 0 30px;
-        border-right: 1px solid #222;
-        border-left: 1px solid #444;
+        padding: 0 25px;
+        color: #fff;
         @extend .ani-once;
-        &:hover,
         &.router-link-active {
-            background-color: #111;
+            background-color: rgba($color: #000, $alpha: 0.1);
+        }
+        &:hover {
+            background-color: rgba($color: #000, $alpha: 0.2);
         }
         &:last-child::after {
             content: "";
@@ -193,15 +192,17 @@ $fc-primary:#409EFF;
         break-inside: avoid;
         padding: 5px 5px 10px;
         &-bar {
+            background-color: #fff;
             box-shadow: 0 0 1px 1px #eee;
             border-radius: 5px;
             padding: 20px;
         }
     }
     &between {
-        box-shadow: 0 0 1px $fc-gray;
+        box-shadow: 0 0 1px 1px #eee;
         border-radius: 8px;
         overflow: hidden;
+        background-color: #fff;
     }
     &gray,
     &white {
@@ -227,7 +228,7 @@ $fc-primary:#409EFF;
                     width: 6px;
                     height: 6px;
                     border-radius: 50%;
-                    background-color: $fc-gray;
+                    background-color: $c-gray;
                 }
             }
             &item {
@@ -240,17 +241,17 @@ $fc-primary:#409EFF;
                         text-decoration: line-through;
                     }
                     .todo-day-status {
-                        border-color: $fc-gray;
+                        border-color: $c-gray;
                     }
                 }
                 &.fn-lay {
-                    color: $fc-primary;
+                    color: $c-primary;
                     .todo-day-info {
-                        color: $fc-primary;
+                        color: $c-primary;
                         font-weight: bold;
                     }
                     .todo-day-status {
-                        border-color: $fc-primary;
+                        border-color: $c-primary;
                     }
                 }
                 .el-icon-delete,

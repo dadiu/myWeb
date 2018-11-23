@@ -1,0 +1,63 @@
+/*
+ * @Author: whj 
+ * @Date: 2018-11-22 10:17:41 
+ * @Last Modified by: whj
+ * @Last Modified time: 2018-11-23 16:41:35
+ */
+
+$fc-primary:#409EFF;
+#admin {
+    margin-top: -80px;
+    padding-top: 60px;
+    height: 100vh;
+    display: flex;
+    overflow: hidden;
+    &-error {
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 50vh;
+    }
+}
+
+.admin- {
+    &side- {
+        &menu {
+            width: 12.5vw;
+            min-width: 160px;
+            max-width: 200px;
+            height: 100vh;
+            background-color: #fff;
+            border-right: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+        }
+        &item {
+            height: 48px;
+            display: flex;
+            align-items: center;
+            padding-left: 20px;
+            color: #333;
+            text-decoration: none;
+            border-bottom: 1px solid #eee;
+            &.router-link-active {
+                color: #fff;
+                background-color: $fc-primary;
+            }
+        }
+    }
+    &main {
+        width: 87.5vw;
+        padding: 20px;
+        overflow: auto;
+    }
+}
+
+.m- {
+    &breadcrumb {
+        padding-bottom: 20px;
+    }
+}

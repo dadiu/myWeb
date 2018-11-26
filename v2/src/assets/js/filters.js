@@ -2,7 +2,7 @@
  * @Author: whj 
  * @Date: 2018-11-12 11:34:13 
  * @Last Modified by: whj
- * @Last Modified time: 2018-11-23 14:41:37
+ * @Last Modified time: 2018-11-26 13:33:08
  */
 
 module.exports = {
@@ -73,5 +73,10 @@ module.exports = {
         });
 
         return [].concat(status_0, status_2, status_1);
+    },
+
+    // 去掉空格
+    trimFn(str) {
+        return str.replace(/(^\s*)|(\s*$)/g, "");
     }
 }

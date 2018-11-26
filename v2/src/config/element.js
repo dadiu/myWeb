@@ -19,7 +19,9 @@ import {
     Loading,
     Message,
     MessageBox,
-    Dialog
+    Dialog,
+    Select,
+    Option,
 } from 'element-ui';
 
 
@@ -41,6 +43,8 @@ Vue.use(Alert);
 Vue.use(Loading.directive);
 Vue.use(Table);
 Vue.use(TableColumn);
+Vue.use(Select);
+Vue.use(Option);
 
 Vue.prototype.$loading = Loading.service;
 Vue.prototype.$alert = MessageBox.alert;

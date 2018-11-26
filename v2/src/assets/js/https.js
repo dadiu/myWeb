@@ -2,7 +2,7 @@
  * @Author: whj 
  * @Date: 2018-11-21 17:51:13 
  * @Last Modified by: whj
- * @Last Modified time: 2018-11-22 09:41:04
+ * @Last Modified time: 2018-11-26 14:26:15
  */
 import Vue from 'vue';
 import router from '../../router.js';
@@ -28,10 +28,14 @@ export default {
             // 未登录
             if (res.code === 403) {
 
-                Message({
-                    type: 'warning',
-                    message: `提示：请先登录`
-                })
+                // 获取基础信息接口 => 不提示
+                if (url != '/user/info') {
+
+                    Message({
+                        type: 'warning',
+                        message: `提示：请先登录`
+                    })
+                }
 
                 router.push({
                     name: "login"

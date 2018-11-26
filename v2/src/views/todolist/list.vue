@@ -1,7 +1,9 @@
 <template>
   <div class="wrap">
     <div class="m-title">
-      <p>
+      <div>
+
+        <!-- 菜单 -->
         <el-button :class="{'el-button--primary' : isShow == 0}" @click="changeMenu(0)">
           <i class="iconfont">&#xe7d1;</i>今天
         </el-button>
@@ -11,8 +13,22 @@
         <el-button :class="{'el-button--primary' : isShow == -1}" @click="changeMenu(-1)">
           过去
         </el-button>
-      </p>
-      <el-button icon="el-icon-plus" @click="showAddFn(false)">添加</el-button>
+
+      </div>
+
+      <div>
+        <!-- 筛选 -->
+        <el-input placeholder="enter键搜索" v-model="searchValue" maxlength="8" class="m-search" @keyup.enter.native="searchFn">
+
+          <el-select v-model="selectType" slot="prepend" @change="selsctTypeFn" class="m-search-left">
+            <el-option v-for="item in selectOption" :key="item.s" :label="item.label" :value="item.value" :disabled="item.disabled">
+            </el-option>
+          </el-select>
+        </el-input>
+
+        <!-- add -->
+        <el-button icon="el-icon-plus" @click="showAddFn(false)">添加</el-button>
+      </div>
     </div>
 
     <!-- add -->
@@ -70,7 +86,20 @@ export default {
       isAddShow: false,
       itemForm: false,
       list: [],
-      loading: false
+      loading: false,
+      selectType: "标签",
+      searchValue: "",
+      selectOption: [
+        {
+          label: "标签",
+          value: 1
+        },
+        {
+          label: "任务",
+          value: 2,
+          disabled: true
+        }
+      ]
     };
   },
 
@@ -78,13 +107,14 @@ export default {
     this.changeMenu();
   },
 
+
   methods: {
     changeMenu(type = this.isShow) {
       this.isShow = type;
-
+      this.searchValue = "";
       this.loading = true;
 
-      getData.todoList({ istoday: this.isShow }, res => {
+      getData.todoList({ istoday: this.isShow, searchType: 0 }, res => {
         this.loading = false;
 
         // history
@@ -106,7 +136,7 @@ export default {
       let type = 0;
 
       let nowDate = filters.dateFormat();
-  
+
       if (nowDate > todoDate) {
         type = -1;
       } else if (nowDate < todoDate) {
@@ -115,11 +145,43 @@ export default {
         type = 0;
       }
 
-      getData.todoList({ istoday: type }, res => {
+      getData.todoList({ istoday: type, searchType: 0 }, res => {
         this.loading = false;
         this.isShow = type;
         this.list = res.data;
       });
+    },
+
+    selsctTypeFn(data) {
+      console.log(`change : ${data}`);
+    },
+
+    searchFn() {
+      // console.log(this.searchValue);
+
+      let val = filters.trimFn(this.searchValue);
+      // 查找类别
+      let type = 1;
+
+      if (val.length == 0) {
+        type = 0;
+      } else if(this.selectType != "标签"){
+        type = this.selectType;
+      }
+
+      this.loading = true;
+      getData.todoList(
+        {
+          istoday: this.isShow,
+          searchType: type,
+          searchValue: val
+        },
+        res => {
+          this.loading = false;
+          // history
+          this.list = this.isShow == -1 ? res.data.reverse() : res.data;
+        }
+      );
     }
   }
 };

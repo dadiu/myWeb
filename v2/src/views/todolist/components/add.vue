@@ -1,5 +1,5 @@
 <template>
-  <el-dialog :visible.sync="isShow" width="450px" :before-close="cancelFn">
+  <el-dialog class="todo-add" :visible.sync="isShow" width="450px" :before-close="cancelFn">
 
     <!-- form -->
     <el-form :model="form" :rules="rules" ref="form" label-width="60px">

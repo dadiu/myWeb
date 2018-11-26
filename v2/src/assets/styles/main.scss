@@ -163,18 +163,8 @@ $c-primary-dark: #398ee5;
         padding-bottom: 50px;
     }
     &add {
-        @extend .ani-once;
-        position: fixed;
-        z-index: 9;
-        left: 100%;
-        top: 160px;
-        width: 450px;
-        margin-left: 50px;
-        padding: 20px 30px;
-        background-color: #fff;
-        &.fn-show {
-            left: 50%;
-            box-shadow: 0 0 1px 0 #ddd;
+        .el-dialog__body {
+            padding-bottom: 0;
         }
     }
     &hd {
@@ -229,6 +219,9 @@ $c-primary-dark: #398ee5;
                     height: 6px;
                     border-radius: 50%;
                     background-color: $c-gray;
+                }
+                .el-tag {
+                    cursor: pointer;
                 }
             }
             &item {
@@ -315,10 +308,20 @@ $c-primary-dark: #398ee5;
         border-bottom: 1px solid #eee;
         margin-bottom: 20px;
     }
+    &search {
+        width: 300px !important;
+        margin-right: 10px;
+        &- {
+            &left {
+                width: 80px;
+            }
+        }
+    }
 }
 
 .el-tag {
     margin-right: 5px;
+    margin-bottom: 5px;
 }
 
 //////////////////////////////////////////////

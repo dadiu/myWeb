@@ -6,11 +6,15 @@
     </router-link>
     <nav class="hd-nav">
       <router-link :to="{name : 'todo.list'}" class="nav-item">
-        <i class="iconfont">&#xe663;</i>
+        <i class="el-icon-tickets"></i>
         每日一清
       </router-link>
+      <router-link :to="{name : 'message'}" class="nav-item">
+        <i class="el-icon-document"></i>
+        便签
+      </router-link>
       <router-link :to="{name : 'admin'}" class="nav-item" v-if="isAdmin != 0">
-        <i class="iconfont">&#xe696;</i>
+        <i class="el-icon-setting"></i>
         控制台
       </router-link>
     </nav>

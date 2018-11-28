@@ -1,98 +1,125 @@
 <template>
-  <div>
-    <p class="todo-day" v-if="isbetween">
+  <div v-if="istoday == 0">
+    <!-- today -->
+    <p class="todo-day">
       <i class="el-icon-date"></i>
       {{Date.parse(new Date()) | dateFormat('-')}}
       {{Date.parse(new Date()) | weekFormat}}
-      <br />
     </p>
-
-    <p class="todo-day" v-if="!isbetween && list && list.length > 0">
-      <i class="el-icon-date"></i>
-      {{list[0].todoTime | dateFormat('-')}}
-      {{list[0].todoTime | weekFormat}}
-      <br />
-    </p>
-    <!-- today -->
-    <el-progress :percentage=progress v-if="isbetween" :text-inside="true" :stroke-width="16" class="mb-10 todo-between-progress">
+    <el-progress
+      :percentage=progress
+      :text-inside="true"
+      :stroke-width="16"
+      class="mb-10 todo-between-progress"
+    >
     </el-progress>
-    <el-row class="todo-between" v-if="isbetween">
+    <el-row class="todo-between">
       <el-col :span="12">
         <div class="todo-white">
-          <ViewDayItem v-if="todayList.iswait.length>0" :list="todayList.iswait" @changeStatus="changeStatus" @editFn="editFn" @deleteFn="deleteFn" />
+          <ViewDayItem
+            v-if="todayList.iswait.length>0"
+            :list="todayList.iswait"
+            @changeStatus="changeStatus"
+            @editFn="editFn"
+          />
+
           <!-- none -->
-          <div class="todo-none" v-else>
+          <div
+            class="todo-none"
+            v-else
+          >
             <img src="~@/assets/img/todo-iswait-none.png" />
             <p>
-              <el-button type="primary" @click="$emit('showEditFn', false)">ojbk</el-button>
+              <el-button
+                type="primary"
+                @click="$emit('showEditFn', false)"
+              >ojbk</el-button>
             </p>
           </div>
         </div>
       </el-col>
       <el-col :span="12">
         <div class="todo-gray">
-          <ViewDayItem v-if="todayList.isok.length>0" :list="todayList.isok" @changeStatus="changeStatus" @editFn="editFn" @deleteFn="deleteFn" />
+          <ViewDayItem
+            v-if="todayList.isok.length>0"
+            :list="todayList.isok"
+            @changeStatus="changeStatus"
+            @editFn="editFn"
+          />
           <!-- none -->
-          <p class="todo-none" v-else>
+          <p
+            class="todo-none"
+            v-else
+          >
             <img src="~@/assets/img/todo-isok-none.png" />
           </p>
         </div>
       </el-col>
     </el-row>
 
-    <!-- future || history -->
-    <el-progress color="#ccc" type="circle" :percentage=progress v-if="!isbetween" :width="40" :stroke-width="3" class="todo-progress">
-    </el-progress>
-    <ViewDayItem v-if="!isbetween" :list="list" @changeStatus="changeStatus" @editFn="editFn" @deleteFn="deleteFn" />
+  </div>
 
-    <!-- dialog delete -->
-    <el-dialog :visible.sync="deleteDialogVisible" width="300px">
-      <p class="mb-10">
-        删除 <strong>{{deleteItem.info}}</strong> 吗?
-      </p>
-      <el-tag size="medium" v-for="type in deleteItem.types" :key="type.k">
-        {{type}}
-      </el-tag>
-      <span slot="footer" class="dialog-footer">
-        <el-button @click="deleteDialogVisible = false" size="small">取 消</el-button>
-        <el-button type="primary" size="small" @click="deleteNow">
-          <i class="el-icon-delete"></i>
-          删除
-        </el-button>
-      </span>
-    </el-dialog>
+  <!-- future || history -->
+  <div v-else>
+    <div
+      class="todo-day"
+      v-if="list && list.length > 0"
+    >
+      <i class="el-icon-date"></i>
+      {{list[0].todoTime | dateFormat('-')}}
+      {{list[0].todoTime | weekFormat}}
+
+
+      <!-- future -->
+      <el-progress
+        v-if="istoday == 1"
+        color="#ccc"
+        :percentage=progress
+        class="todo-progress"
+      >
+      </el-progress>
+
+      <!-- history -->
+      <el-progress
+        v-if="istoday == -1"
+        :status=progressStatus
+        :percentage=progress
+        class="todo-progress"
+      >
+      </el-progress>
+    </div>
+
+    <ViewListItem
+      :list="list"
+      @changeStatus="changeStatus"
+      @editFn="editFn"
+    />
+
   </div>
 
 </template>
 
 <script>
-import ViewDayItem from "./day-Item.vue";
+import ViewDayItem from "./day-item.vue";
+import ViewListItem from "./list-item.vue";
 import getData from "@/assets/js/getData";
 import filters from "@/assets/js/filters";
 export default {
-  components: { ViewDayItem },
+  components: { ViewDayItem, ViewListItem },
   props: {
     list: {
       type: [Array, Object],
       required: true
     },
-    showEditFn: {
-      type: Function
-    },
-    isbetween: {
-      type: Boolean,
-      default: false
-    },
-    resetList: {
-      type: Function
-    },
+    showEditFn: { type: Function },
+    resetList: { type: Function },
+    istoday: { type: String }
   },
   data() {
     return {
       pst: "hd",
       progress: 0,
-      deleteDialogVisible: false,
-      deleteItem: {},
+      progressStatus:'',
       todayList: {
         iswait: [], // 未完成
         isok: [] // 已完成 || 搁置
@@ -111,15 +138,13 @@ export default {
       let waitArr = [];
       let okArr = [];
 
-      if (this.isbetween) {
-        this.list.forEach(element => {
-          if (element.status == 0) {
-            waitArr.push(element);
-          } else {
-            okArr.push(element);
-          }
-        });
-      }
+      this.list.forEach(element => {
+        if (element.status == 0) {
+          waitArr.push(element);
+        } else {
+          okArr.push(element);
+        }
+      });
 
       this.todayList.iswait = waitArr;
       this.todayList.isok = okArr;
@@ -140,35 +165,19 @@ export default {
       });
 
       this.progress = Math.round((successCount / total) * 100);
+
+      this.progressStatus = this.progress == 100 ? 'success' : 'exception';
     },
 
     changeStatus(item) {
       let self = this;
-      
+
       let data = {
         status: item.status == 0 ? 1 : 0,
-        id : item._id
+        id: item._id
       };
 
       getData.todoChangeStatus(data, res => {
-        self.$emit("resetList");
-        // this.list[idx].status = !this.list[idx].status;
-        // this.progressFn();
-      });
-    },
-
-    deleteFn(item) {
-      this.deleteDialogVisible = true;
-      this.deleteItem = item;
-    },
-
-    deleteNow() {
-      let self = this;
-      let id = this.deleteItem._id;
-      // let idx = this.deleteItem.idx;
-
-      getData.todoDelete({ id }, res => {
-        self.deleteDialogVisible = false;
         self.$emit("resetList");
       });
     },

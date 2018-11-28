@@ -2,12 +2,19 @@
  * @Author: whj 
  * @Date: 2018-11-12 11:47:12 
  * @Last Modified by: whj
- * @Last Modified time: 2018-11-26 14:26:57
+ * @Last Modified time: 2018-11-28 16:14:15
  */
 
 import http from '@/assets/js/https';
 
 export default {
+
+
+    /////////////////////////////////////////////////
+    // 基础信息
+    baseInfo(cb) {
+        http.get('/base/info', {}, cb);
+    },
 
     /////////////////////////////////////////////////
     // 注册 
@@ -32,12 +39,13 @@ export default {
 
 
     /////////////////////////////////////////////////
-    // 添加todo
+    ////// - 每日一清
+    // 添加
     todoAdd(data, cb) {
         http.get('/todo/add', data, cb);
     },
 
-    // 今天 未来 过去
+    // 列表 = 今天 未来 过去
     todoList(data, cb) {
         http.get('/todo/list', data, cb);
     },
@@ -57,9 +65,23 @@ export default {
         http.get('/todo/delete', data, cb);
     },
 
+
     /////////////////////////////////////////////////
-    // 基础信息
-    baseInfo(cb) {
-        http.get('/base/info', {}, cb);
+    ////// - 便签
+    // 添加
+    messageAdd(data, cb) {
+        http.get('/message/add', data, cb);
+    },
+    // 列表
+    messageList(data, cb) {
+        http.get('/message/list', data, cb);
+    },
+    // 编辑
+    messageEdit(data, cb) {
+        http.get('/message/edit', data, cb);
+    },
+    // 删除
+    messageDelete(data, cb) {
+        http.get('/message/delete', data, cb);
     },
 }

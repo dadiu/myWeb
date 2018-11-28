@@ -2,7 +2,7 @@
  * @Author: whj 
  * @Date: 2018-11-22 10:17:41 
  * @Last Modified by: whj
- * @Last Modified time: 2018-11-23 16:41:35
+ * @Last Modified time: 2018-11-27 17:41:09
  */
 
 $fc-primary:#409EFF;
@@ -10,7 +10,7 @@ $fc-primary:#409EFF;
     margin-top: -80px;
     padding-top: 60px;
     height: 100vh;
-    display: flex;
+    position: relative;
     overflow: hidden;
     &-error {
         text-align: center;
@@ -26,10 +26,13 @@ $fc-primary:#409EFF;
 .admin- {
     &side- {
         &menu {
-            width: 12.5vw;
-            min-width: 160px;
-            max-width: 200px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 2;
+            width: 160px;
             height: 100vh;
+            padding-top: 60px;
             background-color: #fff;
             border-right: 1px solid #eee;
             display: flex;
@@ -50,9 +53,9 @@ $fc-primary:#409EFF;
         }
     }
     &main {
-        width: 87.5vw;
-        padding: 20px;
+        padding: 20px 20px 0 180px;
         overflow: auto;
+        height: 100vh;
     }
 }
 

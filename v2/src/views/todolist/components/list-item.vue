@@ -1,11 +1,12 @@
 <template>
+
   <ul class="todo-day-list">
     <li
       v-for="item in list"
-      :key="item.list"
+      :key="item.l"
       :class="['todo-day-item', {'fn-ok': item.status == 1}, {'fn-lay': item.status == 2}]"
     >
-
+      <!-- status -->
       <span
         class="todo-day-status"
         @click="$emit('changeStatus',item)"
@@ -20,34 +21,18 @@
         ></i>
       </span>
 
-      <p class="todo-day-info">
-        <span
-          class="todo-day-info-name"
-          @click="$emit('editFn', item)"
-        > {{item.info}} </span>
+      <!-- info -->
+      <span
+        class="todo-day-info"
+        @click="$emit('editFn', item)"
+      > {{item.info}} </span>
 
-        <!-- delete -->
-        <i
-          class="el-icon-delete"
-          v-if="item.status != 1"
-          @click="deleteFn(item)"
-        ></i>
-        <!-- edit -->
-        <i
-          class="el-icon-edit"
-          @click="$emit('editFn', item)"
-        ></i>
-      </p>
-
-      <p
-        class="todo-day-type"
-        v-if="item.types"
-      >
+      <p class="todo-day-types">
         <el-tag
           size="medium"
           v-for="type in item.types"
           :key="type.k"
-          v-if="item.status == 0"
+          v-if="item.types && item.status == 0"
         >
           {{type}}
         </el-tag>
@@ -56,26 +41,43 @@
           type="info"
           v-for="type in item.types"
           :key="type.k"
-          v-if="item.status != 0"
+          v-if="item.types&&item.status != 0"
         >
           {{type}}
         </el-tag>
       </p>
+
+      <!-- delete -->
+      <el-button
+        size="mini"
+        circle
+        class="el-icon-delete"
+        v-if="item.status != 1"
+        @click="deleteFn(item)"
+      >
+      </el-button>
+      <!-- edit -->
+      <el-button
+        size="mini"
+        class="el-icon-edit"
+        circle
+        @click="$emit('editFn', item)"
+      >
+      </el-button>
     </li>
   </ul>
 </template>
 
 <script>
 import event from "@/util/event";
+
 export default {
   props: {
     list: { type: Array },
     changeStatus: { type: Function },
     editFn: { types: Function }
   },
-  data() {
-    return {};
-  },
+
   methods: {
     deleteFn(item) {
       event.$emit("todoDelete", item);

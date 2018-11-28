@@ -55,7 +55,7 @@ export default {
     itemForm: {
       type: [Object, Boolean]
     },
-    isAddShow: {
+    dialogVisible: {
       type: Boolean
     }
   },
@@ -97,7 +97,7 @@ export default {
   },
 
   mounted() {
-    this.isShow = this.isAddShow;
+    this.isShow = this.dialogVisible;
     // console.log(this.isShow);
     if (this.itemForm) {
       Object.assign(this.form, this.itemForm);

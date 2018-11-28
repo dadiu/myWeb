@@ -51,6 +51,7 @@ body {
 $c-gray: #ccc;
 $c-primary:#409EFF;
 $c-primary-dark: #398ee5;
+$c-gray-dark: #ebeef5;
 .mb- {
     &10 {
         margin-bottom: 10px;
@@ -117,6 +118,9 @@ $c-primary-dark: #398ee5;
         padding: 0 25px;
         color: #fff;
         @extend .ani-once;
+        i {
+            margin-right: 8px;
+        }
         &.router-link-active {
             background-color: rgba($color: #000, $alpha: 0.1);
         }
@@ -173,19 +177,47 @@ $c-primary-dark: #398ee5;
             padding-left: 5px;
         }
     }
-    &bar {
-        column-count: 3;
-        column-gap: 1em;
-    }
     &item {
         position: relative;
-        break-inside: avoid;
         padding: 5px 5px 10px;
-        &-bar {
-            background-color: #fff;
-            box-shadow: 0 0 1px 1px #eee;
-            border-radius: 5px;
-            padding: 20px;
+    }
+    &list {
+        &- {
+            &bar {
+                background-color: rgba($color: $c-gray-dark, $alpha: 0.5);
+                border-radius: 5px;
+                padding: 20px;
+                box-shadow: 0 0 1px 1px #eee;
+                .todo-day {
+                    margin-bottom: 10px;
+                    &::after {
+                        content: "";
+                        display: block;
+                        height: 1px;
+                        margin-top: 20px;
+                        border-top: 1px solid rgba($color: #000, $alpha: 0.1);
+                        background-color: #fff;
+                    }
+                }
+                .todo-day-item {
+                    min-height: 36px;
+                    margin-bottom: 10px;
+                    display: flex;
+                    align-items: center;
+                    &:hover {
+                        background-color: rgba($color: #aaa, $alpha: 0.1);
+                    }
+                }
+                .todo-day-status {
+                    top: 6px;
+                }
+                .todo-day-info {
+                    min-width: 300px;
+                }
+                .todo-day-types {
+                    width: 300px;
+                }
+            }
         }
     }
     &between {
@@ -200,25 +232,27 @@ $c-primary-dark: #398ee5;
         min-height: 700px;
     }
     &gray {
-        background-color: #ebeef5;
+        background-color: $c-gray-dark;
     }
     &day {
+        position: relative;
         padding-bottom: 10px;
         &- {
             &list {
                 position: relative;
                 border-left: 1px solid #ddd;
                 margin-left: 10px;
-                &:after {
-                    content: "";
-                    position: absolute;
-                    z-index: 1;
-                    left: -3px;
+                padding: 10px 0;
+                &::after,
+                &::before {
+                    @extend .m-min-circle;
+                    left: -2px;
+                }
+                &::after {
                     bottom: 0;
-                    width: 6px;
-                    height: 6px;
-                    border-radius: 50%;
-                    background-color: $c-gray;
+                }
+                &::before {
+                    top: 0;
                 }
                 .el-tag {
                     cursor: pointer;
@@ -255,7 +289,8 @@ $c-primary-dark: #398ee5;
                     opacity: 0;
                 }
                 &:hover {
-                    i {
+                    .el-icon-delete,
+                    .el-icon-edit {
                         opacity: 1;
                     }
                 }
@@ -286,16 +321,67 @@ $c-primary-dark: #398ee5;
             }
         }
     }
-    &none {
-        padding-top: 150px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
     &progress {
         position: absolute !important;
-        right: 20px;
-        top: 20px;
+        right: 0;
+        top: 0;
+        width: 200px;
+        .el-progress__text {
+            color: #999;
+            font-size: 12px !important;
+        }
+    }
+}
+
+.message- {
+    &list {
+        margin: 20px 0;
+        position: relative;
+        &::after,
+        &::before {
+            @extend .m-min-circle;
+            left: 9px;
+        }
+        &::after {
+            bottom: 0;
+        }
+        &::before {
+            top: 0;
+        }
+    }
+    &item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        margin-left: 10px;
+        border-left: 1px solid #ddd;
+        @extend .ani-once;
+        &:hover {
+            background-color: rgba($color: #aaa, $alpha: 0.1);
+            .message-btns {
+                opacity: 1;
+            }
+        }
+    }
+    &left {
+        width: 80%;
+    }
+    &date {
+        margin-left: -6px;
+        color: #bbb;
+        .el-icon-time {
+            background-color: #fefefe;
+            margin-right: 5px;
+        }
+    }
+    &info {
+        padding: 10px 0 0 15px;
+    }
+    &btns {
+        @extend .ani-once;
+        opacity: 0;
+        padding-right: 15px;
     }
 }
 
@@ -317,11 +403,25 @@ $c-primary-dark: #398ee5;
             }
         }
     }
+    &none {
+        padding-top: 150px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    &min-circle {
+        content: "";
+        position: absolute;
+        z-index: 1;
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background-color: $c-gray;
+    }
 }
 
 .el-tag {
     margin-right: 5px;
-    margin-bottom: 5px;
 }
 
 //////////////////////////////////////////////

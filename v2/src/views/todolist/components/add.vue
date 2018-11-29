@@ -145,15 +145,17 @@ export default {
           if (self.itemForm) {
             // 更新
             getData.todoUpdate(data, res => {
-              self.$emit("saveAddFn", data.date);
+              self.$emit("saveAddFn", data.date, 'update');
               self.$emit("closeFn");
               self.form.info = "";
               self.types = [];
             });
+
           } else {
+
             // 创建
             getData.todoAdd(data, function(res) {
-              self.$emit("saveAddFn", data.date);
+              self.$emit("saveAddFn", data.date, 'create');
               self.$emit("closeFn");
               self.form.info = "";
               self.types = [];

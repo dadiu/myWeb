@@ -214,23 +214,25 @@ export default {
     },
 
     // 保存添加和编辑的内容 todoTime
-    saveAddFn(todoDate) {
+    saveAddFn(todoDate, activeType) {
       this.loading = true;
-      let type = 0;
 
       let nowDate = filters.dateFormat();
 
-      if (nowDate > todoDate) {
-        type = -1;
-      } else if (nowDate < todoDate) {
-        type = 1;
-      } else {
-        type = 0;
+      // 创建
+      if (activeType == "create") {
+        if (nowDate > todoDate) {
+          this.isShow = -1;
+        } else if (nowDate < todoDate) {
+          this.isShow = 1;
+        } else {
+          this.isShow = 0;
+        }
       }
 
-      getData.todoList({ istoday: type, searchType: 0 }, res => {
+      getData.todoList({ istoday: this.isShow, searchType: 0 }, res => {
         this.loading = false;
-        this.isShow = type;
+
         this.list = this.isShow == -1 ? res.data.reverse() : res.data;
       });
     },

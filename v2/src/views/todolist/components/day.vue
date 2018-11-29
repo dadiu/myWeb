@@ -25,7 +25,7 @@
 
           <!-- none -->
           <div
-            class="todo-none"
+            class="m-none"
             v-else
           >
             <img src="~@/assets/img/todo-iswait-none.png" />
@@ -48,7 +48,7 @@
           />
           <!-- none -->
           <p
-            class="todo-none"
+            class="m-none"
             v-else
           >
             <img src="~@/assets/img/todo-isok-none.png" />

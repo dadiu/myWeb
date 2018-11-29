@@ -1,14 +1,62 @@
 <template>
-  <el-dialog class="todo-add" :visible.sync="isShow" width="450px" :before-close="cancelFn">
+  <el-dialog
+    class="todo-add"
+    :visible.sync="isShow"
+    width="450px"
+    :before-close="cancelFn"
+  >
 
     <!-- form -->
-    <el-form :model="form" :rules="rules" ref="form" label-width="60px">
+    <el-form
+      :model="form"
+      :rules="rules"
+      ref="form"
+      label-width="60px"
+    >
 
-      <el-form-item label="时间" prop="date">
-        <el-date-picker type="date" placeholder="选择时间" :editable="false" :clearable="false" v-model="form.todoTime" format="yyyy 年 MM 月 dd 日" value-format="timestamp" :picker-options="pickerOptions"></el-date-picker>
+      <el-form-item
+        label="时间"
+        prop="date"
+      >
+        <el-date-picker
+          type="date"
+          placeholder="选择时间"
+          :editable="false"
+          :clearable="false"
+          v-model="form.todoTime"
+          format="yyyy 年 MM 月 dd 日"
+          value-format="timestamp"
+          :picker-options="pickerOptions"
+        ></el-date-picker>
       </el-form-item>
 
-      <el-form-item label="状态" prop="status">
+      <el-form-item
+        label="标签"
+        prop="type"
+      >
+        <el-input
+          v-model="type"
+          v-show="types.length < typeMaxCount"
+          @keyup.enter.native="addType"
+          :placeholder="'enter键确定 标签最多' + typeMaxCount + '个'"
+          maxlength="8"
+        >
+        </el-input>
+        <el-tag
+          :key="tag.k"
+          v-for="tag in types"
+          closable
+          :disable-transitions="false"
+          @close="deleteTypeFn(tag)"
+        >
+          {{tag}}
+        </el-tag>
+      </el-form-item>
+
+      <el-form-item
+        label="状态"
+        prop="status"
+      >
         <el-radio-group v-model="form.status">
           <el-radio :label="0">待完成</el-radio>
           <el-radio :label="1">已完成</el-radio>
@@ -16,24 +64,36 @@
         </el-radio-group>
       </el-form-item>
 
-      <el-form-item label="任务" prop="info">
-        <el-input v-model="form.info" placeholder="待完成内容" clearable maxlength="100" @keyup.enter.native="createFn('form')"></el-input>
-      </el-form-item>
-
-      <el-form-item label="标签" prop="type">
-        <el-input v-model="type" v-show="types.length < typeMaxCount" @keyup.enter.native="addType" :placeholder="'enter键确定 标签最多' + typeMaxCount + '个'" maxlength="8">
-        </el-input>
-        <el-tag :key="tag.k" v-for="tag in types" closable :disable-transitions="false" @close="deleteTypeFn(tag)">
-          {{tag}}
-        </el-tag>
+      <el-form-item
+        label="任务"
+        prop="info"
+      >
+        <el-input
+          v-model="form.info"
+          placeholder="待完成内容"
+          clearable
+          maxlength="100"
+          @keyup.enter.native="createFn('form')"
+        ></el-input>
       </el-form-item>
     </el-form>
 
     <!-- foot -->
-    <span slot="footer" class="dialog-footer">
+    <span
+      slot="footer"
+      class="dialog-footer"
+    >
       <el-button @click="cancelFn">取 消</el-button>
-      <el-button type="primary" @click="createFn('form')" v-if="itemForm">修改</el-button>
-      <el-button type="primary" @click="createFn('form')" v-if="!itemForm">创建</el-button>
+      <el-button
+        type="primary"
+        @click="createFn('form')"
+        v-if="itemForm"
+      >修改</el-button>
+      <el-button
+        type="primary"
+        @click="createFn('form')"
+        v-if="!itemForm"
+      >创建</el-button>
     </span>
   </el-dialog>
 </template>
@@ -43,21 +103,11 @@ import filters from "@/assets/js/filters";
 import getData from "@/assets/js/getData";
 export default {
   props: {
-    closeFn: {
-      type: Function
-    },
-    addFn: {
-      type: Function
-    },
-    saveAddFn: {
-      type: Function
-    },
-    itemForm: {
-      type: [Object, Boolean]
-    },
-    dialogVisible: {
-      type: Boolean
-    }
+    closeFn: { type: Function },
+    saveCallBack: { type: Function },
+    itemForm: { type: [Object, Boolean] },
+    activeType: { type: String },
+    dialogVisible: { type: Boolean }
   },
   data() {
     return {
@@ -98,7 +148,8 @@ export default {
 
   mounted() {
     this.isShow = this.dialogVisible;
-    // console.log(this.isShow);
+    console.log(this.itemForm);
+
     if (this.itemForm) {
       Object.assign(this.form, this.itemForm);
       this.types = [].concat(this.form.types);
@@ -111,10 +162,6 @@ export default {
       this.types = []; // 标签
       this.type = ""; //子标签
     }
-  },
-
-  watch: {
-    itemForm(value) {}
   },
 
   methods: {
@@ -142,20 +189,18 @@ export default {
             date: filters.dateFormat(self.form.todoTime) // 任务时间 [年月日]
           });
 
-          if (self.itemForm) {
-            // 更新
-            getData.todoUpdate(data, res => {
-              self.$emit("saveAddFn", data.date, 'update');
+          if (self.activeType == "create") {
+            // 创建
+            getData.todoAdd(data, function(res) {
+              self.$emit("saveCallBack", data);
               self.$emit("closeFn");
               self.form.info = "";
               self.types = [];
             });
-
           } else {
-
-            // 创建
-            getData.todoAdd(data, function(res) {
-              self.$emit("saveAddFn", data.date, 'create');
+            // 编辑
+            getData.todoUpdate(data, res => {
+              self.$emit("saveCallBack", data, "update");
               self.$emit("closeFn");
               self.form.info = "";
               self.types = [];

@@ -212,10 +212,11 @@ $c-gray-dark: #ebeef5;
                     top: 6px;
                 }
                 .todo-day-info {
-                    min-width: 300px;
+                    width: 300px;
+                    margin-right: 20px;
                 }
                 .todo-day-types {
-                    width: 300px;
+                    min-width: 300px;
                 }
             }
         }

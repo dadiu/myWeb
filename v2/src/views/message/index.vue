@@ -15,7 +15,7 @@
           icon="el-icon-plus"
           @click="addMessage"
         >
-        添加</el-button>
+          添加</el-button>
       </el-input>
     </div>
 
@@ -42,24 +42,22 @@
 
         <!-- btns -->
         <p class="message-btns">
+
+          <!-- delete -->
           <el-button
             circle
             size="mini"
             icon="el-icon-delete"
             @click="showDeleteMessage(item)"
           ></el-button>
-          <!-- <el-button
-            circle
-            size="mini"
-            icon="el-icon-edit"
-            @click="editMessage(item)"
-          ></el-button>
+
+          <!-- move -->
           <el-button
             circle
             size="mini"
-            icon="el-icon-tickets"
+            icon="el-icon-edit"
             @click="moveMessage(item)"
-          ></el-button> -->
+          ></el-button>
         </p>
       </li>
 
@@ -77,7 +75,16 @@
       @deleteNow="deleteMessage"
     />
 
-    <!-- <ViewEdit/> -->
+    <!-- add -->
+    <ViewAddTodo
+      v-if="isAddShow"
+      :dialogVisible="isAddShow"
+      @closeFn="isAddShow = !isAddShow"
+      @saveCallBack="deleteMessage"
+      :itemForm="itemForm"
+      :activeType="'create'"
+    />
+
   </div>
 </template>
 
@@ -87,22 +94,22 @@ import filters from "@/assets/js/filters";
 import getData from "@/assets/js/getData";
 
 import ViewDelete from "./components/delete.vue";
-import ViewEdit from "./components/edit.vue";
-import { ViewNone } from "@/components/";
+import { ViewNone, ViewAddTodo } from "@/components/";
 
 export default {
   components: {
     ViewNone,
     ViewDelete,
-    ViewEdit
+    ViewAddTodo
   },
   data() {
     return {
       iptValue: "",
       isDeleteShow: false,
-      isEditShow: false,
+      isAddShow: false,
       list: [],
-      crtItem: {}
+      crtItem: {},
+      itemForm: {}
     };
   },
   filters: {
@@ -170,16 +177,15 @@ export default {
       });
     },
 
-    // showEditMessage(item) {
-    //   this.crtItem = item;
-    //   this.isEditShow = true;
-    // },
+    moveMessage(item) {
+      this.crtItem = item;
 
-    // editMessage(item) {
-
-    // },
-
-    moveMessage(item) {}
+      this.itemForm = Object.assign({}, item, {
+        types: [],
+        updateTime: Date.parse(new Date())
+      });
+      this.isAddShow = true;
+    }
   }
 };
 </script>

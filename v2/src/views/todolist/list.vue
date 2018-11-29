@@ -55,85 +55,87 @@
         <!-- add -->
         <el-button
           icon="el-icon-plus"
-          @click="showAddFn(false)"
-        >添加</el-button>
+          @click="showAddTodoFn(false)"
+        ></el-button>
       </div>
     </div>
 
-    <!-- today -->
-    <ViewDay
-      v-if="isShow == 0 && !loading"
-      :list="list"
-      :istoday="'0'"
-      @showEditFn="showAddFn"
-      @resetList="changeMenu(0)"
-    />
+    <div v-loading="loading">
+      <!-- today -->
+      <ViewDay
+        v-if="isShow == 0 && !loading"
+        :list="list"
+        :istoday="'0'"
+        @showEditFn="showUpdateTodoFn"
+        @resetList="changeMenu(0)"
+      />
 
-    <!-- future -->
-    <div
-      class="todo-future"
-      v-if="isShow == 1 && !loading"
-    >
-      <p class="todo-hd-tips">
-        <i class="el-icon-info"></i>
-        计划最多7天
-      </p>
+      <!-- future -->
       <div
-        class="todo-bar"
-        v-if="list.length>0"
+        class="todo-future"
+        v-if="isShow == 1 && !loading"
+      >
+        <p class="todo-hd-tips">
+          <i class="el-icon-info"></i>
+          计划最多7天
+        </p>
+        <div
+          class="todo-bar"
+          v-if="list.length>0"
+        >
+          <div
+            class="todo-item"
+            v-for="item in list"
+            :key="item.f"
+          >
+            <ViewDay
+              :list=item
+              :istoday="'1'"
+              class="todo-list-bar"
+              @showEditFn="showUpdateTodoFn"
+              @resetList="changeMenu(1)"
+            />
+          </div>
+        </div>
+        <ViewNone v-else />
+      </div>
+
+      <!-- history -->
+      <div
+        class="todo-history"
+        v-if="isShow == -1 && !loading"
       >
         <div
-          class="todo-item"
-          v-for="item in list"
-          :key="item.f"
+          class="todo-bar"
+          v-if="list.length>0"
         >
-          <ViewDay
-            :list=item
-            :istoday="'1'"
-            class="todo-list-bar"
-            @showEditFn="showAddFn"
-            @resetList="changeMenu(1)"
-          />
+          <div
+            class="todo-item"
+            v-for="item in list"
+            :key="item.h"
+          >
+            <ViewDay
+              :list=item
+              :istoday="'-1'"
+              class="todo-list-bar"
+              @showEditFn="showUpdateTodoFn"
+              @resetList="changeMenu(-1)"
+            />
+          </div>
         </div>
+        <ViewNone v-else />
       </div>
-      <ViewNone v-else />
-    </div>
-
-    <!-- history -->
-    <div
-      class="todo-history"
-      v-if="isShow == -1 && !loading"
-    >
-      <div
-        class="todo-bar"
-        v-if="list.length>0"
-      >
-        <div
-          class="todo-item"
-          v-for="item in list"
-          :key="item.h"
-        >
-          <ViewDay
-            :list=item
-            :istoday="'-1'"
-            class="todo-list-bar"
-            @showEditFn="showAddFn"
-            @resetList="changeMenu(-1)"
-          />
-        </div>
-      </div>
-      <ViewNone v-else />
     </div>
 
     <!-- dialog -->
     <!-- add -->
-    <ViewAdd
+    <ViewAddTodo
       v-if="isAddShow"
       :dialogVisible="isAddShow"
       @closeFn="isAddShow = !isAddShow"
-      @saveAddFn="saveAddFn"
+      @saveCallBack="saveCallBack"
       :itemForm="itemForm"
-      :crtEditType="isShow"
+      :activeType="activeType"
     />
 
     <!-- delete -->
@@ -153,13 +155,12 @@ import getData from "@/assets/js/getData";
 import filters from "@/assets/js/filters";
 import event from "@/util/event";
 
-import ViewAdd from "./components/add.vue";
 import ViewDay from "./components/day.vue";
 import ViewDelete from "./components/delete.vue";
-import { ViewNone } from "@/components/";
+import { ViewNone, ViewAddTodo } from "@/components/";
 
 export default {
-  components: { ViewDay, ViewAdd, ViewDelete, ViewNone },
+  components: { ViewDay, ViewDelete, ViewNone, ViewAddTodo },
   data() {
     return {
       isShow: 0,
@@ -168,6 +169,7 @@ export default {
       itemForm: false,
       list: [],
       loading: false,
+      activeType:'create',
       selectType: "标签",
       searchValue: "",
       selectOption: [
@@ -190,6 +192,9 @@ export default {
     event.$on("todoDelete", res => {
       this.showDeleteFn(res);
     });
+    // event.$on("todoCreate", (todoDate, activeType="create") => {
+    //   this.saveCallBack(todoDate, activeType);
+    // });
   },
 
   methods: {
@@ -205,33 +210,46 @@ export default {
       });
     },
 
-    // 显示添加 || 编辑
-    // item = { false: 添加, object:编辑 }
-    showAddFn(item) {
+    // 显示添加
+    showAddTodoFn(item = false) {
+
+      this.itemForm = item;
+      this.activeType = 'create';
+      this.isAddShow = true;
+    },
+
+    // 显示编辑 item => 原有的数据
+    showUpdateTodoFn(item) {
       // console.log(idx);
       this.itemForm = item;
+      this.activeType = 'update';
       this.isAddShow = true;
     },
 
     // 保存添加和编辑的内容 todoTime
-    saveAddFn(todoDate, activeType) {
+    saveCallBack(todoData, activeType="create") {
       this.loading = true;
 
       let nowDate = filters.dateFormat();
+      let todoDate = todoData.date;
+      let type = this.isShow;
 
       // 创建
       if (activeType == "create") {
         if (nowDate > todoDate) {
-          this.isShow = -1;
+          type = -1;
         } else if (nowDate < todoDate) {
-          this.isShow = 1;
+          type = 1;
         } else {
-          this.isShow = 0;
+          type = 0;
         }
       }
 
-      getData.todoList({ istoday: this.isShow, searchType: 0 }, res => {
+      getData.todoList({ istoday: type, searchType: 0 }, res => {
         this.loading = false;
+        if (activeType == "create") {
+          this.isShow = type;
+        }
 
         this.list = this.isShow == -1 ? res.data.reverse() : res.data;
       });

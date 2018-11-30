@@ -35,7 +35,8 @@
             <i class="el-icon-time"></i>
             {{item.createTime | dateDetailFormat("-")}}
           </p>
-          <p class="message-info">
+          <p class="message-info" 
+            @click="moveMessage(item)">
             {{item.info}}
           </p>
         </div>
@@ -181,6 +182,7 @@ export default {
       this.crtItem = item;
 
       this.itemForm = Object.assign({}, item, {
+        status:1,
         types: [],
         updateTime: Date.parse(new Date())
       });

@@ -26,31 +26,6 @@
       </div>
 
       <div>
-        <!-- 筛选 -->
-        <el-input
-          placeholder="enter键搜索"
-          v-model="searchValue"
-          maxlength="8"
-          class="m-search"
-          @keyup.enter.native="searchFn"
-        >
-
-          <el-select
-            v-model="selectType"
-            slot="prepend"
-            @change="selsctTypeFn"
-            class="m-search-left"
-          >
-            <el-option
-              v-for="item in selectOption"
-              :key="item.s"
-              :label="item.label"
-              :value="item.value"
-              :disabled="item.disabled"
-            >
-            </el-option>
-          </el-select>
-        </el-input>
 
         <!-- add -->
         <el-button
@@ -105,6 +80,42 @@
         class="todo-history"
         v-if="isShow == -1 && !loading"
       >
+
+        <!-- 筛选 -->
+        <div class="todo-hd-form">
+          <el-input
+            placeholder="enter键搜索"
+            v-model="searchValue"
+            maxlength="8"
+            class="m-search"
+            @keyup.enter.native="searchFn"
+          >
+
+            <el-select
+              v-model="selectType"
+              slot="prepend"
+              @change="selsctTypeFn"
+              class="m-search-left"
+            >
+              <el-option
+                v-for="item in selectOption"
+                :key="item.s"
+                :label="item.label"
+                :value="item.value"
+                :disabled="item.disabled"
+              >
+              </el-option>
+            </el-select>
+
+            <el-button
+              slot="append"
+              icon="el-icon-search"
+              @click="searchFn"
+            ></el-button>
+          </el-input>
+        </div>
+
+        <!-- bar -->
         <div
           class="todo-bar"
           v-if="list.length>0"
@@ -163,13 +174,13 @@ export default {
   components: { ViewDay, ViewDelete, ViewNone, ViewAddTodo },
   data() {
     return {
-      isShow: 0,
+      isShow: -1,
       isAddShow: false,
       isDeleteShow: false,
       itemForm: false,
       list: [],
       loading: false,
-      activeType:'create',
+      activeType: "create",
       selectType: "标签",
       searchValue: "",
       selectOption: [
@@ -212,9 +223,8 @@ export default {
 
     // 显示添加
     showAddTodoFn(item = false) {
-
       this.itemForm = item;
-      this.activeType = 'create';
+      this.activeType = "create";
       this.isAddShow = true;
     },
 
@@ -222,12 +232,12 @@ export default {
     showUpdateTodoFn(item) {
       // console.log(idx);
       this.itemForm = item;
-      this.activeType = 'update';
+      this.activeType = "update";
       this.isAddShow = true;
     },
 
     // 保存添加和编辑的内容 todoTime
-    saveCallBack(todoData, activeType="create") {
+    saveCallBack(todoData, activeType = "create") {
       this.loading = true;
 
       let nowDate = filters.dateFormat();

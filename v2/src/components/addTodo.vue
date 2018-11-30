@@ -31,29 +31,6 @@
       </el-form-item>
 
       <el-form-item
-        label="标签"
-        prop="type"
-      >
-        <el-input
-          v-model="type"
-          v-show="types.length < typeMaxCount"
-          @keyup.enter.native="addType"
-          :placeholder="'enter键确定 标签最多' + typeMaxCount + '个'"
-          maxlength="8"
-        >
-        </el-input>
-        <el-tag
-          :key="tag.k"
-          v-for="tag in types"
-          closable
-          :disable-transitions="false"
-          @close="deleteTypeFn(tag)"
-        >
-          {{tag}}
-        </el-tag>
-      </el-form-item>
-
-      <el-form-item
         label="状态"
         prop="status"
       >
@@ -75,6 +52,31 @@
           maxlength="100"
           @keyup.enter.native="createFn('form')"
         ></el-input>
+      </el-form-item>
+
+      
+
+      <el-form-item
+        label="标签"
+        prop="type"
+      >
+        <el-input
+          v-model="type"
+          v-show="types.length < typeMaxCount"
+          @keyup.enter.native="addType"
+          :placeholder="'enter键确定 标签最多' + typeMaxCount + '个'"
+          maxlength="8"
+        >
+        </el-input>
+        <el-tag
+          :key="tag.k"
+          v-for="tag in types"
+          closable
+          :disable-transitions="false"
+          @close="deleteTypeFn(tag)"
+        >
+          {{tag}}
+        </el-tag>
       </el-form-item>
     </el-form>
 

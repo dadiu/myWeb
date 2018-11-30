@@ -70,7 +70,7 @@ export default {
                 message: `提示: ${res.msg}`,
                 onClose() {
                   self.$router.push({
-                    name: "todo.list"
+                    name: "home"
                   });
                 }
               });

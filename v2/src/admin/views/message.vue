@@ -16,26 +16,15 @@
       
       <el-table-column label="状态">
         <template slot-scope="scope">
-           <el-tag type="info" v-if="scope.row.status == 1">
-            已完成
+           <el-tag type="danger" v-if="scope.row.level == 1">
+            急
           </el-tag>
-          <el-tag type="success" v-if="scope.row.status == 0">
-            未完成
-          </el-tag>
-          <el-tag v-if="scope.row.status == 2">
-            搁置
+          <el-tag type="warning" v-if="scope.row.level == 2">
+            缓
           </el-tag>
         </template>
       </el-table-column>
-      <el-table-column prop="info" label="任务" width="300"></el-table-column>
-
-      <el-table-column label="标签" width="200">
-        <template slot-scope="scope">
-          <el-tag v-for="item in scope.row.types" :key="item.type">
-            {{item}}
-          </el-tag>
-        </template>
-      </el-table-column>
+      <el-table-column prop="info" label="便签" width="500"></el-table-column>
 
       <el-table-column label="开工时间" width="120">
         <template slot-scope="scope">
@@ -97,7 +86,7 @@ export default {
 
     let self = this;
     
-    getData.todoList({ type:'todolist'}, res => {
+    getData.messageList({ type:'message'}, res => {
       this.tableData = res.data;
       this.nickData = res.nick;
     });

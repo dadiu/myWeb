@@ -27,11 +27,24 @@
 
       <div>
 
-        <!-- add -->
+        <!-- add btn -->
         <el-button
+          type="success"
+          size="small"
+          v-show="isShow != 0"
           icon="el-icon-plus"
-          @click="showAddTodoFn(false)"
+          @click="showAddTodoFn"
         ></el-button>
+
+        <!-- add form -->
+        <ViewAddTodo
+          v-if="isShow == 0"
+          @saveCallBack="saveCallBack"
+          :itemForm="false"
+          activeType="create"
+          :showType="'form'"
+        />
+
       </div>
     </div>
 
@@ -174,7 +187,7 @@ export default {
   components: { ViewDay, ViewDelete, ViewNone, ViewAddTodo },
   data() {
     return {
-      isShow: -1,
+      isShow: 0,
       isAddShow: false,
       isDeleteShow: false,
       itemForm: false,
@@ -222,16 +235,17 @@ export default {
     },
 
     // 显示添加
-    showAddTodoFn(item = false) {
-      this.itemForm = item;
+    showAddTodoFn() {
+      this.itemForm = false;
       this.activeType = "create";
       this.isAddShow = true;
     },
 
     // 显示编辑 item => 原有的数据
     showUpdateTodoFn(item) {
-      // console.log(idx);
+
       this.itemForm = item;
+      console.log(this.itemForm);
       this.activeType = "update";
       this.isAddShow = true;
     },

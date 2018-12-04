@@ -32,7 +32,8 @@
         {
           nick:'',
           username:'',
-          todoData:[0,0,0], // [待完成数量, 已完成数量, 搁置数量]
+          todoData:[0,0,0], // 每日一清 [待完成数量, 已完成数量, 搁置数量]
+          messageData:{'lv1' : 0, 'lv2' : 0}, // 便签 {'lv1' : 急, 'lv2' : 缓}
           phone : '',
           power:'',
           createTime:'',

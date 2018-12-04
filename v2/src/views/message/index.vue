@@ -2,22 +2,53 @@
   <div class="wrap message-bar">
 
     <!-- hd -->
-    <div class="message-hd">
-      <el-input
-        placeholder="请输入便签内容，enter键保存"
-        v-model="iptValue"
-        clearable
-        maxlength="100"
-        @keyup.enter.native="addMessage"
-      >
-        <el-button
-          slot="append"
-          icon="el-icon-plus"
-          @click="addMessage"
+    <el-row class="message-hd" :gutter="20">
+
+      <!-- level -->
+      <el-col :span="3">
+        <el-radio-group v-model="newLevel">
+          <el-radio
+            :label="1"
+            class="fc-danger"
+          >急</el-radio>
+          <el-radio
+            :label="2"
+            class="fc-warning"
+          >缓</el-radio>
+        </el-radio-group>
+      </el-col>
+      
+      <!-- add -->
+      <el-col :span="16">
+        <el-input
+          placeholder="enter 创建"
+          prefix-icon="el-icon-tickets"
+          v-model="iptValue"
+          clearable
+          maxlength="100"
+          @keyup.enter.native="addMessage"
         >
-          添加</el-button>
-      </el-input>
-    </div>
+          <!-- <el-button
+            slot="append"
+            icon="el-icon-check"
+            @click="addMessage"
+          ></el-button> -->
+        </el-input>
+      </el-col>
+
+      <!-- search -->
+      <el-col :span="5">
+        <el-input
+          placeholder="enter 搜索"
+          prefix-icon="el-icon-search"
+          v-model="searchValue"
+          maxlength="100"
+          @keyup.enter.native="searchMessage"
+        >
+        </el-input>
+      </el-col>
+
+    </el-row>
 
     <!-- list -->
     <ul
@@ -26,8 +57,9 @@
     >
       <li
         class="message-item"
-        v-for="item in list"
+        v-for="(item, idx) in list"
         :key="item.l"
+        v-if="!item.isSearch"
       >
         <!-- left -->
         <div class="message-left">
@@ -35,8 +67,7 @@
             <i class="el-icon-time"></i>
             {{item.createTime | dateDetailFormat("-")}}
           </p>
-          <p class="message-info" 
-            @click="moveMessage(item)">
+          <p :class="['message-info', {'message-info-danger' : item.level == 1}]">
             {{item.info}}
           </p>
         </div>
@@ -46,17 +77,37 @@
 
           <!-- delete -->
           <el-button
-            circle
             size="mini"
-            icon="el-icon-delete"
+            type="info"
+            icon="el-icon-close"
+            circle
             @click="showDeleteMessage(item)"
           ></el-button>
 
+          <!-- level2 -->
+          <el-button
+            size="mini"
+            type="danger"
+            circle
+            v-if="item.level != 1"
+            @click="editMessage(idx, 1)"
+          >急</el-button>
+
+          <!-- level1 -->
+          <el-button
+            size="mini"
+            type="warning"
+            circle
+            v-if="item.level != 2"
+            @click="editMessage(idx)"
+          >缓</el-button>
+
           <!-- move -->
           <el-button
-            circle
             size="mini"
+            type="success"
             icon="el-icon-edit"
+            circle
             @click="moveMessage(item)"
           ></el-button>
         </p>
@@ -106,6 +157,9 @@ export default {
   data() {
     return {
       iptValue: "",
+      newLevel: 2, //  [默认level为2  {1：急， 2：缓} ]
+      searchValue: "",
+      searchLevel: 0,
       isDeleteShow: false,
       isAddShow: false,
       list: [],
@@ -149,7 +203,7 @@ export default {
       }
 
       // 请求接口
-      getData.messageAdd({ info }, res => {
+      getData.messageAdd({ info, level: this.newLevel }, res => {
         if (res.code == 0) {
           this.iptValue = "";
           this.$message({
@@ -161,6 +215,50 @@ export default {
           return;
         }
       });
+    },
+
+    editMessage(idx, level = 2) {
+      let id = this.list[idx]._id;
+
+      getData.messageEdit({ id, level }, res => {
+        if (res.code == 0) {
+          this.iptValue = "";
+          this.$message({
+            showClose: true,
+            type: "success",
+            message: "修改成功"
+          });
+
+          this.list[idx].level = level;
+          return;
+        }
+      });
+    },
+
+    searchMessage() {
+      let info = filters.trimFn(this.searchValue);
+      let len = info.length;
+      let filterData = [];
+
+      if (info.length > 100) {
+        this.$message({
+          showClose: true,
+          type: "error",
+          message: "便签内容长度在 1 到 100 个字符"
+        });
+        return;
+      }
+
+      this.list.forEach(element => {
+        if (element.info.indexOf(info) > -1) {
+          element.isSearch = false;
+        } else {
+          element.isSearch = true;
+        }
+        filterData.push(element);
+      });
+
+      this.list = filterData;
     },
 
     showDeleteMessage(item) {
@@ -182,7 +280,7 @@ export default {
       this.crtItem = item;
 
       this.itemForm = Object.assign({}, item, {
-        status:1,
+        status: 1,
         types: [],
         updateTime: Date.parse(new Date())
       });

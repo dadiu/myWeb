@@ -52,6 +52,8 @@ $c-gray: #ccc;
 $c-primary:#409EFF;
 $c-primary-dark: #398ee5;
 $c-gray-dark: #ebeef5;
+$c-danger:#f56c6c;
+$c-warning:#e6a23c;
 .mb- {
     &10 {
         margin-bottom: 10px;
@@ -163,6 +165,19 @@ $c-gray-dark: #ebeef5;
 }
 
 .todo- {
+    &push {
+        position: absolute;
+        right: 0;
+        top: 0;
+        display: flex;
+        align-items: center;
+        .el-input {
+            width: 180px;
+        }
+        .el-button {
+            margin-bottom: 22px;
+        }
+    }
     &future {
         padding-bottom: 50px;
     }
@@ -273,7 +288,6 @@ $c-gray-dark: #ebeef5;
                 &.fn-ok {
                     .todo-day-info {
                         color: #999;
-                        text-decoration: line-through;
                     }
                     .todo-day-status {
                         border-color: $c-gray;
@@ -342,6 +356,14 @@ $c-gray-dark: #ebeef5;
 }
 
 .message- {
+    &hd {
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 20px;
+    }
     &list {
         margin: 20px 0;
         position: relative;
@@ -385,6 +407,9 @@ $c-gray-dark: #ebeef5;
     }
     &info {
         padding: 10px 0 0 15px;
+        &-danger {
+            color: $c-danger;
+        }
     }
     &btns {
         @extend .ani-once;
@@ -395,6 +420,7 @@ $c-gray-dark: #ebeef5;
 
 .m- {
     &title {
+        position: relative;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -426,8 +452,37 @@ $c-gray-dark: #ebeef5;
     }
 }
 
+//////////////////////////////////////////////
+// element-ui
 .el-tag {
     margin-right: 5px;
+}
+
+.el-radio {
+    &.is-checked {
+        &.fc-danger {
+            .el-radio__inner {
+                border-color: $c-danger;
+                background-color: $c-danger;
+            }
+            .el-radio__label {
+                color: $c-danger;
+            }
+        }
+        &.fc-warning {
+            .el-radio__inner {
+                border-color: $c-warning;
+                background-color: $c-warning;
+            }
+            .el-radio__label {
+                color: $c-warning;
+            }
+        }
+    }
+}
+
+.el-radio+.el-radio {
+    margin-left: 15px;
 }
 
 //////////////////////////////////////////////

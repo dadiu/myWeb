@@ -31,6 +31,21 @@
         </template>
       </el-table-column>
 
+      <el-table-column label="便签" width="150">
+        <template slot-scope="scope" v-if="scope.row.messageData">
+
+           <el-tag type="danger">
+            急
+            {{scope.row.messageData.lv1 || 0}}
+          </el-tag>
+          <el-tag type="warning">
+            缓
+            {{scope.row.messageData.lv2 || 0}}
+          </el-tag> 
+
+        </template>
+      </el-table-column>
+
       <el-table-column label="权限">
         <template slot-scope="scope">
           <!-- {{scope.row.power | isPower}} -->

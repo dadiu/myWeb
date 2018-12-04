@@ -1,5 +1,52 @@
 <template>
+
+  <!-- 表格 -->
+  <el-form
+    v-if="showType == 'form'"
+    class="todo-push"
+    :inline="true"
+    :model="form"
+    :rules="rules"
+    ref="form"
+  >
+    <el-form-item prop="date">
+      <el-date-picker
+        size="small"
+        type="date"
+        placeholder="选择时间"
+        :editable="false"
+        :clearable="false"
+        v-model="form.todoTime"
+        format="yyyy 年 MM 月 dd 日"
+        value-format="timestamp"
+        :picker-options="pickerOptions"
+      ></el-date-picker>
+    </el-form-item>
+
+    <el-form-item prop="info">
+      <el-input
+        size="small"
+        v-model="form.info"
+        placeholder="待完成内容"
+        prefix-icon="el-icon-news"
+        clearable
+        maxlength="100"
+        @keyup.enter.native="createFn('form')"
+      ></el-input>
+    </el-form-item>
+
+    <el-button
+      type="success"
+      @click="createFn('form')"
+      icon="el-icon-check"
+      size="small"
+    ></el-button>
+
+  </el-form>
+
+  <!-- 弹窗 -->
   <el-dialog
+    v-else
     class="todo-add"
     :visible.sync="isShow"
     width="450px"
@@ -54,8 +101,6 @@
         ></el-input>
       </el-form-item>
 
-      
-
       <el-form-item
         label="标签"
         prop="type"
@@ -109,6 +154,7 @@ export default {
     saveCallBack: { type: Function },
     itemForm: { type: [Object, Boolean] },
     activeType: { type: String },
+    showType: { type: String },
     dialogVisible: { type: Boolean }
   },
   data() {

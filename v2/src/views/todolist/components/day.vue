@@ -32,8 +32,8 @@
             <p>
               <el-button
                 type="primary"
-                @click="$emit('showEditFn', false)"
-              >ojbk</el-button>
+                @click="$emit('showCreatFn')"
+              >ok</el-button>
             </p>
           </div>
         </div>
@@ -112,6 +112,7 @@ export default {
       required: true
     },
     showEditFn: { type: Function },
+    showCreatFn:{type:Function},
     resetList: { type: Function },
     istoday: { type: String }
   },

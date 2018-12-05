@@ -4,6 +4,7 @@
     <li
       v-for="item in list"
       :key="item.l"
+      v-if="!item.isSearch"
       :class="['todo-day-item', {'fn-ok': item.status == 1}, {'fn-lay': item.status == 2}]"
     >
       <!-- status -->
@@ -25,7 +26,7 @@
       <span
         class="todo-day-info"
         @click="$emit('editFn', item)"
-      > {{item.info}} </span>
+      > {{item.info}}</span>
 
       <p class="todo-day-types">
         <el-tag

@@ -32,16 +32,17 @@
         clearable
         maxlength="100"
         @keyup.enter.native="createFn('form')"
-      ></el-input>
+      >
+      </el-input>
     </el-form-item>
 
-    <el-button
-      type="success"
-      @click="createFn('form')"
-      icon="el-icon-check"
-      size="small"
-    ></el-button>
-
+    <el-form-item>
+      <el-button
+        @click="createFn('form')"
+        icon="el-icon-check"
+        size="small"
+      ></el-button>
+    </el-form-item>
   </el-form>
 
   <!-- 弹窗 -->

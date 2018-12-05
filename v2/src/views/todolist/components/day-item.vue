@@ -1,24 +1,27 @@
 <template>
   <ul class="todo-day-list">
     <li
-      v-for="item in list"
+      v-for="(item, idx) in list"
       :key="item.list"
       :class="['todo-day-item', {'fn-ok': item.status == 1}, {'fn-lay': item.status == 2}]"
     >
 
-      <span
+      <p
         class="todo-day-status"
         @click="$emit('changeStatus',item)"
       >
-        <i
+      <span v-if="item.status == 1">
+        {{idx + 1}}
+      </span>
+        <!-- <i
           class="el-icon-check"
           v-if="item.status == 1"
-        ></i>
+        ></i> -->
         <i
           class="el-icon-close"
           v-if="item.status == 2"
         ></i>
-      </span>
+      </p>
 
       <p class="todo-day-info">
         <span

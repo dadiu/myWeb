@@ -167,15 +167,12 @@ $c-warning:#e6a23c;
 .todo- {
     &push {
         position: absolute;
-        right: 0;
+        right: 45px;
         top: 0;
         display: flex;
         align-items: center;
         .el-input {
             width: 180px;
-        }
-        .el-button {
-            margin-bottom: 22px;
         }
     }
     &future {
@@ -193,9 +190,9 @@ $c-warning:#e6a23c;
                 padding-left: 5px;
             }
             &form {
-                margin-bottom: 15px;
                 display: flex;
-                justify-content: center;
+                align-items: center;
+                margin-bottom: 15px;
             }
         }
     }
@@ -325,6 +322,7 @@ $c-warning:#e6a23c;
                 top: 0;
                 width: 20px;
                 height: 20px;
+                color: #aaa;
                 border: 1px solid #aaa;
                 background-color: #fff;
                 border-radius: 50%;

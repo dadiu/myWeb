@@ -26,16 +26,6 @@
       </div>
 
       <div>
-
-        <!-- add btn -->
-        <el-button
-          type="success"
-          size="small"
-          v-show="isShow != 0"
-          icon="el-icon-plus"
-          @click="showAddTodoFn"
-        ></el-button>
-
         <!-- add form -->
         <ViewAddTodo
           v-if="isShow == 0"
@@ -44,6 +34,13 @@
           activeType="create"
           :showType="'form'"
         />
+        <!-- add btn -->
+        <el-button
+          type="success"
+          size="small"
+          icon="el-icon-plus"
+          @click="showAddTodoFn"
+        ></el-button>
 
       </div>
     </div>
@@ -55,6 +52,7 @@
         :list="list"
         :istoday="'0'"
         @showEditFn="showUpdateTodoFn"
+        @showCreatFn="showAddTodoFn"
         @resetList="changeMenu(0)"
       />
 
@@ -95,38 +93,55 @@
       >
 
         <!-- 筛选 -->
-        <div class="todo-hd-form">
-          <el-input
-            placeholder="enter键搜索"
-            v-model="searchValue"
-            maxlength="8"
-            class="m-search"
-            @keyup.enter.native="searchFn"
-          >
-
-            <el-select
-              v-model="selectType"
-              slot="prepend"
-              @change="selsctTypeFn"
-              class="m-search-left"
+        <el-row
+          class="todo-hd-form"
+          :gutter="20"
+        >
+          <el-col :span="16">
+            <el-input
+              size="small"
+              placeholder="enter 搜索"
+              v-model="search.value"
+              maxlength="8"
+              class="m-search"
+              @keyup.enter.native="searchFn"
             >
-              <el-option
-                v-for="item in selectOption"
-                :key="item.s"
-                :label="item.label"
-                :value="item.value"
-                :disabled="item.disabled"
-              >
-              </el-option>
-            </el-select>
 
-            <el-button
-              slot="append"
-              icon="el-icon-search"
-              @click="searchFn"
-            ></el-button>
-          </el-input>
-        </div>
+              <el-select
+                v-model="search.type"
+                slot="prepend"
+                @change="selsctTypeFn"
+                class="m-search-left"
+              >
+                <el-option
+                  v-for="item in selectOption"
+                  :key="item.s"
+                  :label="item.label"
+                  :value="item.value"
+                  :disabled="item.disabled"
+                >
+                </el-option>
+              </el-select>
+
+              <el-button
+                slot="append"
+                icon="el-icon-search"
+                @click="searchFn"
+              ></el-button>
+            </el-input>
+          </el-col>
+
+          <!-- status -->
+          <el-col :span="8">
+
+            <el-radio-group v-model="search.status" @change="searchFn">
+              <el-radio :label="9">全部</el-radio>
+              <el-radio :label="0">待完成</el-radio>
+              <el-radio :label="1">已完成</el-radio>
+              <el-radio :label="2">搁置</el-radio>
+            </el-radio-group>
+          </el-col>
+        </el-row>
 
         <!-- bar -->
         <div
@@ -187,15 +202,18 @@ export default {
   components: { ViewDay, ViewDelete, ViewNone, ViewAddTodo },
   data() {
     return {
-      isShow: 0,
+      isShow: -1,
       isAddShow: false,
       isDeleteShow: false,
       itemForm: false,
       list: [],
       loading: false,
       activeType: "create",
-      selectType: "标签",
-      searchValue: "",
+      search: {
+        type: "标签",
+        value: "",
+        status: 9
+      },
       selectOption: [
         {
           label: "标签",
@@ -216,15 +234,12 @@ export default {
     event.$on("todoDelete", res => {
       this.showDeleteFn(res);
     });
-    // event.$on("todoCreate", (todoDate, activeType="create") => {
-    //   this.saveCallBack(todoDate, activeType);
-    // });
   },
 
   methods: {
     changeMenu(type = this.isShow) {
       this.isShow = type;
-      this.searchValue = "";
+      this.search.value = "";
       this.loading = true;
 
       getData.todoList({ istoday: this.isShow, searchType: 0 }, res => {
@@ -243,9 +258,8 @@ export default {
 
     // 显示编辑 item => 原有的数据
     showUpdateTodoFn(item) {
-
       this.itemForm = item;
-      console.log(this.itemForm);
+      // console.log(this.itemForm);
       this.activeType = "update";
       this.isAddShow = true;
     },
@@ -298,17 +312,17 @@ export default {
       console.log(`change : ${data}`);
     },
 
+    // 查找类别
     searchFn() {
-      // console.log(this.searchValue);
 
-      let val = filters.trimFn(this.searchValue);
+      let val = filters.trimFn(this.search.value);
       // 查找类别
       let type = 1;
 
       if (val.length == 0) {
         type = 0;
-      } else if (this.selectType != "标签") {
-        type = this.selectType;
+      } else if (this.search.type != "标签") {
+        type = this.search.type;
       }
 
       this.loading = true;
@@ -316,7 +330,8 @@ export default {
         {
           istoday: this.isShow,
           searchType: type,
-          searchValue: val
+          searchValue: val,
+          searchStatus : this.search.status
         },
         res => {
           this.loading = false;
@@ -324,6 +339,12 @@ export default {
           this.list = this.isShow == -1 ? res.data.reverse() : res.data;
         }
       );
+    },
+
+    // 查找状态 =>仅支持过去，未来暂未开启此功能
+    searchStatusFn(data){
+
+
     }
   }
 };

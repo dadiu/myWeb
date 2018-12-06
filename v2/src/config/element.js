@@ -22,6 +22,10 @@ import {
     Dialog,
     Select,
     Option,
+    Menu,
+    Submenu,
+    MenuItem,
+    MenuItemGroup,
 } from 'element-ui';
 
 
@@ -45,6 +49,10 @@ Vue.use(Table);
 Vue.use(TableColumn);
 Vue.use(Select);
 Vue.use(Option);
+Vue.use(Menu);
+Vue.use(Submenu);
+Vue.use(MenuItem);
+Vue.use(MenuItemGroup);
 
 Vue.prototype.$loading = Loading.service;
 Vue.prototype.$alert = MessageBox.alert;

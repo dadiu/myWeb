@@ -6,12 +6,20 @@
     </router-link>
     <nav class="hd-nav">
       <router-link :to="{name : 'todo.list'}" class="nav-item">
-        <i class="el-icon-tickets"></i>
+        <i class="el-icon-bell"></i>
         每日一清
       </router-link>
       <router-link :to="{name : 'message'}" class="nav-item">
         <i class="el-icon-document"></i>
         便签
+      </router-link>
+      <router-link :to="{name : 'secret.mounth'}" class="nav-item">
+        <i class="iconfont">&#xe7d1;</i>
+        秘密基地
+      </router-link>
+      <router-link :to="{name : 'md'}" class="nav-item">
+        <i class="el-icon-view"></i>
+        自助手册
       </router-link>
       <router-link :to="{name : 'admin'}" class="nav-item" v-if="isAdmin != 0">
         <i class="el-icon-setting"></i>

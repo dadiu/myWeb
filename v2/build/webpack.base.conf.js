@@ -63,6 +63,7 @@ module.exports = {
                     name: utils.assetsPath('fonts/[name].[ext]?hash=[hash:7]')
                 }
             }
+
         ]
     },
     node: {

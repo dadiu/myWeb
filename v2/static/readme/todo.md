@@ -46,42 +46,11 @@
 
   - 当日
 
-  ```js
-  {
-      'code': 0,
-      'msg': 'today list',
-      'data' : [
-        {
-          'author':'',
-          'creatTime':'',
-          'date':'',
-          'info':'',
-          'status':'',
-          'todoTime':'',
-          'types':['type1,type2'],
-          'updateTime':''
-        }
-      ]
-  }
-  ```
-
-  - 今天之前 || 今天之后
-
-  ```js
-  {
-      'code': 0,
-      'msg': 'history/tomorrow list',
-      'data' : [
-          [{
-            'author':'',
-            'creatTime':'',
-            'date':'',
-            'info':'',
-            'status':'',
-            'todoTime':'',
-            'types':['type1,type2'],
-            'updateTime':''
-          },
+    ```js
+    {
+        'code': 0,
+        'msg': 'today list',
+        'data' : [
           {
             'author':'',
             'creatTime':'',
@@ -92,11 +61,42 @@
             'types':['type1,type2'],
             'updateTime':''
           }
-        ],
-        [{...}]
-      ]
-  }
-  ```
+        ]
+    }
+    ```
+
+  - 今天之前 || 今天之后
+
+    ```js
+    {
+        'code': 0,
+        'msg': 'history/tomorrow list',
+        'data' : [
+            [{
+              'author':'',
+              'creatTime':'',
+              'date':'',
+              'info':'',
+              'status':'',
+              'todoTime':'',
+              'types':['type1,type2'],
+              'updateTime':''
+            },
+            {
+              'author':'',
+              'creatTime':'',
+              'date':'',
+              'info':'',
+              'status':'',
+              'todoTime':'',
+              'types':['type1,type2'],
+              'updateTime':''
+            }
+          ],
+          [{...}]
+        ]
+    }
+    ```
 - 失败：
   ```js
     {

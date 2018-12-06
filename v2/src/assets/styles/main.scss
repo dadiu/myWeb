@@ -21,8 +21,8 @@ body {
 @font-face {
     font-family: 'iconfont';
     /* project id 922008 */
-    src: url('//at.alicdn.com/t/font_922008_ek1ixs64xw4.eot');
-    src: url('//at.alicdn.com/t/font_922008_ek1ixs64xw4.eot?#iefix') format('embedded-opentype'), url('//at.alicdn.com/t/font_922008_ek1ixs64xw4.woff') format('woff'), url('//at.alicdn.com/t/font_922008_ek1ixs64xw4.ttf') format('truetype'), url('//at.alicdn.com/t/font_922008_ek1ixs64xw4.svg#iconfont') format('svg');
+    src: url('//at.alicdn.com/t/font_922008_eqdnozichog.eot');
+    src: url('//at.alicdn.com/t/font_922008_eqdnozichog.eot?#iefix') format('embedded-opentype'), url('//at.alicdn.com/t/font_922008_eqdnozichog.woff') format('woff'), url('//at.alicdn.com/t/font_922008_eqdnozichog.ttf') format('truetype'), url('//at.alicdn.com/t/font_922008_eqdnozichog.svg#iconfont') format('svg');
 }
 
 .iconfont {
@@ -413,6 +413,16 @@ $c-warning:#e6a23c;
         @extend .ani-once;
         opacity: 0;
         padding-right: 15px;
+    }
+}
+
+.secret {
+    &- {
+        &bar {
+            .cell {
+                padding: 0;
+            }
+        }
     }
 }
 

@@ -8,7 +8,7 @@
           :class="{'el-button--primary' : isShow == 0}"
           @click="changeMenu(0)"
         >
-          <i class="iconfont">&#xe7d1;</i>今天
+          今天
         </el-button>
         <el-button
           :class="{'el-button--primary' : isShow == 1}"
@@ -97,7 +97,7 @@
           class="todo-hd-form"
           :gutter="20"
         >
-          <el-col :span="16">
+          <el-col :span="15">
             <el-input
               size="small"
               placeholder="enter 搜索"
@@ -132,8 +132,7 @@
           </el-col>
 
           <!-- status -->
-          <el-col :span="8">
-
+          <el-col :span="9">
             <el-radio-group v-model="search.status" @change="searchFn">
               <el-radio :label="9">全部</el-radio>
               <el-radio :label="0">待完成</el-radio>
@@ -202,7 +201,7 @@ export default {
   components: { ViewDay, ViewDelete, ViewNone, ViewAddTodo },
   data() {
     return {
-      isShow: -1,
+      isShow: 0,
       isAddShow: false,
       isDeleteShow: false,
       itemForm: false,

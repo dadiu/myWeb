@@ -13,7 +13,7 @@
         <i class="el-icon-document"></i>
         便签
       </router-link>
-      <router-link :to="{name : 'secret.mounth'}" class="nav-item">
+      <router-link :to="{name : 'secret.aunt'}" class="nav-item">
         <i class="iconfont">&#xe7d1;</i>
         秘密基地
       </router-link>

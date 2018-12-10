@@ -2,7 +2,7 @@
  * @Author: whj 
  * @Date: 2018-11-12 11:47:12 
  * @Last Modified by: whj
- * @Last Modified time: 2018-11-28 16:14:15
+ * @Last Modified time: 2018-12-10 16:33:36
  */
 
 import http from '@/assets/js/https';
@@ -77,11 +77,38 @@ export default {
         http.get('/message/list', data, cb);
     },
     // 编辑
-    messageEdit(data, cb) {
+    messageUpdate(data, cb) {
         http.get('/message/edit', data, cb);
     },
     // 删除
     messageDelete(data, cb) {
         http.get('/message/delete', data, cb);
     },
+
+    /////////////////////////////////////////////////
+    ////// - 大姨妈
+    // 列表
+    auntList(cb) {
+        http.get('aunt/list', {}, cb);
+    },
+
+    // 添加
+    auntAdd(data, cb) {
+        http.get('aunt/add', data, cb);
+    },
+
+    // 更新
+    auntUpdate(data, cb) {
+        http.get('aunt/update', data, cb);
+    },
+
+    // 搜索
+    auntSearch(data, cb) {
+        http.get('aunt/search', data, cb);
+    },
+
+    // 删除
+    auntDelete(data, cb) {
+        http.get('aunt/delete', data, cb);
+    }
 }

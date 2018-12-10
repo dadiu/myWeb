@@ -31,7 +31,7 @@
 
         <!-- delete -->
         <i
-          class="el-icon-delete"
+          class="el-icon-remove-outline"
           v-if="item.status != 1"
           @click="deleteFn(item)"
         ></i>

@@ -56,4 +56,5 @@ Vue.use(MenuItemGroup);
 
 Vue.prototype.$loading = Loading.service;
 Vue.prototype.$alert = MessageBox.alert;
+Vue.prototype.$confirm = MessageBox.confirm;
 Vue.prototype.$message = Message;

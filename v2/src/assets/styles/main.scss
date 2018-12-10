@@ -21,8 +21,8 @@ body {
 @font-face {
     font-family: 'iconfont';
     /* project id 922008 */
-    src: url('//at.alicdn.com/t/font_922008_eqdnozichog.eot');
-    src: url('//at.alicdn.com/t/font_922008_eqdnozichog.eot?#iefix') format('embedded-opentype'), url('//at.alicdn.com/t/font_922008_eqdnozichog.woff') format('woff'), url('//at.alicdn.com/t/font_922008_eqdnozichog.ttf') format('truetype'), url('//at.alicdn.com/t/font_922008_eqdnozichog.svg#iconfont') format('svg');
+    src: url('//at.alicdn.com/t/font_922008_rmcv2gwom7n.eot');
+    src: url('//at.alicdn.com/t/font_922008_rmcv2gwom7n.eot?#iefix') format('embedded-opentype'), url('//at.alicdn.com/t/font_922008_rmcv2gwom7n.woff') format('woff'), url('//at.alicdn.com/t/font_922008_rmcv2gwom7n.ttf') format('truetype'), url('//at.alicdn.com/t/font_922008_rmcv2gwom7n.svg#iconfont') format('svg');
 }
 
 .iconfont {
@@ -51,6 +51,7 @@ body {
 $c-gray: #ccc;
 $c-primary:#409EFF;
 $c-primary-dark: #398ee5;
+$c-success:#67c23a;
 $c-gray-dark: #ebeef5;
 $c-danger:#f56c6c;
 $c-warning:#e6a23c;
@@ -142,7 +143,7 @@ $c-warning:#e6a23c;
         margin: 0 auto;
         padding-top: 50px;
         .el-form {
-            box-shadow: 0 0 2px 2px #eee;
+            @extend .m-shadow;
             border-radius: 5px;
             padding: 50px 50px 30px;
             margin-bottom: 20px;
@@ -161,6 +162,25 @@ $c-warning:#e6a23c;
                 }
             }
         }
+    }
+}
+
+.home- {
+    &item {
+        @extend .m-shadow;
+        background-color: #fff;
+        line-height: 2;
+        padding: 15px 20px;
+        margin-bottom: 20px;
+    }
+    &title {
+        font-weight: bold;
+        padding-bottom: 5px;
+        margin-bottom: 5px;
+        border-bottom: 1px solid #eee;
+    }
+    &flex {
+        display: flex;
     }
 }
 
@@ -206,7 +226,7 @@ $c-warning:#e6a23c;
                 background-color: rgba($color: $c-gray-dark, $alpha: 0.5);
                 border-radius: 5px;
                 padding: 20px;
-                box-shadow: 0 0 1px 1px #eee;
+                @extend .m-shadow;
                 .todo-day {
                     margin-bottom: 10px;
                     &::after {
@@ -241,7 +261,7 @@ $c-warning:#e6a23c;
         }
     }
     &between {
-        box-shadow: 0 0 1px 1px #eee;
+        @extend .m-shadow;
         border-radius: 8px;
         overflow: hidden;
         background-color: #fff;
@@ -300,7 +320,8 @@ $c-warning:#e6a23c;
                         border-color: $c-primary;
                     }
                 }
-                .el-icon-delete,
+                .el-icon-remove-outline,
+                .el-icon-minus,
                 .el-icon-edit {
                     cursor: pointer;
                     margin-left: 5px;
@@ -308,7 +329,8 @@ $c-warning:#e6a23c;
                     opacity: 0;
                 }
                 &:hover {
-                    .el-icon-delete,
+                    .el-icon-remove-outline,
+                    .el-icon-minus,
                     .el-icon-edit {
                         opacity: 1;
                     }
@@ -416,14 +438,128 @@ $c-warning:#e6a23c;
     }
 }
 
-.secret {
-    &- {
-        &bar {
-            .cell {
-                padding: 0;
+.aunt- {
+    &hd {
+        border-bottom: 1px solid #eee;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        // color: $c-warning;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .el-form-item {
+            margin-bottom: 0;
+        }
+    }
+    &search {
+        display: flex;
+        align-items: center;
+        // padding-bottom: 20px;
+        .aunt-day {
+            width: 10px;
+            height: 10px;
+        }
+        &- {
+            &label {
+                margin: 0 10px 0 5px;
             }
         }
     }
+    &list {
+        @extend .ani-once;
+        position: relative;
+        display: flex;
+        align-items: center;
+        background-color: $c-gray-dark;
+        border-radius: 5px;
+        padding: 10px 0;
+        margin-bottom: 5px;
+        &:first-of-type {
+            .aunt-day-default {
+                width: 20px;
+                height: 20px;
+                color: #888;
+            }
+        }
+        &- {
+            &item {
+                width: 32px;
+                height: 22px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            &date {
+                position: absolute;
+                left: -60px;
+                font-weight: bold;
+            }
+            &delete {
+                @extend .ani-once;
+                cursor: pointer;
+                position: absolute;
+                right: -45px;
+                font-size: 14px;
+                color: #bbb;
+                opacity: 0;
+                padding: 0 16px;
+                &:hover {
+                    color: $c-primary;
+                }
+            }
+        }
+        &:hover {
+            background-color: rgba($color: $c-primary, $alpha: 0.2);
+            .aunt-list-delete {
+                opacity: 1;
+            }
+            .aunt-day-default {
+                color: #888;
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+    &day {
+        width: 22px;
+        height: 22px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        cursor: pointer;
+        border: 1px solid #eee;
+        background-color: #fff;
+        &- {
+            &default {
+                @extend .ani-once;
+                width: 10px;
+                height: 10px;
+                color: #fff;
+                overflow: hidden;
+            }
+            &danger {
+                background-color: $c-danger;
+                color: #fff;
+            }
+            &papa {
+                background-color: $c-success;
+                color: #fff;
+            }
+            &today {
+                box-shadow: 0 0 1px 1px $c-primary;
+            }
+            &disable {
+                cursor: default;
+                color: #c0c4cc;
+                background-color: #f5f7fa;
+            }
+        }
+    }
+}
+
+.m-shadow {
+    box-shadow: 0 0 1px 1px #eee;
 }
 
 .m- {
@@ -458,6 +594,9 @@ $c-warning:#e6a23c;
         border-radius: 50%;
         background-color: $c-gray;
     }
+    &link {
+        color: $c-primary;
+    }
 }
 
 //////////////////////////////////////////////
@@ -490,7 +629,11 @@ $c-warning:#e6a23c;
 }
 
 .el-radio+.el-radio {
-    margin-left: 15px;
+    margin-left: 15px !important;
+}
+
+.el-message-box__wrapper {
+    top: -300px;
 }
 
 //////////////////////////////////////////////

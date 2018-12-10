@@ -2,24 +2,32 @@
  * @Author: whj 
  * @Date: 2018-11-12 11:34:13 
  * @Last Modified by: whj
- * @Last Modified time: 2018-11-26 13:33:08
+ * @Last Modified time: 2018-12-10 16:19:13
  */
 
 module.exports = {
 
     // 时间格式化 'yyyy-mm-dd'
-    dateFormat(val, format = "") {
-        // console.log(val);
+    dateFormat(val, format = "", group = "yyyy-mm-dd") {
         let date = val ? new Date(val) : new Date();
         let _y = date.getFullYear().toString();
         let _m = date.getMonth() + 1;
         let _d = date.getDate();
 
+        if (group == 'array') {
+            return [_y, _m, _d]
+        };
+
         _m = _m < 10 ? '0' + _m : _m.toString();
         _d = _d < 10 ? '0' + _d : _d.toString();
 
         // return _y + format + _m + format + _d;
-        return [_y, _m, _d].join(format);
+        if (group == "yyyy-mm-dd") {
+            return [_y, _m, _d].join(format);
+        }
+        if (group == "yyyy-mm") {
+            return [_y, _m].join(format);
+        }
     },
 
     // 星期格式化
@@ -78,5 +86,33 @@ module.exports = {
     // 去掉空格
     trimFn(str) {
         return str.replace(/(^\s*)|(\s*$)/g, "");
-    }
+    },
+
+    // 获取当月天数
+    monthCount(yyyy, mm) {
+
+        yyyy = yyyy ? yyyy : new Date().getFullYear();
+        mm = mm ? mm : new Date().getMonth() + 1;
+
+        let monthData = {
+            1: 31,
+            2: yyyy % 4 == 0 ? 29 : 28,
+            3: 31,
+            4: 30,
+            5: 31,
+            6: 30,
+            7: 31,
+            8: 31,
+            9: 30,
+            10: 31,
+            11: 30,
+            12: 31
+        };
+
+        return monthData[mm];
+
+    },
+
+
+    splitMonth() {}
 }

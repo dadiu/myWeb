@@ -78,8 +78,7 @@
           <!-- delete -->
           <el-button
             size="mini"
-            type="info"
-            icon="el-icon-close"
+            icon="el-icon-minus"
             circle
             @click="showDeleteMessage(item)"
           ></el-button>
@@ -220,7 +219,7 @@ export default {
     editMessage(idx, level = 2) {
       let id = this.list[idx]._id;
 
-      getData.messageEdit({ id, level }, res => {
+      getData.messageUpdate({ id, level }, res => {
         if (res.code == 0) {
           this.iptValue = "";
           this.$message({

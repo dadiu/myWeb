@@ -52,7 +52,7 @@
       <el-button
         size="mini"
         circle
-        class="el-icon-delete"
+        class="el-icon-minus"
         v-if="item.status != 1"
         @click="deleteFn(item)"
       >

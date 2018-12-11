@@ -2,14 +2,14 @@
 
 ## 1. 添加 便签
 
-- 路径: /message/add
+- 路径: message/add
 - 方法: GET
 - 参数：
 
   ```js
   {
-    info: "", // 便签内容 [1,100]
-    level : 1 // 便签标记 {1：急， 2：缓}
+    'info' : '', // 便签内容 [1,100]
+    'level' : 1 // 便签标记 {1：急， 2：缓}
   }
   ```
 
@@ -23,13 +23,13 @@
 
 ## 2. 获取 便签列表||筛选
 
-- 路径: /message/list
+- 路径: message/list
 - 方法: GET
 - 参数：
 
   ```js
   {
-    searchValue:'',        // 可选，预留筛选用
+    'searchValue':'',        // 可选，预留筛选用
   }
 
   ```
@@ -40,8 +40,8 @@
       'code': 0,
       'data':[
         {
-          "info":"",
-          "_id":"",
+          'info':'',
+          '_id':'',
         }
       ],
       'msg': 'message list'
@@ -50,14 +50,14 @@
 
 ## 3. 编辑
 
-- 路径: /message/edit
+- 路径: message/edit
 - 方法: GET
 - 参数：
 
   ```js
   {
-    id:'',          // list里的_id
-    info:''        // 内容
+    'id':'',          // list里的_id
+    'info':''        // 内容
   }
 
   ```
@@ -72,13 +72,13 @@
 
 ## 4. 删除
 
-- 路径: /message/delete
+- 路径: message/delete
 - 方法: GET
 - 参数：
 
   ```js
   {
-    id: ""; // list里的_id
+    'id': ''; // list里的_id
   }
   ```
 

@@ -149,9 +149,9 @@ import { ViewNone, ViewAddTodo } from "@/components/";
 
 export default {
   components: {
-    ViewNone,
     ViewDelete,
-    ViewAddTodo
+    ViewAddTodo,
+    ViewNone,
   },
   data() {
     return {

@@ -2,13 +2,14 @@
  * @Author: whj 
  * @Date: 2018-11-22 10:17:41 
  * @Last Modified by: whj
- * @Last Modified time: 2018-11-27 17:41:09
+ * @Last Modified time: 2018-12-11 16:13:37
  */
 
 $fc-primary:#409EFF;
 #admin {
     margin-top: -80px;
     padding-top: 60px;
+    padding-bottom: 0;
     height: 100vh;
     position: relative;
     overflow: hidden;
@@ -20,6 +21,9 @@ $fc-primary:#409EFF;
         flex-direction: column;
         justify-content: center;
         height: 50vh;
+    }
+    &+#g-ft {
+        display: none;
     }
 }
 

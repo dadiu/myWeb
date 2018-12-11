@@ -13,7 +13,7 @@
         <i class="el-icon-document"></i>
         便签
       </router-link>
-      <router-link :to="{name : 'secret.aunt'}" class="nav-item">
+      <router-link :to="{name : 'secret.aunt'}" class="nav-item" v-if="isGirl">
         <i class="iconfont">&#xe7d1;</i>
         秘密基地
       </router-link>
@@ -58,7 +58,8 @@ export default {
     return {
       isLogin: false,
       nick: "",
-      isAdmin:0
+      isAdmin:0,
+      isGirl:false
     };
   },
 
@@ -79,6 +80,9 @@ export default {
       getData.userInfo(res => {
         self.nick = res.data.nick;
         self.isAdmin = res.data.power;
+
+        //  {0:保密; 1:女; 2：男}
+        self.isGirl = res.data.sex == 2 ? false : true;
         self.isLogin = true;
       });
 

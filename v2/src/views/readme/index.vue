@@ -24,6 +24,7 @@
             <el-menu-item index="user">账号</el-menu-item>
             <el-menu-item index="todo">每日一清</el-menu-item>
             <el-menu-item index="message">便签</el-menu-item>
+            <el-menu-item index="aunt">秘密基地</el-menu-item>
             <el-menu-item index="admin">控制台</el-menu-item>
           </el-menu-item-group>
         </el-submenu>

@@ -12,14 +12,14 @@
 
 ### 获取用户权限
 
-- 路径: /admin/userList
+- 路径: admin/userList
 - 方法: GET
 - 参数：
 
   ```js
   {
-    id: "", // 用户id
-    type :"users" // 查看类别
+    'id': '', // 用户id
+    'type' :'users' // 查看类别
   }
   ```
 
@@ -30,14 +30,14 @@
       'code':0,
       'data':[
         {
-          nick:'',
-          username:'',
-          todoData:[0,0,0], // 每日一清 [待完成数量, 已完成数量, 搁置数量]
-          messageData:{'lv1' : 0, 'lv2' : 0}, // 便签 {'lv1' : 急, 'lv2' : 缓}
-          phone : '',
-          power:'',
-          createTime:'',
-          lastLoginTime:''
+          'nick':'',
+          'username':'',
+          'todoData':[0,0,0], // 每日一清 [待完成数量, 已完成数量, 搁置数量]
+          'messageData':{'lv1' : 0, 'lv2' : 0}, // 便签 {'lv1' : 急, 'lv2' : 缓}
+          'phone' : '',
+          'power':'',
+          'createTime':'',
+          'lastLoginTime':''
         }
       ]
     }
@@ -46,13 +46,13 @@
 
 ### 获取所有用户
 
-- 路径: /admin/userList
+- 路径: admin/userList
 - 方法: GET
 - 参数：
 
   ```js
   {
-    type :"users" // 查看类别
+    'type' :'users' // 查看类别
   }
   ```
 
@@ -63,13 +63,13 @@
       'code':0,
       'data':[
         {
-          nick:'',
-          username:'',
-          todoData:[0,0,0], // [待完成数量, 已完成数量, 搁置数量]
-          phone : '',
-          power:'',
-          createTime:'',
-          lastLoginTime:''
+          'nick':'',
+          'username':'',
+          'todoData':[0,0,0], // [待完成数量, 已完成数量, 搁置数量]
+          'phone' : '',
+          'power':'',
+          'createTime':'',
+          'lastLoginTime':''
         }
       ]
     }
@@ -78,13 +78,13 @@
 
 ### 获取所有 todo
 
-- 路径: /admin/todolist
+- 路径: admin/todolist
 - 方法: GET
 - 参数：
 
   ```js
   {
-    type :"todolist" // 查看类别
+    'type' :'todolist' // 查看类别
   }
   ```
 
@@ -95,14 +95,14 @@
       'code':0,
       'data':[
         {
-          status:'',
-          info:'',
-          todoTime:'',  // 开始时间
-          createTime:'',  // 创建时间
-          updateTime:'',  // 更新时间
-          types:[], // 标签
-          nick:'',  // 昵称
-          id:'' // 数据_id
+          'status':'',
+          'info':'',
+          'todoTime':'',  // 开始时间
+          'createTime':'',  // 创建时间
+          'updateTime':'',  // 更新时间
+          'types':[], // 标签
+          'nick':'',  // 昵称
+          'id':'' // 数据_id
         }
       ]
     }

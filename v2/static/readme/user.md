@@ -5,7 +5,7 @@
 
 ### 基础信息
 
-- 路径: /base/info
+- 路径: base/info
 - 方法: GET
 - 参数：无
 
@@ -17,7 +17,8 @@
       'msg': 'base info',
       'data':{
         'user':'',
-        'todo':''
+        'todo':'',
+        'message':''
       }
   }
   ```
@@ -28,16 +29,17 @@
 ## 1. 用户
 
 ### 注册
-- 路径: /user/register
+- 路径: user/register
 - 方法: POST
 - 参数：
 
   ```js
   {
-    nick:"",
-    username : "",
-    phone:"",
-    pwd:""
+    'nick':'',
+    'username' : '',
+    'phone' :'',
+    'pwd' :'',
+    'sex' :''  // 性别 [目前已写死为0]  默认0 {0:保密; 1:女; 2：男}
   }
   ```
 
@@ -48,8 +50,8 @@
       'code': 0,
       'msg': '注册成功',
       'data': {
-          id: '',
-          nick: ''
+          'id' : '',
+          'nick' : ''
       }
   }
   ```
@@ -71,14 +73,14 @@
 
 ### 登录
 
-- 路径: /user/login
+- 路径: user/login
 - 方法: POST
 - 参数：
 
   ```js
   {
-    username : "",
-    pwd:""
+    'username' : '',
+    'pwd' : ''
   }
   ```
 
@@ -111,7 +113,7 @@
 
 ### 获取用户信息
 
-- 路径: /user/info
+- 路径: user/info
 - 方法: GET
 - 参数：无
 
@@ -121,15 +123,16 @@
       'code': 0,
       'msg': '用户信息',
       'data': {
-          nick: '',
-          power: ''
+          'nick': '',
+          'power': '',
+          'sex':''  // 性别 [目前已写死为0]  默认0 {0:保密; 1:女; 2：男}
       }
   }
   ```
 
 ### 注销
 
-- 路径: /user/logout
+- 路径: user/logout
 - 方法: GET
 - 参数：无
 

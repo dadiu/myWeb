@@ -133,7 +133,10 @@
 
           <!-- status -->
           <el-col :span="9">
-            <el-radio-group v-model="search.status" @change="searchFn">
+            <el-radio-group
+              v-model="search.status"
+              @change="searchFn"
+            >
               <el-radio :label="9">全部</el-radio>
               <el-radio :label="0">待完成</el-radio>
               <el-radio :label="1">已完成</el-radio>
@@ -198,7 +201,7 @@ import ViewDelete from "./components/delete.vue";
 import { ViewNone, ViewAddTodo } from "@/components/";
 
 export default {
-  components: { ViewDay, ViewDelete, ViewNone, ViewAddTodo },
+  components: { ViewDay, ViewDelete,  ViewNone, ViewAddTodo},
   data() {
     return {
       isShow: 0,
@@ -313,7 +316,6 @@ export default {
 
     // 查找类别
     searchFn() {
-
       let val = filters.trimFn(this.search.value);
       // 查找类别
       let type = 1;
@@ -330,7 +332,7 @@ export default {
           istoday: this.isShow,
           searchType: type,
           searchValue: val,
-          searchStatus : this.search.status
+          searchStatus: this.search.status
         },
         res => {
           this.loading = false;
@@ -341,10 +343,7 @@ export default {
     },
 
     // 查找状态 =>仅支持过去，未来暂未开启此功能
-    searchStatusFn(data){
-
-
-    }
+    searchStatusFn(data) {}
   }
 };
 </script>

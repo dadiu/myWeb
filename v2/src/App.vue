@@ -1,20 +1,26 @@
 <template>
   <div id="app">
     <!-- <img src="./assets/logo.png"> -->
+
     <!-- nav -->
     <ViewHeader />
 
     <!-- main -->
-    <router-view />
+    <router-view class="c-main" />
+
+    <!-- footer -->
+    <ViewFooter />
   </div>
 </template>
 
 <script>
-import ViewHeader from '@/views/header.vue';
-import '@/assets/js/master.js';
+
+import ViewHeader from "@/views/header";
+import ViewFooter from "@/views/footer";
+import "@/assets/js/master.js";
 export default {
   name: "App",
-  components : {ViewHeader},
+  components: { ViewHeader, ViewFooter }
 };
 </script>
 

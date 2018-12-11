@@ -42,7 +42,7 @@
           <p class="home-title">作者</p>
           <p class="home-flex">
             <i class="iconfont">&#xe63a;</i>
-            大丢
+            大大丢
           </p>
           <p class="home-flex">
             <i class="iconfont">&#xe71f;</i>
@@ -55,7 +55,7 @@
           <p class="home-flex">
             <i class="iconfont">&#xe68a;</i>
             宅，猫奴。<br/>
-            学过3年动漫，干过1年设计，1年产品&前端开发，5年纯前端开发。
+            1年设计，1年产品&前端开发，5年纯前端开发。
           </p>
         </div>
       </el-col>

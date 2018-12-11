@@ -23,6 +23,7 @@
           <el-date-picker
             size="small"
             v-model="createDate"
+            :editable="false"
             type="daterange"
             value-format="timestamp"
             range-separator="至"
@@ -48,7 +49,7 @@
     <div class="aunt-bd">
       <ul
         class="aunt-list"
-        v-for="items in tableData"
+        v-for="(items,idx) in tableData"
         :key="items.f"
       >
         <!-- date -->
@@ -96,7 +97,7 @@
         </li>
 
         <!-- delete -->
-        <li class="aunt-list-delete">
+        <li class="aunt-list-delete" v-if="idx != 0">
           <i
             class="el-icon-remove-outline"
             @click="deleteFn(items)"
@@ -320,7 +321,8 @@ export default {
                 message: "已删除 " + item.date,
                 type: "success"
               });
-              this.init();
+              // this.init();
+              this.tableData.remove(item);
             }
           );
         })

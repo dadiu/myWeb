@@ -17,7 +17,6 @@
         :editable="false"
         :clearable="false"
         v-model="form.todoTime"
-        format="yyyy 年 MM 月 dd 日"
         value-format="timestamp"
         :picker-options="pickerOptions"
       ></el-date-picker>
@@ -72,7 +71,6 @@
           :editable="false"
           :clearable="false"
           v-model="form.todoTime"
-          format="yyyy 年 MM 月 dd 日"
           value-format="timestamp"
           :picker-options="pickerOptions"
         ></el-date-picker>

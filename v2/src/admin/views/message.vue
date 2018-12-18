@@ -7,7 +7,7 @@
       <el-breadcrumb-item>全部</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- table -->
-    <el-table :data="tableData" border>
+    <el-table :data="tableData" stripe height="82vh" border >
       <el-table-column prop="nick" label="用户" fixed>
         <template slot-scope="scope">
          {{nickData[scope.row.author]}}

@@ -182,9 +182,10 @@ export default {
       pickerOptions: {
         disabledDate(time) {
           // console.log(new Date(time.getTime()));
-          let startTime = new Date(time.getTime() - 7 * 24 * 60 * 60 * 1000);
+          // 可选择今天开始往后30天的项目安排
+          let startTime = new Date(time.getTime() - 30 * 24 * 60 * 60 * 1000);
           let endTime = new Date(
-            Date.parse(new Date()) + 7 * 24 * 60 * 60 * 1000
+            Date.parse(new Date()) + 30 * 24 * 60 * 60 * 1000
           );
           return time.getTime() > endTime;
         }

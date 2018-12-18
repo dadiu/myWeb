@@ -63,7 +63,7 @@
       >
         <p class="todo-hd-tips">
           <i class="el-icon-info"></i>
-          计划最多7天
+          计划最多30天
         </p>
         <div
           class="todo-bar"

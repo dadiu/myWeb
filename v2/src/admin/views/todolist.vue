@@ -7,14 +7,14 @@
       <el-breadcrumb-item>全部</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- table -->
-    <el-table :data="tableData" border>
-      <el-table-column prop="nick" label="用户" fixed>
+    <el-table :data="tableData" stripe height="82vh" border >
+      <el-table-column prop="nick" label="用户" width="180" fixed>
         <template slot-scope="scope">
          {{nickData[scope.row.author]}}
         </template>
         </el-table-column>
       
-      <el-table-column label="状态">
+      <el-table-column label="状态" width="100">
         <template slot-scope="scope">
            <el-tag type="info" v-if="scope.row.status == 1">
             已完成
@@ -27,9 +27,9 @@
           </el-tag>
         </template>
       </el-table-column>
-      <el-table-column prop="info" label="任务" width="300"></el-table-column>
+      <el-table-column prop="info" label="任务" width="400"></el-table-column>
 
-      <el-table-column label="标签" width="200">
+      <el-table-column label="标签">
         <template slot-scope="scope">
           <el-tag v-for="item in scope.row.types" :key="item.type">
             {{item}}

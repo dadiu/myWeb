@@ -8,7 +8,7 @@
     </el-breadcrumb>
 
     <!-- table -->
-    <el-table :data="tableData" border>
+    <el-table :data="tableData" stripe height="82vh" border >
       <el-table-column fixed prop="nick" label="昵称"></el-table-column>
       <el-table-column prop="username" label="用户名"></el-table-column>
 

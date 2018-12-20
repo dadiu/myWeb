@@ -223,8 +223,7 @@ export default {
         },
         {
           label: "任务",
-          value: 2,
-          disabled: true
+          value: 2
         }
       ],
       deleteData: {}

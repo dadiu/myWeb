@@ -2,7 +2,7 @@
  * @Author: whj 
  * @Date: 2018-11-21 17:51:13 
  * @Last Modified by: whj
- * @Last Modified time: 2018-11-26 14:26:15
+ * @Last Modified time: 2018-12-20 11:08:14
  */
 import Vue from 'vue';
 import router from '../../router.js';
@@ -21,7 +21,7 @@ export default {
         Vue.prototype.$http.get(url, {
             params: data
         }).then(res => {
-            console.log(res.data);
+            // console.log(res.data);
 
             res = res.data;
 

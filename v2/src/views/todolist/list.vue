@@ -139,8 +139,8 @@
             >
               <el-radio :label="9">全部</el-radio>
               <el-radio :label="0">待完成</el-radio>
-              <el-radio :label="1">已完成</el-radio>
               <el-radio :label="2">搁置</el-radio>
+              <el-radio :label="1">已完成</el-radio>
             </el-radio-group>
           </el-col>
         </el-row>
@@ -201,7 +201,7 @@ import ViewDelete from "./components/delete.vue";
 import { ViewNone, ViewAddTodo } from "@/components/";
 
 export default {
-  components: { ViewDay, ViewDelete,  ViewNone, ViewAddTodo},
+  components: { ViewDay, ViewDelete, ViewNone, ViewAddTodo },
   data() {
     return {
       isShow: 0,
@@ -241,14 +241,22 @@ export default {
   methods: {
     changeMenu(type = this.isShow) {
       this.isShow = type;
-      this.search.value = "";
+      // this.search.value = "";
       this.loading = true;
 
-      getData.todoList({ istoday: this.isShow, searchType: 0 }, res => {
-        this.loading = false;
-        // history
-        this.list = this.isShow == -1 ? res.data.reverse() : res.data;
-      });
+      getData.todoList(
+        {
+          istoday: this.isShow,
+          searchType: this.search.type,
+          searchValue: this.search.value,
+          searchStatus: this.search.status
+        },
+        res => {
+          this.loading = false;
+          // history
+          this.list = this.isShow == -1 ? res.data.reverse() : res.data;
+        }
+      );
     },
 
     // 显示添加
@@ -285,14 +293,22 @@ export default {
         }
       }
 
-      getData.todoList({ istoday: type, searchType: 0 }, res => {
-        this.loading = false;
-        if (activeType == "create") {
-          this.isShow = type;
-        }
+      getData.todoList(
+        {
+          istoday: type,
+          searchType: this.search.type,
+          searchValue: this.search.value,
+          searchStatus: this.search.status
+        },
+        res => {
+          this.loading = false;
+          if (activeType == "create") {
+            this.isShow = type;
+          }
 
-        this.list = this.isShow == -1 ? res.data.reverse() : res.data;
-      });
+          this.list = this.isShow == -1 ? res.data.reverse() : res.data;
+        }
+      );
     },
 
     // 显示删除弹窗 传入要删除的对象
@@ -340,10 +356,7 @@ export default {
           this.list = this.isShow == -1 ? res.data.reverse() : res.data;
         }
       );
-    },
-
-    // 查找状态 =>仅支持过去，未来暂未开启此功能
-    searchStatusFn(data) {}
+    }
   }
 };
 </script>

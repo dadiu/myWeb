@@ -1,23 +1,18 @@
-import Index from './index.vue';
-import Todolist from './views/todolist.vue';
-import UserList from './views/userlist.vue';
-import MessageList from './views/message.vue';
-
 export default [{
     path: '/admin',
-    component: Index,
+    component: (resolve) => require(['./index.vue'], resolve),
     name: 'admin',
     children: [{
         path: 'todolist',
         name: 'admin.todolist',
-        component: Todolist
+        component: (resolve) => require(['./views/todolist.vue'], resolve),
     }, {
         path: 'userlist',
         name: 'admin.userlist',
-        component: UserList
+        component: (resolve) => require(['./views/userlist.vue'], resolve),
     }, {
         path: 'messagelist',
         name: 'admin.messagelist',
-        component: MessageList
+        component: (resolve) => require(['./views/message.vue'], resolve),
     }]
 }]

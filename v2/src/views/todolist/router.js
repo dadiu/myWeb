@@ -1,12 +1,9 @@
-import Index from './index.vue';
-import List from './list.vue';
-
 export default [{
     path: '/todo',
-    component: Index,
+    component: (resolve) => require(['./index.vue'], resolve),
     children: [{
         path: 'list',
         name: 'todo.list',
-        component: List
+        component: (resolve) => require(['./list.vue'], resolve)
     }]
 }]

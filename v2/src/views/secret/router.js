@@ -1,12 +1,9 @@
-import Index from './index.vue';
-import Aunt from './aunt.vue'
-
 export default [{
     path: '/secret',
-    component: Index,
+    component: (resolve) => require(['./index.vue'], resolve),
     children: [{
         path: 'aunt',
         name: 'secret.aunt',
-        component: Aunt
+        component: (resolve) => require(['./aunt.vue'], resolve)
     }]
 }]

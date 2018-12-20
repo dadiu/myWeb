@@ -1,13 +1,10 @@
-import Index from './index.vue';
-import Md from './md.vue';
-
 export default [{
     path: '/md',
-    component: Index,
+    component: (resolve) => require(['./index.vue'], resolve),
     name: 'md',
     children: [{
         path: ':page',
         name: 'md.list',
-        component: Md,
+        component: (resolve) => require(['./md.vue'], resolve)
     }, ]
 }]

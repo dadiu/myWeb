@@ -1,18 +1,13 @@
-import Forget from './forget.vue';
-import Login from './login.vue';
-import Register from './register.vue';
-
-
 export default [{
     path: '/forget',
     name: 'forget',
-    component: Forget
+    component: (resolve) => require(['./forget.vue'], resolve)
 }, {
     path: '/login',
     name: 'login',
-    component: Login
+    component: (resolve) => require(['./login.vue'], resolve)
 }, {
     path: '/register',
     name: 'register',
-    component: Register
+    component: (resolve) => require(['./register.vue'], resolve)
 }]

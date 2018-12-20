@@ -180,6 +180,26 @@ export default {
         ]
       },
       pickerOptions: {
+          shortcuts: [{
+            text: '今天',
+            onClick(picker) {
+              picker.$emit('pick', new Date());
+            }
+          }, {
+            text: '明天',
+            onClick(picker) {
+              const date = new Date();
+              date.setTime(date.getTime() + 3600 * 1000 * 24);
+              picker.$emit('pick', date);
+            }
+          }, {
+            text: '后天',
+            onClick(picker) {
+              const date = new Date();
+              date.setTime(date.getTime() + 3600 * 1000 * 24 * 2);
+              picker.$emit('pick', date);
+            }
+          }],
         disabledDate(time) {
           // console.log(new Date(time.getTime()));
           // 可选择今天开始往后30天的项目安排

@@ -2,7 +2,7 @@
  * @Author: whj 
  * @Date: 2018-12-06 10:58:08 
  * @Last Modified by: whj
- * @Last Modified time: 2018-12-06 15:41:54
+ * @Last Modified time: 2018-12-18 16:33:41
  */
 
 $c-gray: #ccc;
@@ -14,8 +14,8 @@ $c-mark :#e36209;
     &nav {
         position: fixed;
         left: 50%;
-        margin-left: 360px;
-        width: 180px;
+        margin-left: 350px;
+        width: 220px;
         top: 100px;
         background-color: #eee;
         .el-menu {
@@ -93,6 +93,13 @@ $c-mark :#e36209;
     code {
         color: #fff;
         background-color: $c-black-litter;
+    }
+    a {
+        color: $c-mark;
+        text-decoration: none;
+        &:hover {
+            text-decoration: underline;
+        }
     }
     hr {
         margin-bottom: 14px;

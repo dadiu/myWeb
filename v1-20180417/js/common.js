@@ -54,7 +54,7 @@ var navmore = [
     {
         "name": "",
         "china": "v2更新中",
-        "href": "http://121.43.189.200",
+        "href": "http://dadadiu.cn:81",
         "open": "_blank"
     },
     // {

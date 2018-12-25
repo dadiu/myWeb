@@ -11,14 +11,6 @@ Vue.use(ElementUI);
 // elememt-ui
 // import './config/element';
 
-import axios from 'axios';
-
-Vue.prototype.$http = axios.create({
-    baseURL: process.env.API_ROOT,
-    timeout: 5000,
-    withCredentials: true
-})
-
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

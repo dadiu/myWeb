@@ -1,0 +1,77 @@
+/*
+ * @Author: whj 
+ * @Date: 2018-12-24 16:21:41 
+ * @Last Modified by: whj
+ * @Last Modified time: 2018-12-25 14:58:47
+ */
+
+* {
+    box-sizing: border-box;
+}
+
+$fc-border :#ccc;
+$fc-bg:#ddd;
+.award- {
+    &title {
+        font-size: 18px;
+        font-weight: bold;
+        margin: 10px 0;
+    }
+    &preview {
+        margin-right: 50px;
+        display: flex;
+        flex-wrap: wrap;
+        border-left: 1px solid $fc-border;
+        border-top: 1px solid $fc-border;
+        background-color: $fc-bg;
+        width: 561px;
+        margin-bottom: 34px;
+        &- {
+            &item {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 80px;
+                height: 80px;
+                border-right: 1px solid $fc-border;
+                border-bottom: 1px solid $fc-border;
+            }
+            &pic {
+                width: 46px;
+                height: 46px;
+                margin-bottom: 5px;
+            }
+        }
+    }
+    &signIn {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    &form {
+        border-top: 1px solid $fc-border;
+        padding-top: 20px;
+        &- {
+            &inline {
+                display: flex;
+            }
+        }
+    }
+    &ipt {
+        &- {
+            &bar {
+                width: 600px;
+                display: flex;
+                flex-direction: column;
+            }
+            &min {
+                width: 80px;
+                margin-bottom: 5px;
+                margin-right: 5px;
+            }
+        }
+    }
+    &log {
+        width: 100%;
+    }
+}

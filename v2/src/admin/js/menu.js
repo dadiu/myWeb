@@ -2,7 +2,7 @@
  * @Author: whj 
  * @Date: 2018-11-23 15:06:42 
  * @Last Modified by: whj
- * @Last Modified time: 2018-12-03 17:43:54
+ * @Last Modified time: 2018-12-24 18:24:10
  */
 module.exports = {
     userlist: {
@@ -19,5 +19,10 @@ module.exports = {
         type: 'messagelist',
         desc: '便签',
         path: 'admin.messagelist'
+    },
+    award: {
+        type: 'awardlist',
+        desc: '奖励配置',
+        path: 'admin.awardlist'
     }
 };

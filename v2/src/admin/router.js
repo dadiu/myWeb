@@ -14,5 +14,9 @@ export default [{
         path: 'messagelist',
         name: 'admin.messagelist',
         component: (resolve) => require(['./views/message.vue'], resolve),
+    }, {
+        path: 'awardlist',
+        name: 'admin.awardlist',
+        component: (resolve) => require(['./views/award.vue'], resolve),
     }]
 }]

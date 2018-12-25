@@ -59,7 +59,7 @@ import getData from "@/admin/js/getData";
         if(data[0] == 99){
           this.menuList = menuData;
           this.$router.push({
-            name : menuData['userlist'].path
+            name : menuData['award'].path
           })
           return;
         }

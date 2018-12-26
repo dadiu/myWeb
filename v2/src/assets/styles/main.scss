@@ -21,8 +21,8 @@ body {
 @font-face {
     font-family: 'iconfont';
     /* project id 922008 */
-    src: url('//at.alicdn.com/t/font_922008_v535737ku6k.eot');
-    src: url('//at.alicdn.com/t/font_922008_v535737ku6k.eot?#iefix') format('embedded-opentype'), url('//at.alicdn.com/t/font_922008_v535737ku6k.woff') format('woff'), url('//at.alicdn.com/t/font_922008_v535737ku6k.ttf') format('truetype'), url('//at.alicdn.com/t/font_922008_v535737ku6k.svg#iconfont') format('svg');
+    src: url('//at.alicdn.com/t/font_922008_b7rxafis1a.eot');
+    src: url('//at.alicdn.com/t/font_922008_b7rxafis1a.eot?#iefix') format('embedded-opentype'), url('//at.alicdn.com/t/font_922008_b7rxafis1a.woff') format('woff'), url('//at.alicdn.com/t/font_922008_b7rxafis1a.ttf') format('truetype'), url('//at.alicdn.com/t/font_922008_b7rxafis1a.svg#iconfont') format('svg');
 }
 
 .iconfont {
@@ -69,7 +69,7 @@ $c-warning:#e6a23c;
 #g- {
     &hd {
         position: fixed;
-        z-index: 9;
+        z-index: 3000;
         width: 100%;
         left: 0;
         top: 0;
@@ -572,6 +572,57 @@ $c-warning:#e6a23c;
                 color: #c0c4cc;
                 background-color: #f5f7fa;
             }
+        }
+    }
+}
+
+.signin- {
+    &bar {
+        width: 551px;
+        .el-dialog__body {
+            padding: 10px 30px 40px;
+            font-size: 12px;
+        }
+        .el-progress-bar__innerText {
+            display: none;
+        }
+    }
+    &desc {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+    &item {
+        display: flex;
+        flex-wrap: wrap;
+        width: 491px;
+        border-left: 1px solid $c-gray;
+        border-top: 1px solid $c-gray;
+    }
+    &li {
+        position: relative;
+        width: 70px;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-right: 1px solid $c-gray;
+        border-bottom: 1px solid $c-gray;
+    }
+    &pic {
+        width: 46px;
+        height: 46px;
+    }
+    &daily {
+        margin-bottom: 10px;
+    }
+    &up {
+        &-count {
+            position: absolute;
+            left: 0;
+            bottom: -35px;
+            width: 100%;
+            text-align: center;
         }
     }
 }

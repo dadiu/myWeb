@@ -2,7 +2,7 @@
  * @Author: whj 
  * @Date: 2018-11-12 11:47:12 
  * @Last Modified by: whj
- * @Last Modified time: 2018-12-11 16:45:21
+ * @Last Modified time: 2018-12-26 17:10:52
  */
 
 import http from '@/assets/js/https';
@@ -110,5 +110,13 @@ export default {
     // 删除
     auntDelete(data, cb) {
         http.get('aunt/delete', data, cb);
+    },
+
+    /////////////////////////////////////////////////
+    ////// - 签到
+
+    // 签到奖励展示
+    awardDaily(cb) {
+        http.get('award/daily/list', {}, cb);
     }
 }

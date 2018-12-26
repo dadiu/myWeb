@@ -2,7 +2,7 @@
  * @Author: whj 
  * @Date: 2018-11-22 16:17:53 
  * @Last Modified by: whj
- * @Last Modified time: 2018-12-25 15:22:09
+ * @Last Modified time: 2018-12-26 13:47:41
  */
 
 import http from '@/assets/js/https';
@@ -27,12 +27,12 @@ export default {
 
     // 创建签到奖励
     awardCreate(data, cb) {
-        http.post('award/daily/add', data, cb);
+        http.post('admin/award/daily/add', data, cb);
     },
     awardList(data, cb) {
-        http.get('award/daily/list', data, cb);
+        http.get('admin/award/daily/list', data, cb);
     },
     awardUpdate(data, cb) {
-        http.post('award/daily/update', data, cb);
+        http.post('admin/award/daily/update', data, cb);
     }
 }

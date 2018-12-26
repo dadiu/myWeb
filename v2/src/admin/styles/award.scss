@@ -2,7 +2,7 @@
  * @Author: whj 
  * @Date: 2018-12-24 16:21:41 
  * @Last Modified by: whj
- * @Last Modified time: 2018-12-25 14:58:47
+ * @Last Modified time: 2018-12-26 13:32:51
  */
 
 * {
@@ -17,15 +17,16 @@ $fc-bg:#ddd;
         font-weight: bold;
         margin: 10px 0;
     }
+    &h4 {
+        margin: 15px 0;
+    }
     &preview {
-        margin-right: 50px;
         display: flex;
         flex-wrap: wrap;
         border-left: 1px solid $fc-border;
         border-top: 1px solid $fc-border;
         background-color: $fc-bg;
         width: 561px;
-        margin-bottom: 34px;
         &- {
             &item {
                 display: flex;
@@ -47,6 +48,12 @@ $fc-bg:#ddd;
     &signIn {
         display: flex;
         flex-wrap: wrap;
+        &- {
+            &bar {
+                position: relative;
+                margin-right: 50px;
+            }
+        }
     }
     &form {
         border-top: 1px solid $fc-border;
@@ -54,6 +61,11 @@ $fc-bg:#ddd;
         &- {
             &inline {
                 display: flex;
+            }
+            &btn {
+                position: absolute;
+                right: 0;
+                top: 66px;
             }
         }
     }

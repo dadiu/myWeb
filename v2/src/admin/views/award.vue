@@ -3,50 +3,6 @@
     class="award-signIn"
     v-loading.fullscreen="isLoading"
   >
-
-    <!-- 预览 -->
-    <div class="award-signIn-bar">
-
-      <!-- 每天奖励 -->
-      <p class="award-title">每天奖励</p>
-      <ul class="award-preview">
-        <li
-          class="award-preview-item"
-          v-for="n in list.daily.length"
-          :key="n.daily"
-        >
-          <img
-            :src="'http://www.m3guo.com/activity/201812/fish/static/img/eq/' + list.daily[n-1] + '.jpg'"
-            :alt="list.daily[n-1]"
-            v-if="list.daily[n-1] && list.daily[n-1] != ''"
-            class="award-preview-pic"
-          >
-          <p class="award-preview-desc">{{list.daily[n-1]}}</p>
-        </li>
-      </ul>
-
-      <!-- 累计奖励 -->
-      <p class="award-title">累计奖励</p>
-      <ul class="award-preview">
-        <li
-          class="award-preview-item"
-          v-for="n in list.up"
-          :key="n.up"
-        >
-          <p>{{n.count}}天</p>
-          
-          <img
-            :src="'http://www.m3guo.com/activity/201812/fish/static/img/eq/' + n.id + '.jpg'"
-            :alt="n.id"
-            v-if="n.id && n.id != ''"
-            class="award-preview-pic"
-          >
-          <p>
-            {{n.id}}</p>
-        </li>
-      </ul>
-    </div>
-
     <!-- form -->
     <div class="award-signIn-bar">
       <p class="award-title">奖励配置表单</p>
@@ -78,6 +34,7 @@
             maxlength="5"
             class="award-ipt-min"
             placeholder="id"
+            :disabled="submitType == 'read'"
           ></el-input>
         </el-form-item>
 
@@ -97,6 +54,7 @@
                   type="type"
                   v-model="n.count"
                   class="award-ipt-min"
+                  :disabled="submitType == 'read'"
                 >
                   <span slot="suffix">
                     天
@@ -112,25 +70,65 @@
                   class="award-ipt-min"
                   maxlength="5"
                   placeholder="id"
+                  :disabled="submitType == 'read'"
                 ></el-input>
               </el-form-item>
             </el-form>
           </div>
         </el-form-item>
-
-        <el-form-item>
-          <el-button
-            type="primary"
-            @click="createFn"
-            v-if="submitType == 'create'"
-          >创建</el-button>
-          <el-button
-            type="primary"
-            @click="updetaFn"
-            v-if="submitType == 'update'"
-          >更新</el-button>
-        </el-form-item>
       </el-form>
+      <div class="award-form-btn">
+        <el-button
+          type="primary"
+          @click="createFn"
+          v-if="submitType == 'create'"
+        >创建</el-button>
+        <el-button
+          type="primary"
+          @click="updetaFn"
+          v-if="submitType == 'update'"
+        >更新</el-button>
+      </div>
+    </div>
+
+    <!-- 预览 -->
+    <div class="award-signIn-bar">
+
+      <!-- 每天奖励 -->
+      <p class="award-title">奖励预览 </p>
+      <ul class="award-preview">
+        <li
+          class="award-preview-item"
+          v-for="n in list.daily.length"
+          :key="n.daily"
+        >
+          <img
+            :src="'//www.dadadiu.cn/common/tool/' + list.daily[n-1] + '.png'"
+            :alt="list.daily[n-1] | filterTool('name')"
+            v-if="list.daily[n-1] && list.daily[n-1] != ''"
+            class="award-preview-pic"
+          >
+        </li>
+      </ul>
+
+      <!-- 累计奖励 -->
+      <p class="award-h4">累计奖励</p>
+      <ul class="award-preview">
+        <li
+          class="award-preview-item"
+          v-for="n in list.up"
+          :key="n.up"
+        >
+          <p>{{n.count}}天</p>
+
+          <img
+            :src="'//www.dadadiu.cn/common/tool/' + n.id + '.png'"
+            :alt="n.id | filterTool('name')"
+            v-if="n.id && n.id != ''"
+            class="award-preview-pic"
+          >
+        </li>
+      </ul>
     </div>
 
     <!-- table log -->
@@ -149,7 +147,7 @@
         </el-table-column>
 
         <el-table-column
-          prop="author"
+          prop="nick"
           label="操作人"
         >
         </el-table-column>
@@ -162,6 +160,7 @@
       </el-table>
 
     </div>
+
   </div>
 
 </template>
@@ -169,14 +168,16 @@
 <script>
 import filters from "@/assets/js/filters";
 import getData from "@/admin/js/getData";
+import toolData from "@/assets/js/tool";
 
 export default {
   data() {
     return {
-      submitType: "create",
+      submitType: "create", // ['read', 'update', 'create']
       isLoading: false,
       list: {
         month: filters.dateFormat(null, "-", "yyyy-mm"),
+        // month: "2019-01",
         daily: [],
         up: []
       },
@@ -188,8 +189,12 @@ export default {
   filters: {
     filterDate(val) {
       let date = val.createAt ? val.createAt : val.updateAt;
-      console.log(date);
+      // console.log(date);
       return filters.dateDetailFormat(parseInt(date), "-");
+    },
+
+    filterTool(val, type) {
+      return toolData[val] && toolData[val][type];
     }
   },
 
@@ -225,7 +230,7 @@ export default {
           }
 
           // 不存在
-          this.list.daily = new Array(21);
+          this.list.daily = new Array(28);
           this.list.up = [
             { count: 3, id: "" },
             { count: 5, id: "" },

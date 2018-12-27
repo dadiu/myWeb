@@ -2,7 +2,7 @@
  * @Author: whj 
  * @Date: 2018-11-12 11:47:12 
  * @Last Modified by: whj
- * @Last Modified time: 2018-12-26 17:10:52
+ * @Last Modified time: 2018-12-27 17:53:47
  */
 
 import http from '@/assets/js/https';
@@ -118,5 +118,23 @@ export default {
     // 签到奖励展示
     awardDaily(cb) {
         http.get('award/daily/list', {}, cb);
+    },
+
+    // 已签到列表
+    signInList(cb) {
+
+        http.get('signIn/list', {}, cb);
+    },
+
+    // 签入
+    signInCheckIn(data) {
+        // data={id,tool}
+        http.get('signIn/checkIn', data, cb);
+    },
+
+    // 补签
+    signInPush(data) {
+        // data={id,tool}
+        http.get('signIn/push', data, cb);
     }
 }

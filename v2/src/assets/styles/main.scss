@@ -608,6 +608,12 @@ $c-warning:#e6a23c;
         align-items: center;
         border-right: 1px solid $c-gray;
         border-bottom: 1px solid $c-gray;
+        &.fn-check {
+            background-color: rgba($color: #000, $alpha: 0.3);
+            .signin-pic {
+                opacity: 0.5;
+            }
+        }
     }
     &pic {
         width: 46px;

@@ -91,6 +91,7 @@
     <ViewSignIn
       v-if="dialogSignIn"
       :dialogTableVisible="dialogSignIn"
+      :toolData="toolData"
     />
   </header>
 </template>
@@ -105,6 +106,7 @@ export default {
     return {
       isLogin: false,
       nick: "",
+      toolData:{},
       isAdmin: 0,
       isGirl: false,
       dialogSignIn: true
@@ -126,6 +128,7 @@ export default {
 
       getData.userInfo(res => {
         self.nick = res.data.nick;
+        self.toolData = res.data.tool;
         self.isAdmin = res.data.power;
 
         //  {0:保密; 1:女; 2：男}

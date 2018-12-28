@@ -21,8 +21,8 @@ body {
 @font-face {
     font-family: 'iconfont';
     /* project id 922008 */
-    src: url('//at.alicdn.com/t/font_922008_b7rxafis1a.eot');
-    src: url('//at.alicdn.com/t/font_922008_b7rxafis1a.eot?#iefix') format('embedded-opentype'), url('//at.alicdn.com/t/font_922008_b7rxafis1a.woff') format('woff'), url('//at.alicdn.com/t/font_922008_b7rxafis1a.ttf') format('truetype'), url('//at.alicdn.com/t/font_922008_b7rxafis1a.svg#iconfont') format('svg');
+    src: url('//at.alicdn.com/t/font_922008_izn4x75wi6m.eot');
+    src: url('//at.alicdn.com/t/font_922008_izn4x75wi6m.eot?#iefix') format('embedded-opentype'), url('//at.alicdn.com/t/font_922008_izn4x75wi6m.woff') format('woff'), url('//at.alicdn.com/t/font_922008_izn4x75wi6m.ttf') format('truetype'), url('//at.alicdn.com/t/font_922008_izn4x75wi6m.svg#iconfont') format('svg');
 }
 
 .iconfont {
@@ -69,7 +69,7 @@ $c-warning:#e6a23c;
 #g- {
     &hd {
         position: fixed;
-        z-index: 3000;
+        z-index: 99;
         width: 100%;
         left: 0;
         top: 0;
@@ -578,19 +578,27 @@ $c-warning:#e6a23c;
 
 .signin- {
     &bar {
-        width: 551px;
+        width: 690px;
         .el-dialog__body {
-            padding: 10px 30px 40px;
+            padding: 10px 20px 40px;
             font-size: 12px;
+            display: flex;
+            justify-content: space-between;
         }
         .el-progress-bar__innerText {
             display: none;
         }
     }
     &desc {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 10px;
+        width: 150px;
+        &-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1px;
+            background-color: rgba($color: #000, $alpha: 0.1);
+            padding: 8px 10px;
+        }
     }
     &item {
         display: flex;
@@ -626,7 +634,7 @@ $c-warning:#e6a23c;
         &-count {
             position: absolute;
             left: 0;
-            bottom: -35px;
+            bottom: -25px;
             width: 100%;
             text-align: center;
         }
@@ -709,6 +717,10 @@ $c-warning:#e6a23c;
 
 .el-message-box__wrapper {
     top: -300px;
+}
+
+.v-modal {
+    z-index: 98 !important;
 }
 
 //////////////////////////////////////////////

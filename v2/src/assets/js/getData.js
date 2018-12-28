@@ -2,7 +2,7 @@
  * @Author: whj 
  * @Date: 2018-11-12 11:47:12 
  * @Last Modified by: whj
- * @Last Modified time: 2018-12-27 17:53:47
+ * @Last Modified time: 2018-12-27 18:40:44
  */
 
 import http from '@/assets/js/https';
@@ -127,14 +127,15 @@ export default {
     },
 
     // 签入
-    signInCheckIn(data) {
-        // data={id,tool}
+    signInCheckIn(data, cb) {
+
+        // data={id}
         http.get('signIn/checkIn', data, cb);
     },
 
     // 补签
-    signInPush(data) {
-        // data={id,tool}
+    signInPush(data, cb) {
+        // data={id}
         http.get('signIn/push', data, cb);
     }
 }

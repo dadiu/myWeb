@@ -3,62 +3,71 @@
     title="签到"
     :visible.sync="dialogTableVisible"
     custom-class="signin-bar"
+    v-loading.fullscreen="loading"
   >
+    <div class="signin-map">
+      <!-- daily -->
+      <ul class="signin-daily signin-item">
+        <li
+          :class="['signin-daily-item signin-li', {'fn-check':idx < signInList.count}]"
+          v-for="(item,idx) in awardList.daily"
+          :key="item.d"
+        >
+          <img
+            :src="'//www.dadadiu.cn/common/tool/' + item + '.png'"
+            :alt="item"
+            class="signin-pic"
+          >
+        </li>
+      </ul>
+      <!-- up -->
+      <ul class="signin-up signin-item">
+
+        <li
+          :class="['signin-daily-item signin-li', {'fn-check':item.count <= signInList.count}]"
+          v-for="item in awardList.up"
+          :key="item.d"
+        >
+          <img
+            :src="'//www.dadadiu.cn/common/tool/' + item.id + '.png'"
+            :alt="item.id"
+            class="signin-pic"
+          >
+          <p class="signin-up-count">{{item.count}}天</p>
+        </li>
+      </ul>
+    </div>
 
     <div class="signin-desc">
-      <p><span>
-          <i class="iconfont">&#xe658;</i> 0
-        </span>
-        <span>
-          <i class="iconfont">&#xe628;</i> 0
-        </span>
-      </p>
-      <p>
-        <a href="javascript:;">business</a>
-        <a href="javascript:;">push</a>
-        <a href="javascript:;">check in</a>
-      </p>
-    </div>
-    <!-- daily -->
-    <ul class="signin-daily signin-item">
-      <li
-        :class="['signin-daily-item signin-li', {'fn-check':idx < signInList.count}]"
-        v-for="(item,idx) in awardList.daily"
-        :key="item.d"
-      >
-        <img
-          :src="'//www.dadadiu.cn/common/tool/' + item + '.png'"
-          :alt="item"
-          class="signin-pic"
-        >
-      </li>
-    </ul>
+      <div class="signin-desc-item">
+        <p><i class="iconfont">&#xe604;</i> {{signInList.count}}/{{awardList.daily.length}}</p>
+        <el-button
+          type="primary"
+          size="mini"
+          :disabled="signInList.isToday"
+          @click="checkInFn"
+        >签到</el-button>
+      </div>
 
-    <div class="signin-desc">
-      <span>本月签到 ： {{signInList.count}}/{{awardList.daily.length}}</span>
-      <span>本月缺勤 ： {{lessCount}} </span>
-    </div>
-    <!-- up -->
-    <ul class="signin-up signin-item">
+      <div class="signin-desc-item" v-if="toolData.pushCard">
+        <p><i class="iconfont">&#xe628;</i> {{toolData.pushCard.count}}</p>
+        <el-button
+          type="primary"
+          size="mini"
+          :disabled="toolData.pushCard.count == 0"
+          @click="pushFn"
+        >补签</el-button>
+      </div>
 
-      <li
-        :class="['signin-daily-item signin-li', {'fn-check':item.count < signInList.count}]"
-        v-for="item in awardList.up"
-        :key="item.d"
-      >
-        <img
-          :src="'//www.dadadiu.cn/common/tool/' + item.id + '.png'"
-          :alt="item.id"
-          class="signin-pic"
-        >
-        <p class="signin-up-count">{{item.count}}天</p>
-      </li>
-    </ul>
-    <el-progress
-      :percentage="percentageCount"
-      :text-inside="true"
-      color="#e0620d"
-    ></el-progress>
+      <div class="signin-desc-item" v-if="toolData.point">
+        <p><i class="iconfont">&#xe658;</i> {{toolData.point.count}}</p>
+        <el-button
+          type="info"
+          size="mini"
+          disabled="false"
+        >兑换</el-button>
+      </div>
+    </div>
 
   </el-dialog>
 
@@ -69,12 +78,12 @@ import getData from "@/assets/js/getData";
 
 export default {
   props: {
-    dialogTableVisible: { type: true }
+    dialogTableVisible: { type: true },
+    toolData:{type:Object}
   },
   data() {
     return {
-      lessCount: 0,
-      percentageCount: false,
+      loading: true,
       awardList: {
         up: [],
         daily: []
@@ -93,18 +102,66 @@ export default {
   methods: {
     init() {
       getData.awardDaily(res => {
+        this.loading = false;
         this.awardList = res.data;
       });
 
       getData.signInList(res => {
+        this.loading = false;
         this.signInList = res.data;
-        this.lessCount = new Date().getDate() - res.data.count;
-
-        // [待优化 daily依赖awardDaily]
-        this.percentageCount = parseInt(
-          (res.data.count / this.awardList.daily.length) * 100
-        );
       });
+    },
+
+    checkInFn() {
+      this.loading = true;
+      getData.signInCheckIn(
+        {
+          id: this.signInList.id
+        },
+        res => {
+          this.loading = false;
+
+          if (res.code == 0) {
+            this.$message({
+              type: "success",
+              message: res.msg
+            });
+            this.signInList.count += 1;
+            this.signInList.isToday = !this.signInList.isToday;
+            return;
+          }
+
+          this.$message(res.msg);
+        }
+      );
+    },
+
+    pushFn() {
+      this.loading = true;
+
+      // 当前月是否需要补签
+
+      // 补签卡是否足够
+
+      getData.signInPush(
+        {
+          id: this.signInList.id
+        },
+        res => {
+          this.loading = false;
+          if (res.code == 0) {
+            this.$message({
+              type: "success",
+              message: res.msg
+            });
+            this.signInList.count += 1;
+            
+            this.toolData.pushCard.count -= 1;
+            return;
+          }
+          this.$message(res.msg);
+        }
+      );
     }
   }
 };

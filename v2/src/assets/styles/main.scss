@@ -629,6 +629,16 @@ $c-warning:#e6a23c;
     }
     &daily {
         margin-bottom: 10px;
+        &- {
+            &count {
+                position: absolute;
+                left: 2px;
+                top: 0;
+                font-style: normal;
+                font-size: 12px;
+                color: #fff;
+            }
+        }
     }
     &up {
         &-count {

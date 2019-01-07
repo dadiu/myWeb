@@ -4,17 +4,20 @@
     :visible.sync="dialogTableVisible"
     custom-class="signin-bar"
     v-loading.fullscreen="loading"
+    :before-close="handleClose"
   >
     <div class="signin-map">
       <!-- daily -->
       <ul class="signin-daily signin-item">
         <li
-          :class="['signin-daily-item signin-li', {'fn-check':idx < signInList.count}]"
-          v-for="(item,idx) in awardList.daily"
+          :class="['signin-daily-item signin-li', {'fn-check':item.day <= signInList.count}]"
+          v-for="item in awardList.daily"
           :key="item.d"
         >
+          <i class="signin-daily-count">{{item.day}}</i>
           <img
-            :src="'//www.dadadiu.cn/common/tool/' + item + '.png'"
+            v-if="item.id"
+            :src="'//www.dadadiu.cn/common/tool/' + item.id + '.png'"
             :alt="item"
             class="signin-pic"
           >
@@ -24,16 +27,17 @@
       <ul class="signin-up signin-item">
 
         <li
-          :class="['signin-daily-item signin-li', {'fn-check':item.count <= signInList.count}]"
+          :class="['signin-daily-item signin-li', {'fn-check':item.day <= signInList.count}]"
           v-for="item in awardList.up"
           :key="item.d"
         >
           <img
+            v-if="item.id"
             :src="'//www.dadadiu.cn/common/tool/' + item.id + '.png'"
             :alt="item.id"
             class="signin-pic"
           >
-          <p class="signin-up-count">{{item.count}}天</p>
+          <p class="signin-up-count">{{item.day}}天</p>
         </li>
       </ul>
     </div>
@@ -49,7 +53,10 @@
         >签到</el-button>
       </div>
 
-      <div class="signin-desc-item" v-if="toolData.pushCard">
+      <div
+        class="signin-desc-item"
+        v-if="toolData.pushCard"
+      >
         <p><i class="iconfont">&#xe628;</i> {{toolData.pushCard.count}}</p>
         <el-button
           type="primary"
@@ -59,7 +66,10 @@
         >补签</el-button>
       </div>
 
-      <div class="signin-desc-item" v-if="toolData.point">
+      <div
+        class="signin-desc-item"
+        v-if="toolData.point"
+      >
         <p><i class="iconfont">&#xe658;</i> {{toolData.point.count}}</p>
         <el-button
           type="info"
@@ -78,8 +88,9 @@ import getData from "@/assets/js/getData";
 
 export default {
   props: {
-    dialogTableVisible: { type: true },
-    toolData:{type:Object}
+    dialogTableVisible: { type: Boolean },
+    toolData: { type: Object },
+    closeFn: { type: Function }
   },
   data() {
     return {
@@ -103,15 +114,28 @@ export default {
     init() {
       getData.awardDaily(res => {
         this.loading = false;
-        this.awardList = res.data;
+
+        if (res.code == 0) {
+          this.awardList = res.data;
+          return;
+        }
+
+        this.$message(res.msg);
       });
 
       getData.signInList(res => {
         this.loading = false;
-        this.signInList = res.data;
+
+        if (res.code == 0) {
+          this.signInList = res.data;
+          return;
+        }
+
+        this.$message(res.msg);
       });
     },
 
+    // 签到
     checkInFn() {
       this.loading = true;
       getData.signInCheckIn(
@@ -126,6 +150,8 @@ export default {
               type: "success",
               message: res.msg
             });
+            this.toolData.pushCard = res.list.pushCard;
+            this.toolData.point = res.list.point;
             this.signInList.count += 1;
             this.signInList.isToday = !this.signInList.isToday;
             return;
@@ -155,13 +181,17 @@ export default {
               message: res.msg
             });
             this.signInList.count += 1;
-            
+
             this.toolData.pushCard.count -= 1;
             return;
           }
           this.$message(res.msg);
         }
       );
+    },
+
+    handleClose(done) {
+      this.$emit("closeFn");
     }
   }
 };

@@ -28,9 +28,9 @@
           label="每天奖励："
         >
           <el-input
-            v-for="n in list.daily.length"
-            :key="n.daily"
-            v-model="list.daily[n-1]"
+            v-for="item in list.daily"
+            :key="item.daily"
+            v-model="item.id"
             maxlength="5"
             class="award-ipt-min"
             placeholder="id"
@@ -44,15 +44,15 @@
           <div class="award-form-inline">
 
             <el-form
-              v-for="n in list.up"
-              :key="n.up"
+              v-for="item in list.up"
+              :key="item.up"
             >
 
               <!-- 天数 -->
               <el-form-item>
                 <el-input
                   type="type"
-                  v-model="n.count"
+                  v-model="item.day"
                   class="award-ipt-min"
                   :disabled="submitType == 'read'"
                 >
@@ -66,7 +66,7 @@
               <el-form-item>
                 <el-input
                   type="type"
-                  v-model="n.id"
+                  v-model="item.id"
                   class="award-ipt-min"
                   maxlength="5"
                   placeholder="id"
@@ -99,13 +99,13 @@
       <ul class="award-preview">
         <li
           class="award-preview-item"
-          v-for="n in list.daily.length"
-          :key="n.daily"
+          v-for="item in list.daily"
+          :key="item.daily"
         >
           <img
-            :src="'//www.dadadiu.cn/common/tool/' + list.daily[n-1] + '.png'"
-            :alt="list.daily[n-1] | filterTool('name')"
-            v-if="list.daily[n-1] && list.daily[n-1] != ''"
+            :src="'//www.dadadiu.cn/common/tool/' + item.id + '.png'"
+            :alt="item.id | filterTool('name')"
+            v-if="item.id && item.id != ''"
             class="award-preview-pic"
           >
         </li>
@@ -116,15 +116,15 @@
       <ul class="award-preview">
         <li
           class="award-preview-item"
-          v-for="n in list.up"
-          :key="n.up"
+          v-for="item in list.up"
+          :key="item.up"
         >
-          <p>{{n.count}}天</p>
+          <p>{{item.day}}天</p>
 
           <img
-            :src="'//www.dadadiu.cn/common/tool/' + n.id + '.png'"
-            :alt="n.id | filterTool('name')"
-            v-if="n.id && n.id != ''"
+            :src="'//www.dadadiu.cn/common/tool/' + item.id + '.png'"
+            :alt="item.id | filterTool('name')"
+            v-if="item.id && item.id != ''"
             class="award-preview-pic"
           >
         </li>
@@ -230,20 +230,34 @@ export default {
           }
 
           // 不存在
-          this.list.daily = new Array(28);
+          this.list.daily = this.dailyCreateFn(28);
           this.list.up = [
-            { count: 3, id: "" },
-            { count: 5, id: "" },
-            { count: 7, id: "" },
-            { count: 10, id: "" },
-            { count: 15, id: "" },
-            { count: 20, id: "" },
-            { count: 25, id: "" }
+            { day: 3, id: "" },
+            { day: 5, id: "" },
+            { day: 7, id: "" },
+            { day: 10, id: "" },
+            { day: 15, id: "" },
+            { day: 20, id: "" },
+            { day: 25, id: "" }
           ];
           this.log = [];
           this.submitType = "create";
         }
       );
+    },
+
+    dailyCreateFn(max) {
+      let i = 0;
+      let cbData = [];
+
+      for (; i < max; i++) {
+        cbData.push({
+          day: i + 1,
+          id: ""
+        });
+      };
+
+      return cbData;
     },
 
     createFn() {

@@ -2,7 +2,7 @@
  * @Author: whj 
  * @Date: 2018-12-26 11:48:17 
  * @Last Modified by: whj
- * @Last Modified time: 2018-12-26 13:40:30
+ * @Last Modified time: 2019-01-07 13:59:45
  */
 module.exports = {
     A001: {
@@ -33,6 +33,6 @@ module.exports = {
     B001: {
         name: '补签卡x1',
         count: 1,
-        type: 'addSignIn'
+        type: 'pushCard'
     }
 }

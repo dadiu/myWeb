@@ -61,10 +61,14 @@
         <i class="iconfont">&#xe63a;</i>
         {{nick}}
       </span>
-      <span
+      <el-button @click="dialogSignIn=true" size="mini">
+        签到
+      </el-button>
+      <el-button
         @click="logoutFn"
-        class="hd-logout"
-      >注销</span>
+        class="hd-logout" size="mini">
+        注销
+      </el-button>
     </p>
 
     <p
@@ -91,6 +95,7 @@
     <ViewSignIn
       v-if="dialogSignIn"
       :dialogTableVisible="dialogSignIn"
+      @closeFn="dialogSignIn=false"
       :toolData="toolData"
     />
   </header>

@@ -209,7 +209,8 @@ export default {
 
       getData.awardList(
         {
-          month: this.list.month
+          month: this.list.month,
+          type:'award'
         },
         res => {
           // 存在

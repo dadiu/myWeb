@@ -216,7 +216,7 @@ export default {
 
   mounted() {
     this.isShow = this.dialogVisible;
-    console.log(this.itemForm);
+    // console.log(this.itemForm);
 
     if (this.itemForm) {
       Object.assign(this.form, this.itemForm);

@@ -10,4 +10,8 @@ export default [{
     path: '/register',
     name: 'register',
     component: (resolve) => require(['./register.vue'], resolve)
+}, {
+    path: '/user',
+    name: 'user',
+    component: (resolve) => require(['./info.vue'], resolve)
 }]

@@ -52,26 +52,34 @@
     </nav>
 
     <!-- user info -->
-    <p
+    <div
       v-if="isLogin"
       class="hd-right"
     >
       <!-- 登录-->
-      <span class="hd-nick">
-        <i class="iconfont">&#xe63a;</i>
+      <router-link
+        tag="p"
+        :to="{name:'user'}"
+        class="hd-nick"
+      >
         {{nick}}
-      </span>
-      <el-button @click="dialogSignIn=true" size="mini">
+      </router-link>
+      <el-button
+        @click="$emit('showSignIn')"
+        size="mini"
+      >
         签到
       </el-button>
       <el-button
         @click="logoutFn"
-        class="hd-logout" size="mini">
+        class="hd-logout"
+        size="mini"
+      >
         注销
       </el-button>
-    </p>
+    </div>
 
-    <p
+    <div
       v-else
       class="hd-right"
     >
@@ -90,31 +98,25 @@
       >
         <i class="iconfont">&#xe63a;</i>登录
       </router-link>
-    </p>
+    </div>
 
-    <ViewSignIn
-      v-if="dialogSignIn"
-      :dialogTableVisible="dialogSignIn"
-      @closeFn="dialogSignIn=false"
-      :toolData="toolData"
-    />
   </header>
 </template>
 
 <script>
 import event from "@/util/event";
 import getData from "@/assets/js/getData";
-import { ViewSignIn } from "@/components/";
 export default {
-  components: { ViewSignIn },
+  props: {
+    showSignIn: { type: Function }
+  },
   data() {
     return {
       isLogin: false,
       nick: "",
-      toolData:{},
+      toolData: {},
       isAdmin: 0,
-      isGirl: false,
-      dialogSignIn: true
+      isGirl: false
     };
   },
 

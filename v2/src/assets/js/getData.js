@@ -2,7 +2,7 @@
  * @Author: whj 
  * @Date: 2018-11-12 11:47:12 
  * @Last Modified by: whj
- * @Last Modified time: 2018-12-27 18:40:44
+ * @Last Modified time: 2019-01-08 14:47:21
  */
 
 import http from '@/assets/js/https';
@@ -30,6 +30,22 @@ export default {
     // 获取用户信息
     userInfo(cb) {
         http.get('user/info', {}, cb);
+    },
+
+    // 获取用户道具
+    userTool(cb) {
+        http.get('user/tool', {}, cb);
+    },
+
+    // 获取用户所有统计数据
+    userTotal(cb) {
+        http.get('user/total', {}, cb);
+    },
+
+
+    // 获取用户历史纪录
+    userHistory(data, cb) {
+        http.get('user/history', data, cb);
     },
 
     // 注销

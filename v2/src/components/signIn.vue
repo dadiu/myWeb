@@ -89,7 +89,6 @@ import getData from "@/assets/js/getData";
 export default {
   props: {
     dialogTableVisible: { type: Boolean },
-    toolData: { type: Object },
     closeFn: { type: Function }
   },
   data() {
@@ -103,7 +102,8 @@ export default {
         count: 0,
         isToday: false,
         id: 0
-      }
+      },
+      toolData: {}
     };
   },
   mounted() {
@@ -112,9 +112,10 @@ export default {
 
   methods: {
     init() {
-      getData.awardDaily(res => {
-        this.loading = false;
+        this.loading = true;
 
+      // 奖励列表
+      getData.awardDaily(res => {
         if (res.code == 0) {
           this.awardList = res.data;
           return;
@@ -123,8 +124,8 @@ export default {
         this.$message(res.msg);
       });
 
+      // 已签列表
       getData.signInList(res => {
-        this.loading = false;
 
         if (res.code == 0) {
           this.signInList = res.data;
@@ -133,6 +134,19 @@ export default {
 
         this.$message(res.msg);
       });
+
+      // 道具信息
+      getData.userTool(res => {
+        this.loading = false;
+
+        if (res.code == 0) {
+          this.toolData = res.data;
+          return;
+        }
+
+        this.$message(res.msg);
+      });
+
     },
 
     // 签到
@@ -150,8 +164,8 @@ export default {
               type: "success",
               message: res.msg
             });
-            this.toolData.pushCard = res.list.pushCard;
-            this.toolData.point = res.list.point;
+
+            this.toolData= res.list;
             this.signInList.count += 1;
             this.signInList.isToday = !this.signInList.isToday;
             return;
@@ -181,8 +195,7 @@ export default {
               message: res.msg
             });
             this.signInList.count += 1;
-
-            this.toolData.pushCard.count -= 1;
+            this.toolData= res.list;
             return;
           }
           this.$message(res.msg);

@@ -116,14 +116,19 @@ $c-warning:#e6a23c;
         align-items: center;
     }
     &nick {
+        margin-right: 10px;
+        background-color: #fff;
+        color: #353d40;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
         display: flex;
         align-items: center;
-        margin-right: 10px;
-        border-right: 1px solid rgba($color: $c-gray, $alpha: 0.6);
-        &::after {
-            content: "";
-            padding-right: 10px;
-        }
+        font-size: 16px;
+        font-weight: bold;
+        white-space: nowrap;
+        overflow: hidden;
+        cursor: pointer;
     }
     &logout {
         cursor: pointer;
@@ -651,6 +656,75 @@ $c-warning:#e6a23c;
     }
 }
 
+.user-info {
+    @extend .m-shadow;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #fff;
+    &- {
+        &base {
+            display: flex;
+            padding: 20px;
+            background-color: $c-gray-dark;
+            align-items: flex-end;
+            border-bottom: 1px solid #ddd;
+        }
+        &avatar {
+            width: 54px;
+            height: 54px;
+            background-color: rgba($color: #000, $alpha: 0.4);
+            border-radius: 5px;
+            margin-right: 20px;
+        }
+        &nick {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        &username {
+            color: #aaa;
+        }
+        &main {
+            margin: 0 20px;
+        }
+        &title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #999;
+            padding-top: 20px;
+        }
+        &label {
+            min-width: 100px;
+        }
+        &item {
+            display: flex;
+            align-items: center;
+            &:not(:last-child) {
+                margin-bottom: 10px;
+            }
+            i {
+                margin-right: 5px;
+            }
+        }
+        &tool {
+            padding: 20px 0;
+            border-bottom: 1px dashed #eee;
+        }
+        &total {
+            padding: 20px 0;
+            margin-bottom: 20px;
+            border-bottom: 1px dashed #eee;
+        }
+        &time {
+            color: #bbb;
+            margin-bottom: 20px;
+            display: flex;
+            &-item {
+                margin-right: 10px;
+            }
+        }
+    }
+}
+
 .m-shadow {
     box-shadow: 0 0 1px 1px #eee;
 }
@@ -727,10 +801,6 @@ $c-warning:#e6a23c;
 
 .el-message-box__wrapper {
     top: -300px;
-}
-
-.v-modal {
-    z-index: 98 !important;
 }
 
 //////////////////////////////////////////////

@@ -3,10 +3,18 @@
     <!-- <img src="./assets/logo.png"> -->
 
     <!-- nav -->
-    <ViewHeader />
+    <ViewHeader @showSignIn="dialogSignIn=true"/>
 
     <!-- main -->
     <router-view class="c-main" />
+
+    <!-- signin -->
+    
+    <ViewSignIn
+      v-if="dialogSignIn"
+      :dialogTableVisible="dialogSignIn"
+      @closeFn="dialogSignIn=false"
+    />
 
     <!-- footer -->
     <ViewFooter />
@@ -17,10 +25,17 @@
 
 import ViewHeader from "@/views/header";
 import ViewFooter from "@/views/footer";
+import { ViewSignIn } from "@/components/";
+
 import "@/assets/js/master.js";
 export default {
   name: "App",
-  components: { ViewHeader, ViewFooter }
+  components: { ViewHeader, ViewFooter,ViewSignIn  },
+  data(){
+    return{
+      dialogSignIn: false,
+    }
+  }
 };
 </script>
 

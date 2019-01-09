@@ -67,18 +67,20 @@ export default {
       if (data[0] == 99) {
         this.menuList = menuData;
         this.$router.push({
-          name: menuData["award"].path
+          name: menuData["userlist"].path
         });
         return;
       }
 
       // 其他
       data.forEach(element => {
-        console.log(element);
+
         if (menuData[element]) {
+      console.log(element);
           newMenu[element] = menuData[element];
         }
       });
+
 
       this.menuList = newMenu;
       this.$router.push({

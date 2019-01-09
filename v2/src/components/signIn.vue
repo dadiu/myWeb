@@ -23,7 +23,11 @@
           >
         </li>
       </ul>
+      
       <!-- up -->
+      <p class="mb-10">
+        <i class="el-icon-date"></i> 连续签到奖励
+      </p>
       <ul class="signin-up signin-item">
 
         <li
@@ -162,7 +166,7 @@ export default {
           if (res.code == 0) {
             this.$message({
               type: "success",
-              message: res.msg
+              message: '签到成功'
             });
 
             this.toolData= res.list;
@@ -192,7 +196,7 @@ export default {
           if (res.code == 0) {
             this.$message({
               type: "success",
-              message: res.msg
+              message: '补签成功'
             });
             this.signInList.count += 1;
             this.toolData= res.list;

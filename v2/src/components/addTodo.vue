@@ -29,7 +29,7 @@
         placeholder="待完成内容"
         prefix-icon="el-icon-news"
         clearable
-        maxlength="100"
+        maxlength="200"
         @keyup.enter.native="createFn('form')"
       >
       </el-input>
@@ -92,6 +92,7 @@
         prop="info"
       >
         <el-input
+         type="textarea"
           v-model="form.info"
           placeholder="待完成内容"
           clearable
@@ -173,8 +174,8 @@ export default {
           { required: true, message: "请输入任务", trigger: "blur" },
           {
             min: 1,
-            max: 100,
-            message: "长度在 1 到 100 个字符",
+            max: 200,
+            message: "长度在 1 到 200 个字符",
             trigger: "blur"
           }
         ]

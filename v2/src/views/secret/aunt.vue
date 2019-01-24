@@ -21,7 +21,7 @@
       <el-form :inline="true">
         <el-form-item>
           <el-date-picker
-            size="small"
+            size="medium"
             v-model="createDate"
             :editable="false"
             type="daterange"
@@ -36,7 +36,7 @@
         <el-form-item>
           <el-button
             type="success"
-            size="small"
+            size="medium"
             icon="el-icon-check"
             @click="createFn"
           >

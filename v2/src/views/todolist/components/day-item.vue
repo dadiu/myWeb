@@ -50,16 +50,7 @@
           size="medium"
           v-for="type in item.types"
           :key="type.k"
-          v-if="item.status == 0"
-        >
-          {{type}}
-        </el-tag>
-        <el-tag
-          size="medium"
-          type="info"
-          v-for="type in item.types"
-          :key="type.k"
-          v-if="item.status != 0"
+          :class="[{'el-tag--info' : item.status != 0}]"
         >
           {{type}}
         </el-tag>

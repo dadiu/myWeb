@@ -89,66 +89,16 @@
       <!-- history -->
       <div
         class="todo-history"
-        v-if="isShow == -1 && !loading"
+        v-if="isShow == -1"
       >
 
-        <!-- 筛选 -->
-        <el-row
-          class="todo-hd-form"
-          :gutter="20"
-        >
-          <el-col :span="15">
-            <el-input
-              size="small"
-              placeholder="enter 搜索"
-              v-model="search.value"
-              maxlength="8"
-              class="m-search"
-              @keyup.enter.native="searchFn"
-            >
-
-              <el-select
-                v-model="search.type"
-                slot="prepend"
-                @change="selsctTypeFn"
-                class="m-search-left"
-              >
-                <el-option
-                  v-for="item in selectOption"
-                  :key="item.s"
-                  :label="item.label"
-                  :value="item.value"
-                  :disabled="item.disabled"
-                >
-                </el-option>
-              </el-select>
-
-              <el-button
-                slot="append"
-                icon="el-icon-search"
-                @click="searchFn"
-              ></el-button>
-            </el-input>
-          </el-col>
-
-          <!-- status -->
-          <el-col :span="9">
-            <el-radio-group
-              v-model="search.status"
-              @change="searchFn"
-            >
-              <el-radio :label="9">全部</el-radio>
-              <el-radio :label="0">待完成</el-radio>
-              <el-radio :label="2">搁置</el-radio>
-              <el-radio :label="1">已完成</el-radio>
-            </el-radio-group>
-          </el-col>
-        </el-row>
+        <!-- search -->
+        <ViewSearch @searchFn="searchFn" />
 
         <!-- bar -->
         <div
           class="todo-bar"
-          v-if="list.length>0"
+          v-if="!loading && list.length>0"
         >
           <div
             class="todo-item"
@@ -198,34 +148,20 @@ import event from "@/util/event";
 
 import ViewDay from "./components/day.vue";
 import ViewDelete from "./components/delete.vue";
+import ViewSearch from "./components/search.vue";
 import { ViewNone, ViewAddTodo } from "@/components/";
 
 export default {
-  components: { ViewDay, ViewDelete, ViewNone, ViewAddTodo },
+  components: { ViewDay, ViewDelete, ViewNone, ViewAddTodo, ViewSearch },
   data() {
     return {
-      isShow: 0,
+      isShow: -1,
       isAddShow: false,
       isDeleteShow: false,
       itemForm: false,
       list: [],
       loading: false,
       activeType: "create",
-      search: {
-        type: "标签",
-        value: "",
-        status: 9
-      },
-      selectOption: [
-        {
-          label: "标签",
-          value: 1
-        },
-        {
-          label: "任务",
-          value: 2
-        }
-      ],
       deleteData: {}
     };
   },
@@ -235,20 +171,19 @@ export default {
     event.$on("todoDelete", res => {
       this.showDeleteFn(res);
     });
+    
   },
 
   methods: {
     changeMenu(type = this.isShow) {
+
       this.isShow = type;
       // this.search.value = "";
       this.loading = true;
 
       getData.todoList(
         {
-          istoday: this.isShow,
-          searchType: this.search.type,
-          searchValue: this.search.value,
-          searchStatus: this.search.status
+          istoday: this.isShow
         },
         res => {
           this.loading = false;
@@ -325,32 +260,15 @@ export default {
       });
     },
 
-    selsctTypeFn(data) {
-      console.log(`change : ${data}`);
-    },
 
     // 查找类别
-    searchFn() {
-      let val = filters.trimFn(this.search.value);
-      // 查找类别
-      let type = 1;
-
-      if (val.length == 0) {
-        type = 0;
-      } else if (this.search.type != "标签") {
-        type = this.search.type;
-      }
+    searchFn(data={}) {
 
       this.loading = true;
-      getData.todoList(
-        {
-          istoday: this.isShow,
-          searchType: type,
-          searchValue: val,
-          searchStatus: this.search.status
-        },
+      getData.todoList(data,
         res => {
           this.loading = false;
+          this.search = data;
           // history
           this.list = this.isShow == -1 ? res.data.reverse() : res.data;
         }

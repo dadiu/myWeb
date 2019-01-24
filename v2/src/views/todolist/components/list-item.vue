@@ -4,7 +4,6 @@
     <li
       v-for="item in list"
       :key="item.l"
-      v-if="!item.isSearch"
       :class="['todo-day-item', {'fn-ok': item.status == 1}, {'fn-lay': item.status == 2}]"
     >
       <!-- status -->
@@ -33,16 +32,7 @@
           size="medium"
           v-for="type in item.types"
           :key="type.k"
-          v-if="item.types && item.status == 0"
-        >
-          {{type}}
-        </el-tag>
-        <el-tag
-          size="medium"
-          type="info"
-          v-for="type in item.types"
-          :key="type.k"
-          v-if="item.types&&item.status != 0"
+          :class="[{'el-tag--info' : item.status != 0}]"
         >
           {{type}}
         </el-tag>

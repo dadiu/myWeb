@@ -2,7 +2,10 @@
   <div class="wrap message-bar">
 
     <!-- hd -->
-    <el-row class="message-hd" :gutter="20">
+    <el-row
+      class="message-hd"
+      :gutter="20"
+    >
 
       <!-- level -->
       <el-col :span="3">
@@ -17,7 +20,7 @@
           >缓</el-radio>
         </el-radio-group>
       </el-col>
-      
+
       <!-- add -->
       <el-col :span="16">
         <el-input
@@ -26,6 +29,7 @@
           v-model="iptValue"
           clearable
           maxlength="100"
+          size="medium"
           @keyup.enter.native="addMessage"
         >
           <!-- <el-button
@@ -43,6 +47,7 @@
           prefix-icon="el-icon-search"
           v-model="searchValue"
           maxlength="100"
+          size="medium"
           @keyup.enter.native="searchMessage"
         >
         </el-input>
@@ -151,7 +156,7 @@ export default {
   components: {
     ViewDelete,
     ViewAddTodo,
-    ViewNone,
+    ViewNone
   },
   data() {
     return {

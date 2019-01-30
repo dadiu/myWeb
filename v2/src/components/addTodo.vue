@@ -96,7 +96,7 @@
           v-model="form.info"
           placeholder="待完成内容"
           clearable
-          maxlength="100"
+          maxlength="500"
           @keyup.enter.native="createFn('form')"
         ></el-input>
       </el-form-item>
@@ -174,8 +174,8 @@ export default {
           { required: true, message: "请输入任务", trigger: "blur" },
           {
             min: 1,
-            max: 200,
-            message: "长度在 1 到 200 个字符",
+            max: 500,
+            message: "长度在 1 到 500 个字符",
             trigger: "blur"
           }
         ]

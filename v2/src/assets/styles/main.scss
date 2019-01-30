@@ -278,7 +278,7 @@ $c-warning:#e6a23c;
                     top: 6px;
                 }
                 .todo-day-info {
-                    width: 300px;
+                    width: 450px;
                     margin-right: 20px;
                 }
                 .todo-day-types {
@@ -398,6 +398,20 @@ $c-warning:#e6a23c;
         .el-progress__text {
             color: #999;
             font-size: 12px !important;
+        }
+    }
+    &history {
+        .el-pagination {
+            position: fixed;
+            z-index: 3;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            padding: 15px 0;
+            display: flex;
+            justify-content: center;
+            background-color: #fff;
+            @extend .m-shadow;
         }
     }
 }

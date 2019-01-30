@@ -64,7 +64,6 @@
         class="message-item"
         v-for="(item, idx) in list"
         :key="item.l"
-        v-if="!item.isSearch"
       >
         <!-- left -->
         <div class="message-left">

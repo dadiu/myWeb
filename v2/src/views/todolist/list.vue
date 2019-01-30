@@ -92,6 +92,18 @@
         v-if="isShow == -1"
       >
 
+        <!-- pagination -->
+        <el-pagination
+          v-if="pages.total && pages.total > 0"
+          background
+          layout="prev, pager, next"
+          :current-page="pages.crt"
+          :page-size="pages.size"
+          :total="pages.total"
+          @current-change="changePageFn"
+        >
+        </el-pagination>
+
         <!-- search -->
         <ViewSearch @searchFn="searchFn" />
 
@@ -162,7 +174,13 @@ export default {
       list: [],
       loading: false,
       activeType: "create",
-      deleteData: {}
+      deleteData: {},
+      pages: {
+        crt: 0,
+        size: 100,
+        total: 0
+      },
+      searchData : {}
     };
   },
 
@@ -171,12 +189,10 @@ export default {
     event.$on("todoDelete", res => {
       this.showDeleteFn(res);
     });
-    
   },
 
   methods: {
     changeMenu(type = this.isShow) {
-
       this.isShow = type;
       // this.search.value = "";
       this.loading = true;
@@ -189,6 +205,7 @@ export default {
           this.loading = false;
           // history
           this.list = this.isShow == -1 ? res.data.reverse() : res.data;
+          this.pages = this.isShow == -1 ? res.pages : {};
         }
       );
     },
@@ -229,10 +246,7 @@ export default {
 
       getData.todoList(
         {
-          istoday: type,
-          searchType: this.search.type,
-          searchValue: this.search.value,
-          searchStatus: this.search.status
+          istoday: type
         },
         res => {
           this.loading = false;
@@ -241,6 +255,7 @@ export default {
           }
 
           this.list = this.isShow == -1 ? res.data.reverse() : res.data;
+          this.pages = this.isShow == -1 ? res.pages : {};
         }
       );
     },
@@ -260,19 +275,32 @@ export default {
       });
     },
 
-
     // 查找类别
-    searchFn(data={}) {
+    searchFn(data = {}) {
+      this.loading = true;
+      getData.todoList(data, res => {
+        this.loading = false;
+        this.searchData = data;
+        // history
+        this.list = this.isShow == -1 ? res.data.reverse() : res.data;
+        this.pages = this.isShow == -1 ? res.pages : {};
+      });
+    },
+
+    // 切换分页
+    changePageFn(item){
+
+      let data = Object.assign({istoday: -1,}, this.searchData, {pageCrt:item});
 
       this.loading = true;
-      getData.todoList(data,
-        res => {
-          this.loading = false;
-          this.search = data;
-          // history
-          this.list = this.isShow == -1 ? res.data.reverse() : res.data;
-        }
-      );
+      getData.todoList(data, res => {
+        this.loading = false;
+
+        // history
+        this.list = this.isShow == -1 ? res.data.reverse() : res.data;
+        this.pages = this.isShow == -1 ? res.pages : {};
+
+      });
     }
   }
 };

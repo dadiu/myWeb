@@ -3,11 +3,13 @@
 
     <!-- breadcrumb -->
     <el-breadcrumb separator="/" class="m-breadcrumb">
-      <el-breadcrumb-item :to="{ name: 'admin.todolist' }">每日一清</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ name: 'admin.messagelist' }">便签</el-breadcrumb-item>
       <el-breadcrumb-item>全部</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- table -->
     <el-table :data="tableData" stripe height="82vh" border >
+      <el-table-column type="index" label="序号" width="50" fixed></el-table-column>
+
       <el-table-column prop="nick" label="用户" fixed>
         <template slot-scope="scope">
          {{nickData[scope.row.author]}}

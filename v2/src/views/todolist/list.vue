@@ -167,7 +167,7 @@ export default {
   components: { ViewDay, ViewDelete, ViewNone, ViewAddTodo, ViewSearch },
   data() {
     return {
-      isShow: -1,
+      isShow: 0,
       isAddShow: false,
       isDeleteShow: false,
       itemForm: false,
@@ -175,11 +175,7 @@ export default {
       loading: false,
       activeType: "create",
       deleteData: {},
-      pages: {
-        crt: 0,
-        size: 100,
-        total: 0
-      },
+      pages: {},
       searchData : {}
     };
   },

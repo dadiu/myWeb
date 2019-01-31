@@ -2,7 +2,7 @@
  * @Author: whj 
  * @Date: 2018-11-21 17:51:13 
  * @Last Modified by: whj
- * @Last Modified time: 2018-12-24 16:02:33
+ * @Last Modified time: 2019-01-31 16:11:10
  */
 import Vue from 'vue';
 
@@ -74,7 +74,7 @@ export default {
     post(url, data = {}, cb) {
 
         Vue.prototype.$http.post(url, data).then(res => {
-            console.log(res.data);
+            // console.log(res.data);
             res = res.data;
             cb && cb(res);
         }).catch(error => {

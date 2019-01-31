@@ -2,7 +2,7 @@
  * @Author: whj 
  * @Date: 2018-11-12 11:34:13 
  * @Last Modified by: whj
- * @Last Modified time: 2018-12-10 16:19:13
+ * @Last Modified time: 2019-01-31 18:00:03
  */
 
 module.exports = {
@@ -114,5 +114,16 @@ module.exports = {
     },
 
 
-    splitMonth() {}
+    splitMonth() {},
+
+    unAwardType(type) {
+
+        let un = {
+            'signIn': '签到',
+            'pushSignIn': '补签',
+            'upSignIn': '累签'
+        };
+
+        return un[type] && un[type];
+    }
 }

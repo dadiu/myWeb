@@ -2,7 +2,7 @@
  * @Author: whj 
  * @Date: 2018-11-22 16:17:53 
  * @Last Modified by: whj
- * @Last Modified time: 2018-12-26 13:47:41
+ * @Last Modified time: 2019-01-31 16:10:26
  */
 
 import http from '@/assets/js/https';
@@ -34,5 +34,8 @@ export default {
     },
     awardUpdate(data, cb) {
         http.post('admin/award/daily/update', data, cb);
+    },
+    awardLogList(data, cb) {
+        http.get('admin/award/log', data, cb);
     }
 }

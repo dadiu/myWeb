@@ -18,5 +18,13 @@ export default [{
         path: 'awardlist',
         name: 'admin.awardlist',
         component: (resolve) => require(['./views/award.vue'], resolve),
+    }, {
+        path: 'awardLog',
+        name: 'admin.awardLog',
+        component: (resolve) => require(['./views/award-log.vue'], resolve),
+    }, {
+        path: 'signInLog',
+        name: 'admin.signInLog',
+        component: (resolve) => require(['./views/signin-log.vue'], resolve),
     }]
 }]

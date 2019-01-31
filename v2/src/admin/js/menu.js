@@ -2,7 +2,7 @@
  * @Author: whj 
  * @Date: 2018-11-23 15:06:42 
  * @Last Modified by: whj
- * @Last Modified time: 2019-01-08 16:14:41
+ * @Last Modified time: 2019-01-31 18:04:49
  */
 module.exports = {
     userlist: {
@@ -24,5 +24,15 @@ module.exports = {
         type: 'awardlist',
         desc: '奖励配置',
         path: 'admin.awardlist'
+    },
+    awardLog: {
+        type: 'awardLog',
+        desc: '道具日志',
+        path: 'admin.awardLog'
+    },
+    signInLog: {
+        type: 'signInLog',
+        desc: '签到日志',
+        path: 'admin.signInLog'
     }
 };

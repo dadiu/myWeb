@@ -217,7 +217,7 @@ export default {
           if (res.code == 0) {
             this.list = res.data.list;
             this.log = res.data.log;
-            this.id = res.data._id;
+            this.id = res.data.id;
 
             if (this.list.month > crtMonth) {
               // 未来 -> 可编辑
@@ -264,6 +264,7 @@ export default {
     createFn() {
       getData.awardCreate(this.list, res => {
         if (res.code == 0) {
+
           this.$message({
             type: "success",
             message: res.msg

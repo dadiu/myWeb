@@ -22,10 +22,11 @@
       </span>
 
       <!-- info -->
-      <span
+      <p
         class="todo-day-info"
         @click="$emit('editFn', item)"
-      > {{item.info}}</span>
+        v-html="descSplit(item.info)"
+      ></p>
 
       <p class="todo-day-types">
         <el-tag

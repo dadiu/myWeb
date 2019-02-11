@@ -23,11 +23,12 @@
         ></i>
       </p>
 
-      <p class="todo-day-info">
-        <span
+      <div class="todo-day-info">
+        <p
           class="todo-day-info-name"
           @click="$emit('editFn', item)"
-        > {{item.info}} </span>
+          v-html="descSplit(item.info)"
+        ></p>
 
         <!-- delete -->
         <i
@@ -40,7 +41,7 @@
           class="el-icon-edit"
           @click="$emit('editFn', item)"
         ></i>
-      </p>
+      </div>
 
       <p
         class="todo-day-type"

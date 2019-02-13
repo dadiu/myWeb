@@ -269,8 +269,6 @@ export default {
             list = res.data[0].list;
             list = this.listFn(list, startDate[2] - 1, endDate[2]);
 
-            console.log(list);
-            console.log(res.data);
             getData.auntUpdate(
               {
                 id: res.data[0]._id,

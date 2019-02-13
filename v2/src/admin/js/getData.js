@@ -2,7 +2,7 @@
  * @Author: whj 
  * @Date: 2018-11-22 16:17:53 
  * @Last Modified by: whj
- * @Last Modified time: 2019-01-31 16:10:26
+ * @Last Modified time: 2019-02-13 13:45:31
  */
 
 import http from '@/assets/js/https';
@@ -37,5 +37,15 @@ export default {
     },
     awardLogList(data, cb) {
         http.get('admin/award/log', data, cb);
+    },
+
+    // 签到记录
+    signInList(data, cb) {
+        http.get('admin/signIn/list', data, cb);
+    },
+
+    // 姨妈日记记录
+    auntList(data, cb) {
+        http.get('admin/aunt/list', data, cb);
     }
 }

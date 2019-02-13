@@ -2,7 +2,7 @@
  * @Author: whj 
  * @Date: 2018-11-12 11:34:13 
  * @Last Modified by: whj
- * @Last Modified time: 2019-01-31 18:00:03
+ * @Last Modified time: 2019-02-13 11:33:21
  */
 
 module.exports = {
@@ -27,6 +27,9 @@ module.exports = {
         }
         if (group == "yyyy-mm") {
             return [_y, _m].join(format);
+        }
+        if (group == "dd") {
+            return _d;
         }
     },
 

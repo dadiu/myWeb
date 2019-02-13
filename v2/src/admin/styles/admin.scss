@@ -2,10 +2,11 @@
  * @Author: whj 
  * @Date: 2018-11-22 10:17:41 
  * @Last Modified by: whj
- * @Last Modified time: 2019-01-31 11:01:51
+ * @Last Modified time: 2019-02-13 13:49:55
  */
 
 $fc-primary:#409EFF;
+$fc-danger:#f56c6c;
 #admin {
     margin-top: -80px;
     padding-top: 60px;
@@ -70,6 +71,41 @@ $fc-primary:#409EFF;
         padding: 20px 20px 80px 180px;
         overflow: auto;
         height: 100vh;
+    }
+    &point- {
+        &ul {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        &li {
+            margin-right: 5px;
+        }
+        &default {
+            display: inline-block;
+            text-align: center;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            border-radius: 50%;
+            font-size: 12px;
+            background-color: #ccc;
+            color: #fff;
+            &.primary {
+                background-color: $fc-primary;
+            }
+            &.danger {
+                background-color: $fc-danger;
+            }
+        }
+        &preview {
+            display: flex;
+            align-items: center;
+            .admin-point-default {
+                width: 10px;
+                height: 10px;
+                margin: 0 5px 0 10px;
+            }
+        }
     }
 }
 

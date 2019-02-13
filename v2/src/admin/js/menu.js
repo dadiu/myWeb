@@ -2,7 +2,7 @@
  * @Author: whj 
  * @Date: 2018-11-23 15:06:42 
  * @Last Modified by: whj
- * @Last Modified time: 2019-01-31 18:04:49
+ * @Last Modified time: 2019-02-13 13:29:10
  */
 module.exports = {
     userlist: {
@@ -34,5 +34,10 @@ module.exports = {
         type: 'signInLog',
         desc: '签到日志',
         path: 'admin.signInLog'
+    },
+    auntLog: {
+        type: 'auntLog',
+        desc: '秘密基地',
+        path: 'admin.auntLog'
     }
 };

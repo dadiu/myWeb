@@ -97,7 +97,6 @@
           placeholder="待完成内容"
           clearable
           maxlength="500"
-          @keyup.enter.native="createFn('form')"
         ></el-input>
       </el-form-item>
 
@@ -277,7 +276,7 @@ export default {
           }
         } else {
           console.log("error");
-          return false;
+          // return false;
         }
       });
     },

@@ -26,5 +26,9 @@ export default [{
         path: 'signInLog',
         name: 'admin.signInLog',
         component: (resolve) => require(['./views/signin-log.vue'], resolve),
+    }, {
+        path: 'auntLog',
+        name: 'admin.auntLog',
+        component: (resolve) => require(['./views/aunt-log.vue'], resolve),
     }]
 }]

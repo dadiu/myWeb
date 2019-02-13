@@ -21,6 +21,7 @@
           <el-menu-item-group>
             <el-menu-item index="mongodb">筛选条件汇总</el-menu-item>
             <el-menu-item index="mongodb-user">用户管理</el-menu-item>
+            <el-menu-item index="mongodb-dump">数据库备份</el-menu-item>
           </el-menu-item-group>
         </el-submenu>
 

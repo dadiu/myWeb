@@ -5,7 +5,7 @@
       separator="/"
       class="m-breadcrumb"
     >
-      <el-breadcrumb-item :to="{ name: 'admin.signInLog' }">签到日志</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ name: 'admin.auntLog' }">秘密基地</el-breadcrumb-item>
       <el-breadcrumb-item>所有</el-breadcrumb-item>
     </el-breadcrumb>
 
@@ -40,25 +40,15 @@
         width="100"
       >
         <template slot-scope="scope">
-          {{scope.row.lastCheck | monthFormat}}
-        </template>
-      </el-table-column>
-
-      <el-table-column
-        label="已签"
-        width="60"
-      >
-        <template slot-scope="scope">
-          {{scope.row.list.length}}
+          {{scope.row.date}}
         </template>
       </el-table-column>
 
       <el-table-column>
         <!-- th -->
         <template slot="header" slot-scope="scope">
-          <p class="admin-point-preview">签到详情 :
-            <span class="admin-point-default"></span> 签到
-            <span class="admin-point-default primary"></span> 补签
+          <p class="admin-point-preview">详情 :
+            <span class="admin-point-default danger"></span> 大姨妈
           </p>
         </template>
 
@@ -67,14 +57,24 @@
           <ul class="admin-point-ul">
             <li
               class="admin-point-li"
-              v-for="item in scope.row.list"
+              v-for="(item, idx) in scope.row.list"
               :key="item.point"
             >
-              <span :class="['admin-point-default', {'primary' : item.type == 'push'}]">
-                {{item.createAt | dateFormat("", "dd")}}
+              <span :class="['admin-point-default', {'danger' : item == 1}]">
+                {{idx + 1}}
               </span>
             </li>
           </ul>
+        </template>
+      </el-table-column>
+
+      
+      <el-table-column
+        label="最近更新"
+        width="200"
+      >
+        <template slot-scope="scope">
+          {{scope.row.updateTime | dateDetailFormat('-')}}
         </template>
       </el-table-column>
 
@@ -112,16 +112,13 @@ export default {
   },
 
   filters: {
-    monthFormat(val) {
-      let arr = val.split("-");
-      return arr[0] + "-" + arr[1];
-    },
-    dateFormat: filters.dateFormat
+
+    dateDetailFormat: filters.dateDetailFormat
   },
 
   methods: {
     getList(data = {}) {
-      getData.signInList(data, res => {
+      getData.auntList(data, res => {
         this.tableData = res.data;
         this.nickData = res.nick;
         this.pages = res.pages;

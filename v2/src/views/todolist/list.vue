@@ -176,7 +176,7 @@ export default {
       activeType: "create",
       deleteData: {},
       pages: {},
-      searchData : {}
+      searchData: {}
     };
   },
 
@@ -240,6 +240,15 @@ export default {
         }
       }
 
+      /*** 请求新数据 ***/
+
+      // 过去 && 已进行筛选
+      if (this.isShow == -1 && this.searchData.istoday) {
+        this.searchFn(this.searchData);
+        return;
+      }
+
+      // 今天 || 未来 || (过去 && 未进行筛选)
       getData.todoList(
         {
           istoday: type
@@ -267,6 +276,15 @@ export default {
     deleteNow(id) {
       getData.todoDelete({ id }, res => {
         this.isDeleteShow = false;
+
+        /** 请求新数据 */
+        // 过去 && 已进行筛选
+        if (this.isShow == -1 && this.searchData.istoday) {
+          this.searchFn(this.searchData);
+          return;
+        }
+        
+        // 今天 || 未来 || (过去 && 未进行筛选)
         this.changeMenu(this.isShow);
       });
     },
@@ -284,9 +302,10 @@ export default {
     },
 
     // 切换分页
-    changePageFn(item){
-
-      let data = Object.assign({istoday: -1,}, this.searchData, {pageCrt:item});
+    changePageFn(item) {
+      let data = Object.assign({ istoday: -1 }, this.searchData, {
+        pageCrt: item
+      });
 
       this.loading = true;
       getData.todoList(data, res => {
@@ -295,7 +314,6 @@ export default {
         // history
         this.list = this.isShow == -1 ? res.data.reverse() : res.data;
         this.pages = this.isShow == -1 ? res.pages : {};
-
       });
     }
   }

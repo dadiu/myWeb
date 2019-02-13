@@ -165,21 +165,21 @@ export default {
       });
     },
 
-    resetUserList(list) {
-      let backData = {};
+    // resetUserList(list) {
+    //   let backData = {};
 
-      list.forEach(element => {
-        backData[element._id] = element;
-      });
+    //   list.forEach(element => {
+    //     backData[element._id] = element;
+    //   });
 
-      return backData;
-    },
+    //   return backData;
+    // },
 
-    removeFn(item) {
-      getData.todoDelete({ id: item._id }, res => {
-        console.log("delete");
-      });
-    },
+    // removeFn(item) {
+    //   getData.todoDelete({ id: item._id }, res => {
+    //     console.log("delete");
+    //   });
+    // },
 
     changePageFn(item) {
       this.getList({

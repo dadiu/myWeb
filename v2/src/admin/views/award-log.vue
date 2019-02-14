@@ -19,8 +19,8 @@
     >
 
       <el-table-column
-        type="index"
         label="序号"
+        type="index"
         width="50"
         fixed
       ></el-table-column>
@@ -66,6 +66,22 @@
           {{scope.row.createAt | dateDetailFormat('-')}}
         </template>
       </el-table-column>
+
+      <el-table-column
+        fixed="right"
+        label="操作"
+        width="150"
+      >
+        <template slot-scope="scope">
+          <el-button
+            size="small"
+            type="danger"
+            @click="removeShow(scope.row, scope.$index)"
+          >删除</el-button>
+          {{index}}
+        </template>
+      </el-table-column>
+
     </el-table>
 
     <!-- pagination -->
@@ -80,6 +96,13 @@
     >
     </el-pagination>
 
+    <!-- dialog -->
+    <ViewDelete
+      :dialogVisible="deleteVisible"
+      :item="removeData"
+      @closeFn="deleteVisible = false"
+      @deleteNow="removeFn"
+    />
   </div>
 </template>
 
@@ -88,10 +111,15 @@ import filters from "@/assets/js/filters";
 import getData from "@/admin/js/getData";
 import toolData from "@/assets/js/tool";
 
+import ViewDelete from "@/admin/components/delete";
+
 export default {
+  components: { ViewDelete },
   data() {
     return {
-      isLoading: true,
+      loading: true,
+      deleteVisible: false,
+      removeData: {},
       tableData: [],
       pages: {},
       nickData: {}
@@ -128,6 +156,37 @@ export default {
       this.getList({
         pageCrt: item,
         type: "todolist"
+      });
+    },
+
+    removeShow(item,idx) {
+
+      let desc = `序号 ${idx + 1}`;
+      this.removeData = {
+        id: item._id,
+        desc
+      };
+
+      this.deleteVisible = true;
+    },
+
+    // delete
+    removeFn(id) {
+      this.loading = true;
+
+      getData.toolDelete({ id }, res => {
+        this.loading = false;
+
+        this.deleteVisible = false;
+
+        if (res.code == 0) {
+          this.$message({
+            type: "success",
+            message: res.msg
+          });
+
+          this.getList();
+        }
       });
     }
   }

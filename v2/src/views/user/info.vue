@@ -96,7 +96,6 @@
     />
 
 
-
   </div>
 </template>
 
@@ -147,7 +146,7 @@ export default {
       };
 
       getData.userHistory({name : type},(res)=>{
-        this.title = unType[type];
+        this.title = unType[type] + ' - 仅显示最新30条';
         this.historyVisible = true;
         this.tableData = res.list;
       })

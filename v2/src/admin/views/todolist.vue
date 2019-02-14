@@ -58,10 +58,13 @@
         </template>
       </el-table-column>
       <el-table-column
-        prop="info"
         label="任务"
         width="400"
-      ></el-table-column>
+      >
+        <template slot-scope="scope">
+          <p v-html="descSplit(scope.row.info)"></p>
+        </template>
+        </el-table-column>
 
       <el-table-column label="标签">
         <template slot-scope="scope">
@@ -121,7 +124,7 @@
     >
     </el-pagination>
   </div>
-  
+
 </template>
 
 <script>

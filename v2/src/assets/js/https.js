@@ -2,7 +2,7 @@
  * @Author: whj 
  * @Date: 2018-11-21 17:51:13 
  * @Last Modified by: whj
- * @Last Modified time: 2019-01-31 16:11:10
+ * @Last Modified time: 2019-02-14 12:33:20
  */
 import Vue from 'vue';
 
@@ -53,7 +53,9 @@ export default {
 
                     Message({
                         type: 'warning',
-                        message: `提示：请先登录`
+                        message: `提示：请先登录`,
+                        showClose: true,
+                        duration: 1500
                     })
                 }
 

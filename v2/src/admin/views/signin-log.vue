@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-loading="loading">
     <!-- breadcrumb -->
     <el-breadcrumb
       separator="/"
@@ -55,7 +55,10 @@
 
       <el-table-column>
         <!-- th -->
-        <template slot="header" slot-scope="scope">
+        <template
+          slot="header"
+          slot-scope="scope"
+        >
           <p class="admin-point-preview">签到详情 :
             <span class="admin-point-default"></span> 签到
             <span class="admin-point-default primary"></span> 补签
@@ -78,6 +81,20 @@
         </template>
       </el-table-column>
 
+      <el-table-column
+        fixed="right"
+        label="操作"
+        width="150"
+      >
+        <template slot-scope="scope">
+          <el-button
+            size="small"
+            type="danger"
+            @click="removeShow(scope.row)"
+          >删除</el-button>
+        </template>
+      </el-table-column>
+
     </el-table>
 
     <!-- pagination -->
@@ -92,15 +109,29 @@
     >
     </el-pagination>
 
+    <!-- dialog -->
+    <ViewDelete
+      :dialogVisible="deleteVisible"
+      :item="removeData"
+      @closeFn="deleteVisible = false"
+      @deleteNow="removeFn"
+    />
   </div>
 </template>
 
 <script>
 import filters from "@/assets/js/filters";
 import getData from "@/admin/js/getData";
+
+import ViewDelete from "@/admin/components/delete";
+
 export default {
+  components: { ViewDelete },
   data() {
     return {
+      loading: true,
+      deleteVisible: false,
+      removeData: {},
       nickData: {},
       tableData: [],
       pages: {}
@@ -113,18 +144,22 @@ export default {
 
   filters: {
     monthFormat(val) {
-      let arr = val.split("-");
-      return arr[0] + "-" + arr[1];
+      return val.slice(0, 7);
     },
     dateFormat: filters.dateFormat
   },
 
   methods: {
     getList(data = {}) {
+      this.loading = true;
+
       getData.signInList(data, res => {
-        this.tableData = res.data;
-        this.nickData = res.nick;
-        this.pages = res.pages;
+        this.loading = false;
+        if (res.code == 0) {
+          this.tableData = res.data;
+          this.nickData = res.nick;
+          this.pages = res.pages;
+        }
       });
     },
 
@@ -132,6 +167,36 @@ export default {
       this.getList({
         pageCrt: item,
         type: "todolist"
+      });
+    },
+
+    removeShow(item) {
+      let desc = `${this.nickData[item.author]} ${item.lastCheck.slice(0, 7)}`;
+      this.removeData = {
+        id: item._id,
+        desc
+      };
+
+      this.deleteVisible = true;
+    },
+
+    // delete
+    removeFn(id) {
+      this.loading = true;
+
+      getData.signInDelete({ id }, res => {
+        this.loading = false;
+
+        this.deleteVisible = false;
+
+        if (res.code == 0) {
+          this.$message({
+            type: "success",
+            message: res.msg
+          });
+
+          this.getList();
+        }
       });
     }
   }

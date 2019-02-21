@@ -166,7 +166,9 @@ export default {
           if (res.code == 0) {
             this.$message({
               type: "success",
-              message: '签到成功'
+              message: '签到成功',
+              showClose:true,
+              duration:1500
             });
 
             this.toolData= res.list;

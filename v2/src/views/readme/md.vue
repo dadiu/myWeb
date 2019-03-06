@@ -1,24 +1,24 @@
 <template>
   <div v-loading.fullscreen="loading">
-
+<!-- 
     <vue-markdown
       :source="content"
       class="page-container"
     >
-    </vue-markdown>
+    </vue-markdown> -->
+   <div v-html="content"></div>
   </div>
 </template>
 
 <script>
-import VueMarkdown from "vue-markdown";
-
+// import counter from './md/admin.md'
 export default {
+
   components: {
-    "vue-markdown": VueMarkdown
   },
   data() {
     return {
-      loading: true,
+      loading: false,
       content: ""
     };
   },

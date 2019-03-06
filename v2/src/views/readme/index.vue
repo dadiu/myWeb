@@ -45,7 +45,7 @@
             <span>前端备忘</span>
           </template>
           <el-menu-item-group>
-            <el-menu-item index="vue-20181218">vue-压缩文件过大</el-menu-item>
+            <el-menu-item index="vue-compress">vue-压缩文件过大</el-menu-item>
           </el-menu-item-group>
         </el-submenu>
 

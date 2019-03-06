@@ -28,10 +28,7 @@
       <!-- built files will be auto injected -->
 
       <!-- cdn js -->
-      <script src="//cdn.bootcss.com/vue/2.5.2/vue.min.js"></script>
-      <script src="//cdn.bootcss.com/vue-router/3.0.1/vue-router.min.js"></script>
-      <script src="//cdnjs.cloudflare.com/ajax/libs/element-ui/2.4.9/index.js"></script>
-      <script src="//cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
+      <script src=""></script>
     </body>
   </html>
   ```

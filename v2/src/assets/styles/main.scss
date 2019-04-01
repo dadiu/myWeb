@@ -603,7 +603,7 @@ $c-warning:#e6a23c;
 
 .signin- {
     &bar {
-        width: 690px;
+        width: 690px !important;
         .el-dialog__body {
             padding: 10px 20px 40px;
             font-size: 12px;
